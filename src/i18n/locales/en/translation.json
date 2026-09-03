@@ -1,0 +1,71 @@
+{
+  "auth": {
+    "email": "Email Address",
+    "emailPlaceholder": "Enter your email address",
+    "password": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot password?",
+
+    "changeLanguage": "Change language",
+    "secureAccess": "Secure Access",
+    "securityNotice": "This platform is dedicated to managing SATORP National Day events and is restricted to authorized users.",
+
+    "language": {
+      "arabic": "العربية",
+      "english": "English"
+    },
+
+    "nationalDay": {
+      "label": "Saudi National Day",
+      "englishLabel": "SAUDI NATIONAL DAY"
+    },
+
+    "hero": {
+      "eyebrow": "National Day Event Management Platform",
+      "title": "Proud of who we are. Together, we celebrate.",
+      "description": "SATORP's dedicated platform for managing and coordinating National Day events, from planning through execution.",
+      "slogan": "Our Pride, Our Nature"
+    },
+
+    "footer": {
+      "company": "SATORP",
+      "authorizedUsers": "Authorized users only"
+    },
+
+    "login": {
+      "title": "Sign in",
+      "subtitle": "Sign in to access the National Day event management platform.",
+      "submit": "Sign in"
+    },
+
+    "forgotPasswordPage": {
+      "title": "Reset Your Password",
+      "description": "Enter the username or email address associated with your account, and we’ll send you a link to reset your password.",
+      "usernameOrEmail": "Username or Email Address",
+      "usernameOrEmailPlaceholder": "Enter the username or email address associated with your account",
+      "submit": "Send Password Reset Link",
+      "backToLogin": "Back to Sign In"
+    },
+
+    "resetPasswordPage": {
+      "title": "Reset Password",
+      "description": "Enter the verification code and your new password to update your account password.",
+      "username": "Username or Email Address",
+      "otpCode": "Verification Code",
+      "otpPlaceholder": "Enter the verification code sent to you",
+      "newPassword": "New Password",
+      "newPasswordPlaceholder": "Enter your new password",
+      "confirmPassword": "Confirm Password",
+      "confirmPasswordPlaceholder": "Re-enter your new password to confirm",
+      "submit": "Update Password",
+      "backToLogin": "Back to Sign In"
+    }
+  },
+  "validation": {
+    "requiredField": "This field is required.",
+    "requiredOtp": "Please enter the verification code.",
+    "requiredEmail": "Email is required.",
+    "passwordsDoNotMatch": "Passwords do not match."
+  }
+}

@@ -1,0 +1,1 @@
+export { useTenantDashboard } from './useDashboard'

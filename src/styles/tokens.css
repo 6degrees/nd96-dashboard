@@ -1,0 +1,211 @@
+:root {
+    /* ========================================
+       Brand Colors
+       ======================================== */
+
+    --brand-primary: #00343A;
+    --brand-primary-hover: #002A2F;
+    --brand-primary-active: #002126;
+
+    --brand-green: #00894A;
+    --brand-green-hover: #00763F;
+    --brand-green-active: #006436;
+
+    --brand-lime: #5ABA1C;
+    --brand-lime-hover: #4FA318;
+
+
+    /* ========================================
+       Supporting Brand Colors
+       ======================================== */
+
+    --brand-blue: #0050AF;
+    --brand-burgundy: #971A4D;
+    --brand-olive: #607C4F;
+    --brand-purple: #6565E0;
+    --brand-brown: #7C5D21;
+
+
+    /* ========================================
+       Backgrounds / Surfaces
+       ======================================== */
+
+    --color-background: #F5F3EA;
+    --color-surface: #FFFFFF;
+    --color-surface-soft: #EEF1EC;
+    --color-surface-muted: #E6EBE7;
+
+    --color-surface-primary: #00343A;
+    --color-surface-green: #E7F3ED;
+    --color-surface-lime: #EEF8E7;
+
+
+    /* ========================================
+       Text
+       ======================================== */
+
+    --color-text-primary: #00343A;
+    --color-text-secondary: #607C4F;
+    --color-text-muted: #718078;
+    --color-text-disabled: #A1ADA7;
+    --color-text-inverse: #FFFFFF;
+
+    --color-text-link: #00894A;
+    --color-text-link-hover: #006F3C;
+
+
+    /* ========================================
+       Borders
+       ======================================== */
+
+    --color-border: #CBD7D1;
+    --color-border-light: #E0E7E3;
+    --color-border-strong: #AEBEB6;
+    --color-border-focus: #00894A;
+
+
+    /* ========================================
+       Form
+       ======================================== */
+
+    --input-background: #FFFFFF;
+    --input-border: #CBD7D1;
+    --input-border-hover: #AEBEB6;
+    --input-border-focus: #00894A;
+
+    --input-text: #00343A;
+    --input-placeholder: #8A9891;
+
+
+    /* ========================================
+       Status
+       ======================================== */
+
+    --color-success: #00894A;
+    --color-success-background: #E7F3ED;
+    --color-success-border: #B9DCCA;
+
+    --color-warning: #7C5D21;
+    --color-warning-background: #F5EFE3;
+    --color-warning-border: #DED0B3;
+
+    --color-error: #971A4D;
+    --color-error-background: #F7E8EE;
+    --color-error-border: #E3B8C8;
+
+    --color-info: #0050AF;
+    --color-info-background: #E8F0FA;
+    --color-info-border: #B9CFE9;
+
+
+    /* ========================================
+       Typography
+       ======================================== */
+
+    --font-ar: "SaudiWeb", sans-serif;
+    --font-en: var(--font-inter), sans-serif;
+
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+
+    /* ========================================
+       Radius
+       ======================================== */
+
+    --radius-none: 0;
+    --radius-sm: 0.25rem;
+    --radius-md: 0.375rem;
+    --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
+
+
+    /* ========================================
+       Shadows
+       ======================================== */
+
+    --shadow-xs:
+            0 1px 2px rgb(0 52 58 / 4%);
+
+    --shadow-sm:
+            0 2px 6px rgb(0 52 58 / 6%);
+
+    --shadow-md:
+            0 8px 24px rgb(0 52 58 / 8%);
+
+    --shadow-lg:
+            0 16px 40px rgb(0 52 58 / 12%);
+
+
+    /* ========================================
+       Z Index
+       ======================================== */
+
+    --z-dropdown: 1000;
+    --z-sticky: 1100;
+    --z-fixed: 1200;
+    --z-modal: 1300;
+    --z-popover: 1400;
+    --z-tooltip: 1500;
+}
+
+
+/* ============================================
+   Dark Mode Tokens
+   ============================================ */
+
+.dark {
+
+    --color-background: #0C2022;
+    --color-surface: #102A2D;
+    --color-surface-soft: #17373A;
+    --color-surface-muted: #1D3F42;
+
+    --color-surface-primary: #002A2F;
+    --color-surface-green: #173B29;
+    --color-surface-lime: #263B1D;
+
+
+    --color-text-primary: #F4F7F5;
+    --color-text-secondary: #B8C9C1;
+    --color-text-muted: #91A59C;
+    --color-text-disabled: #61756D;
+    --color-text-inverse: #FFFFFF;
+
+    --color-text-link: #5ABA1C;
+    --color-text-link-hover: #70C735;
+
+
+    --color-border: #315154;
+    --color-border-light: #25474A;
+    --color-border-strong: #45666A;
+    --color-border-focus: #5ABA1C;
+
+
+    --input-background: #102A2D;
+    --input-border: #315154;
+    --input-border-hover: #45666A;
+    --input-border-focus: #5ABA1C;
+
+    --input-text: #F4F7F5;
+    --input-placeholder: #7F9790;
+
+
+    --color-success: #5ABA1C;
+    --color-success-background: #173B29;
+    --color-success-border: #2B6444;
+
+    --color-warning: #C49B54;
+    --color-warning-background: #3B3324;
+    --color-warning-border: #66583A;
+
+    --color-error: #D06A91;
+    --color-error-background: #3C2631;
+    --color-error-border: #674052;
+
+    --color-info: #5C91D6;
+    --color-info-background: #1C3047;
+    --color-info-border: #36577C;
+}
