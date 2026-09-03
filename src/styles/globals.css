@@ -842,6 +842,88 @@ html[lang="ar"] .swal2-popup * {
 }
 
 
+
+/*
+|--------------------------------------------------------------------------
+| Identity Checkbox
+|--------------------------------------------------------------------------
+|
+| Custom checkbox inspired by the geometric language of the
+| Saudi National Day visual identity.
+|
+*/
+.identity-checkbox-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.identity-checkbox {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.identity-checkbox-box {
+    position: relative;
+    display: flex;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-default);
+    background: var(--surface-card);
+    clip-path: polygon(
+            4px 0,
+            100% 0,
+            100% calc(100% - 4px),
+            calc(100% - 4px) 100%,
+            0 100%,
+            0 4px
+    );
+    transition: border-color 160ms ease, background-color 160ms ease;
+}
+
+.identity-checkbox-mark {
+    width: 6px;
+    height: 10px;
+    border-right: 2px solid var(--text-inverse);
+    border-bottom: 2px solid var(--text-inverse);
+    opacity: 0;
+    transform: rotate(45deg) translate(-1px, -1px);
+    transition: opacity 160ms ease;
+}
+
+.identity-checkbox:checked + .identity-checkbox-box {
+    border-color: var(--brand-green);
+    background: var(--brand-green);
+}
+
+.identity-checkbox:checked + .identity-checkbox-box .identity-checkbox-mark {
+    opacity: 1;
+}
+
+.identity-checkbox:focus-visible + .identity-checkbox-box {
+    outline: 2px solid var(--brand-green);
+    outline-offset: 3px;
+}
+
+.identity-checkbox-label:hover .identity-checkbox-box {
+    border-color: var(--brand-green);
+}
+
+.identity-checkbox-text {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
 /* ============================================
    Reduced Motion
    ============================================ */

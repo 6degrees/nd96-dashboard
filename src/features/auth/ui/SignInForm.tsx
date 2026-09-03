@@ -127,9 +127,14 @@ const SignInForm = () => {
             |
             */}
             <div className="flex items-center">
-                <label className="flex cursor-pointer select-none items-center gap-2 text-sm text-text-secondary">
-                    <input type="checkbox" id="remember" name="remember" className="h-4 w-4 cursor-pointer rounded border-border-default accent-brand-green focus:ring-brand-green" />
-                    <span>{t('auth.rememberMe')}</span>
+                <label htmlFor="remember" className="identity-checkbox-label">
+                    <input type="checkbox" id="remember" name="remember" className="identity-checkbox" />
+                    <span className="identity-checkbox-box">
+                        <span className="identity-checkbox-mark" />
+                    </span>
+                    <span className="identity-checkbox-text">
+                        {t('auth.rememberMe')}
+                    </span>
                 </label>
             </div>
 
