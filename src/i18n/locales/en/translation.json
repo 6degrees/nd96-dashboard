@@ -8,8 +8,8 @@
   "common": {
     "siteName": "Collectly",
     "search": "Search...",
-    "filters": "Filters",
-    "actions": "Actions",
+    "filters": "Filter Options",
+    "searchInformation": "Use the filter options below to narrow down the data you want to view and easily find the information you need.",    "actions": "Actions",
     "edit": "Edit",
     "view": "View",
     "back": "Back",
@@ -21,7 +21,6 @@
     "inactive": "Inactive",
     "item": "Item",
     "timeline": "Timeline",
-    "searchInformation": "Search Information",
     "loading": "Loading invitation details...",
     "processing": "Processing...",
     "workspace": "Workspace",
@@ -42,7 +41,9 @@
     "confirmActivate": "Are you sure you want to activate this {{entity}}?",
     "details": "View Details",
     "refreshing": "Refreshing",
-    "refresh": "Refresh"
+    "refresh": "Refresh",
+    "table": "Data",
+    "tableDescription": "View, manage, and organize the available data and records"
   },
   "auth": {
     "email": "Email Address",

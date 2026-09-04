@@ -8,8 +8,8 @@
 
 import React, { useState } from 'react'
 import { Row, Col, Table } from 'antd'
-import { UilUsersAlt } from '@iconscout/react-unicons'
-import { ChevronDown } from 'lucide-react'
+import { Table2, ChevronDown } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 
 /*
 |--------------------------------------------------------------------------
@@ -25,8 +25,6 @@ interface PageTableProps {
     limit: number
     total: number
     onChange: (page: number, pageSize: number) => void
-    title?: string
-    description?: string
 }
 
 /*
@@ -35,12 +33,15 @@ interface PageTableProps {
 |--------------------------------------------------------------------------
 */
 
-const PageTable = ({loading, columns, dataSource, page, limit, total, onChange, title = 'المستخدمين', description = 'إدارة المستخدمين',}: PageTableProps) => {
+const PageTable = ({ loading, columns, dataSource, page, limit, total, onChange }: PageTableProps) => {
+
     /*
     |--------------------------------------------------------------------------
-    | Collapse State
+    | Hooks
     |--------------------------------------------------------------------------
     */
+
+    const { t } = useTranslation()
 
     const [isOpen, setIsOpen] = useState(true)
 
@@ -63,7 +64,7 @@ const PageTable = ({loading, columns, dataSource, page, limit, total, onChange, 
                     <button
                         type="button"
                         onClick={() => setIsOpen(!isOpen)}
-                        className="group flex w-full items-center justify-between border-b border-border-default px-6 py-4.5 text-start transition-colors duration-200 hover:bg-surface-muted cursor-pointer"
+                        className="group flex w-full cursor-pointer items-center justify-between border-b border-border-default px-6 py-4.5 text-start transition-colors duration-200 hover:bg-surface-muted"
                     >
 
                         {/* Title */}
@@ -71,17 +72,17 @@ const PageTable = ({loading, columns, dataSource, page, limit, total, onChange, 
                         <div className="flex items-center gap-3">
 
                             <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-green/10 text-brand-green">
-                                <UilUsersAlt size="17" />
+                                <Table2 size={17} strokeWidth={2} />
                             </span>
 
                             <div className="flex flex-col">
 
                                 <span className="text-base font-bold leading-6 text-text-primary">
-                                    {title}
+                                    {t('common.table')}
                                 </span>
 
                                 <span className="mt-0.5 text-xs font-medium text-text-secondary">
-                                    {description}
+                                    {t('common.tableDescription')}
                                 </span>
 
                             </div>

@@ -22,7 +22,6 @@ import { useTranslation } from 'react-i18next'
 */
 
 interface PageFilterProps {
-    title?: string
     isOpen: boolean
     onToggle: () => void
     onSearch: () => void
@@ -35,7 +34,7 @@ interface PageFilterProps {
 |--------------------------------------------------------------------------
 */
 
-const PageFilter = ({ title = 'filters', isOpen, onToggle, onSearch, children }: PageFilterProps) => {
+const PageFilter = ({isOpen, onToggle, onSearch, children }: PageFilterProps) => {
 
     const { t } = useTranslation()
 
@@ -61,7 +60,7 @@ const PageFilter = ({ title = 'filters', isOpen, onToggle, onSearch, children }:
                     <div className="flex flex-col">
 
                         <span className="text-base font-bold leading-6 text-text-primary">
-                            {t(title)}
+                            {t('common.filters')}
                         </span>
 
                         <span className="mt-0.5 text-xs font-medium text-text-secondary">
