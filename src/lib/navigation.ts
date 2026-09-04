@@ -47,21 +47,12 @@ export const navigation: NavigationGroup[] = [
     },
 
     {
-        key: 'management',
+        key: 'users',
         title: {
-            en: 'Management',
-            ar: 'الإدارة',
+            en: 'Users',
+            ar: 'المستخدمون',
         },
         items: [
-            {
-                key: 'department',
-                label: {
-                    en: 'Departments',
-                    ar: 'الإدارات',
-                },
-                href: '/dashboard/departments',
-                icon: Building2,
-            },
             {
                 key: 'users',
                 label: {
@@ -70,6 +61,25 @@ export const navigation: NavigationGroup[] = [
                 },
                 href: '/dashboard/users',
                 icon: Users,
+            },
+        ],
+    },
+
+    {
+        key: 'departments',
+        title: {
+            en: 'Departments',
+            ar: 'الإدارات',
+        },
+        items: [
+            {
+                key: 'departments',
+                label: {
+                    en: 'Departments',
+                    ar: 'الإدارات',
+                },
+                href: '/dashboard/departments',
+                icon: Building2,
             },
         ],
     },
