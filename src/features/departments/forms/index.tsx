@@ -125,7 +125,7 @@ export default function DepartmentForm({onSubmit, data, isEdit = false,}: FormPr
             {/* Actions */}
             <div className="flex">
                 <div className="ms-auto">
-                    <SubmitButtonFormItem label={isEdit ? 'common.update' : 'user.create'} loading={actionLoading} background="linear-gradient(135deg, #00843D 0%, #006B35 100%)"/>
+                    <SubmitButtonFormItem label={isEdit ? 'common.update' : 'common.create'} loading={actionLoading} background="linear-gradient(135deg, #00843D 0%, #006B35 100%)"/>
                 </div>
             </div>
         </Form>

@@ -1,7 +1,7 @@
-import {  Tag, Tooltip } from 'antd'
-import { UilEdit, UilBan, UilCheckCircle, UilTrashAlt } from '@iconscout/react-unicons'
+import { Tag, Tooltip } from 'antd'
+import { Pencil, Ban, CheckCircle2, Trash2 } from 'lucide-react'
 import { formatDate } from '@/utils/formatDate'
-import {TFunction} from "i18next";
+import { TFunction } from 'i18next'
 
 /*
 |--------------------------------------------------------------------------
@@ -21,11 +21,11 @@ interface ColumnsProps {
 | Table Columns
 |--------------------------------------------------------------------------
 |
-| Defines the Product table columns mapped directly to ProductResource.
-| Read-only view with disabled actions.
+| Defines the Department table columns.
 |
 */
-export const Columns = ({ onEdit, onDelete, onStatusChange, t}: ColumnsProps) => [
+
+export const Columns = ({ onEdit, onDelete, onStatusChange, t }: ColumnsProps) => [
     {
         title: t('department.inputs.name_ar'),
         dataIndex: 'name_ar',
@@ -40,9 +40,10 @@ export const Columns = ({ onEdit, onDelete, onStatusChange, t}: ColumnsProps) =>
         title: t('department.inputs.status'),
         dataIndex: 'is_active',
         align: 'center',
+
         render: (v: boolean) => (
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <Tag color={v ? 'green' : 'red'} style={{ margin: 0 }}>
+            <div className="flex justify-center">
+                <Tag color={v ? 'green' : 'red'} className="m-0">
                     {v ? t('common.active') : t('common.inactive')}
                 </Tag>
             </div>
@@ -57,42 +58,59 @@ export const Columns = ({ onEdit, onDelete, onStatusChange, t}: ColumnsProps) =>
     },
     {
         title: t('department.inputs.activatedAt'),
-        dataIndex: 'created_at',
+        dataIndex: 'activated_at',
         align: 'center',
 
         render: (date: string) => formatDate(date, true),
     },
-
     {
         title: t('common.actions'),
         align: 'center',
 
         render: (_: any, record: any) => (
-            <div className="flex justify-center gap-2">
+            <div className="flex justify-center gap-1.5">
+
+                {/* Edit */}
+
                 <Tooltip title={t('common.edit')}>
                     <button
+                        type="button"
                         onClick={() => onEdit?.(record)}
-                        className="p-2 hover:bg-blue-50 rounded-lg">
-                        <UilEdit size="18" />
+                        className="flex h-9 w-9 items-center justify-center rounded-lg text-text-secondary transition-all duration-200 hover:bg-brand-blue/10 hover:text-brand-blue active:scale-95"
+                    >
+                        <Pencil size={17} strokeWidth={2} />
                     </button>
                 </Tooltip>
 
-                <Tooltip title={record.is_active ? t('common.inactive') : t('common.active')}>
+                {/* Activate / Deactivate */}
+
+                <Tooltip title={record.is_active ? t('common.disable') : t('common.activate')}>
                     <button
+                        type="button"
                         onClick={() => onStatusChange?.(record)}
-                        className="p-2 hover:bg-amber-50 rounded-lg">
-                        {
+                        className={`flex h-9 w-9 items-center justify-center rounded-lg transition-all duration-200 active:scale-95 ${
                             record.is_active
-                                ? <UilBan size="18" />
-                                : <UilCheckCircle size="18" />
-                        }
+                                ? 'text-text-secondary hover:bg-amber-50 hover:text-amber-600 dark:hover:bg-amber-500/10 dark:hover:text-amber-400'
+                                : 'text-text-secondary hover:bg-brand-green/10 hover:text-brand-green'
+                        }`}
+                    >
+                        {record.is_active ? (
+                            <Ban size={17} strokeWidth={2} />
+                        ) : (
+                            <CheckCircle2 size={18} strokeWidth={2} />
+                        )}
                     </button>
                 </Tooltip>
+
+                {/* Delete */}
 
                 <Tooltip title={t('common.delete')}>
-                    <button onClick={() => onDelete?.(record)}
-                            className="p-2 hover:bg-red-50 rounded-lg">
-                        <UilTrashAlt size="18" />
+                    <button
+                        type="button"
+                        onClick={() => onDelete?.(record)}
+                        className="flex h-9 w-9 items-center justify-center rounded-lg text-text-secondary transition-all duration-200 hover:bg-red-50 hover:text-red-600 active:scale-95 dark:hover:bg-red-500/10 dark:hover:text-red-400"
+                    >
+                        <Trash2 size={17} strokeWidth={2} />
                     </button>
                 </Tooltip>
 

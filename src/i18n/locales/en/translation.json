@@ -43,7 +43,9 @@
     "refreshing": "Refreshing",
     "refresh": "Refresh",
     "table": "Data",
-    "tableDescription": "View, manage, and organize the available data and records"
+    "tableDescription": "View, manage, and organize the available data and records",
+    "create": "Create",
+    "update": "Update"
   },
   "auth": {
     "email": "Email Address",
