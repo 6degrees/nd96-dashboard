@@ -17,5 +17,4 @@ export const api = {
     update: userApi.update,
     status: userApi.status,
     delete: userApi.delete,
-    roles: userApi.getRoles,
 }
