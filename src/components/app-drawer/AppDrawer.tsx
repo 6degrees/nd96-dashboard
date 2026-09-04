@@ -1,223 +1,239 @@
 'use client'
 
-/*
-|--------------------------------------------------------------------------
-| Imports
-|--------------------------------------------------------------------------
-|
-| Ant Design
-|
-*/
 import { Drawer } from 'antd'
-
-/*
-|--------------------------------------------------------------------------
-| Translation
-|--------------------------------------------------------------------------
-|
-*/
+import { X } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 
-/*
-|--------------------------------------------------------------------------
-| Types
-|--------------------------------------------------------------------------
-|
-*/
 import { AppDrawerProps } from '@/types/app-drawer-props'
 
 /*
 |--------------------------------------------------------------------------
-| App Drawer Component
+| App Drawer
 |--------------------------------------------------------------------------
 |
-| Shared reusable drawer component.
+| Shared drawer component following the SATORP / Saudi National Day
+| visual identity.
 |
 | Features:
-| - centralized drawer behavior
-| - reusable across all features
-| - smooth modern animation
-| - blurred background overlay
-| - responsive width
-| - full dark mode support
-|
-| Usage:
-| - Create Drawer
-| - Update Drawer
-| - Details Drawer
+| - Responsive width
+| - Full-screen drawer on mobile
+| - SATORP brand styling
+| - Saudi green accent
+| - RTL friendly
+| - Clean header
+| - Soft overlay
+| - Smooth animation
 |
 */
-export default function AppDrawer({open, onClose, title, width = null, children}: AppDrawerProps) {
+
+export default function AppDrawer({
+                                      open,
+                                      onClose,
+                                      title,
+                                      width = null,
+                                      children,
+                                  }: AppDrawerProps) {
 
     /*
     |--------------------------------------------------------------------------
-    | Translation Hook
+    | Translation
     |--------------------------------------------------------------------------
-    |
-    | Initialize translation hook for i18n support.
-    |
     */
+
     const { t } = useTranslation()
 
     /*
     |--------------------------------------------------------------------------
-    | Responsive Drawer Width
+    | Drawer Width
     |--------------------------------------------------------------------------
     |
-    | Makes drawer fullscreen on mobile devices
-    | and uses custom width on larger screens.
+    | Ant Design supports responsive sizing through CSS.
+    | We avoid reading window.innerWidth during render.
     |
     */
-    const drawerWidth =
-        typeof window !== 'undefined' && window.innerWidth < 768
-            ? '100%'
-            : (width ?? '460px')
+
+    const drawerWidth = width ?? '460px'
 
     /*
     |--------------------------------------------------------------------------
-    | Render Drawer
+    | Render
     |--------------------------------------------------------------------------
-    |
     */
+
     return (
         <Drawer
-
-            /*
-            |--------------------------------------------------------------------------
-            | Drawer State
-            |--------------------------------------------------------------------------
-            */
             open={open}
             onClose={onClose}
 
-            /*
-            |--------------------------------------------------------------------------
-            | Drawer Header
-            |--------------------------------------------------------------------------
-            */
-            title={title ? t(title) : ''}
-
-            /*
-            |--------------------------------------------------------------------------
-            | Drawer Width
-            |--------------------------------------------------------------------------
-            */
-            size={drawerWidth}
-
-            /*
-            |--------------------------------------------------------------------------
-            | Drawer Position
-            |--------------------------------------------------------------------------
-            */
             placement="right"
 
-            /*
-            |--------------------------------------------------------------------------
-            | Performance
-            |--------------------------------------------------------------------------
-            |
-            | Destroy section after closing drawer
-            | to reset internal state & forms.
-            |
-            */
+            size={drawerWidth}
+
             destroyOnHidden
+
+            title={
+                title ? (
+                    <div className="flex items-center gap-3">
+
+                        {/* Brand Accent */}
+                        <span
+                            className="
+                                h-8
+                                w-1
+                                shrink-0
+                                rounded-full
+                                bg-[#006C35]
+                            "
+                        />
+
+                        {/* Title */}
+                        <span
+                            className="
+                                text-[17px]
+                                font-bold
+                                leading-none
+                                tracking-tight
+                                text-[#172018]
+                                dark:text-white
+                            "
+                        >
+                            {t(title)}
+                        </span>
+
+                    </div>
+                ) : null
+            }
 
             /*
             |--------------------------------------------------------------------------
-            | Modern Drawer Styles
+            | Drawer Classes
             |--------------------------------------------------------------------------
             */
+
             classNames={{
-                body: `
-                    bg-[#fafafa]
-                    dark:bg-neutral-950
-                    px-6
-                    py-6
+                wrapper: `
+                    max-md:!w-full
+                `,
+
+                section: `
+                    overflow-hidden
+                    bg-white
+                    dark:bg-[#111713]
                 `,
 
                 header: `
-                    bg-white/80
-                    dark:bg-neutral-900/80
-                    backdrop-blur-md
-                    border-b border-neutral-100
-                    dark:border-neutral-800/60
+                    relative
+                    border-b
+                    border-[#E7ECE8]
+                    bg-white
                     px-6
-                    py-4
-                    [&_.ant-drawer-title]:!text-[16px]
-                    [&_.ant-drawer-title]:!font-bold
-                    [&_.ant-drawer-title]:!text-neutral-800
-                    dark:[&_.ant-drawer-title]:!text-neutral-200
+                    py-5
+                    dark:border-[#26302A]
+                    dark:bg-[#111713]
+
+                    [&_.ant-drawer-title]:!m-0
+                    [&_.ant-drawer-title]:!p-0
+                `,
+
+                body: `
+                    bg-[#F8FAF8]
+                    px-6
+                    py-6
+
+                    dark:bg-[#0D120F]
+
+                    max-md:px-5
+                    max-md:py-5
                 `,
 
                 footer: `
-                    border-t border-neutral-100
-                    dark:border-neutral-800/60
+                    border-t
+                    border-[#E7ECE8]
                     bg-white
-                    dark:bg-neutral-950
+                    dark:border-[#26302A]
+                    dark:bg-[#111713]
                 `,
             }}
 
             /*
             |--------------------------------------------------------------------------
-            | Modern Overlay Effect
+            | Inline Styles
             |--------------------------------------------------------------------------
-            |
-            | Adds blur & darker background
-            | behind the drawer.
-            |
             */
+
             styles={{
                 mask: {
-                    backdropFilter: 'blur(4px)',
-                    background: 'rgba(0, 0, 0, 0.15)',
+                    background: 'rgba(15, 23, 18, 0.30)',
+                    backdropFilter: 'blur(5px)',
                 },
 
                 section: {
-                    background: 'transparent',
-                    boxShadow: '-8px 0 32px rgba(0,0,0,0.04)',
+                    boxShadow: '-12px 0 40px rgba(0, 0, 0, 0.08)',
                 },
 
                 wrapper: {
-                    overflow: 'hidden',
+                    maxWidth: '100%',
                 },
             }}
 
             /*
             |--------------------------------------------------------------------------
-            | Close Icon
+            | Close Button
             |--------------------------------------------------------------------------
             */
+
             closeIcon={
-                <div
+                <span
                     className="
-                        w-7 h-7
+                        flex
+                        h-9
+                        w-9
+                        items-center
+                        justify-center
                         rounded-full
-                        flex items-center justify-center
-                        text-neutral-400
-                        hover:text-neutral-600
-                        dark:hover:text-neutral-200
-                        hover:bg-neutral-100
-                        dark:hover:bg-neutral-800
+
+                        border
+                        border-[#E1E8E3]
+
+                        bg-white
+                        text-[#5F6B63]
+
                         transition-all
                         duration-200
-                        text-[12px]
+
+                        hover:border-[#006C35]
+                        hover:bg-[#EFF8F2]
+                        hover:text-[#006C35]
+
+                        dark:border-[#303B33]
+                        dark:bg-[#18201B]
+                        dark:text-[#AAB5AE]
+
+                        dark:hover:border-[#4BAF76]
+                        dark:hover:bg-[#173523]
+                        dark:hover:text-[#72C995]
                     "
+                    aria-label="Close"
                 >
-                    ✕
-                </div>
+                    <X size={17} strokeWidth={2} />
+                </span>
             }
         >
 
             {/* ---------------------------------------------------------------- */}
-            {/* Animated section */}
+            {/* Content */}
             {/* ---------------------------------------------------------------- */}
+
             <div
                 className="
+                    h-full
+                    w-full
+
                     animate-in
                     slide-in-from-right
                     duration-300
-                    h-full
-                    w-full
+
+                    font-[SaudiWeb]
                 "
             >
                 {children}

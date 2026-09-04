@@ -1,4 +1,49 @@
 {
+  "validation": {
+    "requiredField": "This field is required.",
+    "requiredOtp": "Please enter the verification code.",
+    "requiredEmail": "Email is required.",
+    "passwordsDoNotMatch": "Passwords do not match."
+  },
+  "common": {
+    "siteName": "Collectly",
+    "search": "Search...",
+    "filters": "Filters",
+    "actions": "Actions",
+    "edit": "Edit",
+    "view": "View",
+    "back": "Back",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "activate": "Activate",
+    "disable": "Disable",
+    "active": "Active",
+    "inactive": "Inactive",
+    "item": "Item",
+    "timeline": "Timeline",
+    "searchInformation": "Search Information",
+    "loading": "Loading invitation details...",
+    "processing": "Processing...",
+    "workspace": "Workspace",
+    "copied": "Copied successfully",
+    "copy": "Copy",
+    "notAvailable": "Not found",
+    "createdSuccessfully": "Created successfully.",
+    "updatedSuccessfully": "Updated successfully.",
+    "deletedSuccessfully": "Deleted successfully.",
+    "activatedSuccessfully": "Activated successfully.",
+    "disabledSuccessfully": "Disabled successfully.",
+    "confirmDeleteTitle": "Delete {{entity}}",
+    "confirmDeleteMessage": "Are you sure you want to delete {{entity}}?",
+    "whatsapp": "WhatsApp",
+    "openInMaps": "Open in Google Maps",
+    "gpsConnected": "GPS coordinates connected",
+    "confirmDisable": "Are you sure you want to disable this {{entity}}?",
+    "confirmActivate": "Are you sure you want to activate this {{entity}}?",
+    "details": "View Details",
+    "refreshing": "Refreshing",
+    "refresh": "Refresh"
+  },
   "auth": {
     "email": "Email Address",
     "emailPlaceholder": "Enter your email address",
@@ -62,10 +107,24 @@
       "backToLogin": "Back to Sign In"
     }
   },
-  "validation": {
-    "requiredField": "This field is required.",
-    "requiredOtp": "Please enter the verification code.",
-    "requiredEmail": "Email is required.",
-    "passwordsDoNotMatch": "Passwords do not match."
+  "user": {
+    "title": "Users",
+    "create": "Create User",
+    "inputs": {
+      "name": "Name",
+      "namePlaceholder": "Please enter the name",
+      "email": "Email",
+      "emailPlaceholder": "Please enter the email address",
+      "password": "Password",
+      "passwordPlaceholder": "Please enter the password",
+      "passwordConfirmation": "Confirm Password",
+      "passwordConfirmationPlaceholder": "Please confirm the password",
+      "role": "Role",
+      "rolePlaceholder": "Please select a role",
+      "admin": "Administrator",
+      "employee": "Employee",
+      "createdAt": "Created At",
+      "updatedAt": "Updated At"
+    }
   }
 }

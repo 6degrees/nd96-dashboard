@@ -28,7 +28,7 @@ export const authService = {
             '/api/v1/auth/login',
             {
                 ...data,
-                role: 'tenant',
+                role: 'admin',
             },
             { Authorization: '' }
         );

@@ -13,7 +13,7 @@ import SidebarFooter from './sidebar-footer'
 | Shared sidebar content used by both desktop and mobile layouts.
 |
 | Structure:
-| - Logo
+| - Identity header
 | - Navigation
 | - Footer
 |
@@ -27,15 +27,18 @@ export default function SidebarContent() {
     */
 
     return (
-        <>
+        <div className="identity-sidebar-inner">
             {/*
             |--------------------------------------------------------------------------
-            | Logo
+            | Header
             |--------------------------------------------------------------------------
             */}
 
-            <div className="border-b border-border/50 p-4">
-                <SidebarLogo />
+            <div className="identity-sidebar-header">
+                <div className="identity-sidebar-logo">
+                    <SidebarLogo />
+                </div>
+
             </div>
 
             {/*
@@ -44,8 +47,8 @@ export default function SidebarContent() {
             |--------------------------------------------------------------------------
             */}
 
-            <nav className="flex-1 overflow-y-auto px-3 py-6">
-                <div className="space-y-8">
+            <nav className="identity-sidebar-nav">
+                <div className="identity-sidebar-nav-groups">
                     {navigation.map((group) => (
                         <SidebarGroup
                             key={group.key}
@@ -61,9 +64,9 @@ export default function SidebarContent() {
             |--------------------------------------------------------------------------
             */}
 
-            <div className="border-t border-border/50 p-4">
+            <div className="identity-sidebar-footer">
                 <SidebarFooter />
             </div>
-        </>
+        </div>
     )
 }

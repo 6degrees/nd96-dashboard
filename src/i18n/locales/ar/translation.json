@@ -1,4 +1,49 @@
 {
+  "validation": {
+    "requiredField": "يرجى إدخال البيانات المطلوبة في هذا الحقل.",
+    "requiredOtp": "يرجى إدخال رمز التحقق المرسل إليك للمتابعة.",
+    "requiredEmail": "يرجى إدخال عنوان البريد الإلكتروني.",
+    "passwordsDoNotMatch": "كلمتا المرور غير متطابقتين، يرجى التأكد من إدخالهما بشكل صحيح."
+  },
+  "common": {
+    "siteName": "كولكتلي",
+    "search": "بحث...",
+    "filters": "تصفية",
+    "actions": "الإجراءات",
+    "edit": "تعديل",
+    "view": "عرض",
+    "back": "رجوع",
+    "delete": "حذف",
+    "cancel": "إلغاء",
+    "activate": "تفعيل",
+    "disable": "تعطيل",
+    "active": "نشط",
+    "inactive": "غير نشط",
+    "item": "عنصر",
+    "timeline": "الجدول الزمني",
+    "searchInformation": "معلومات البحث",
+    "loading": "جاري تحميل تفاصيل الدعوة...",
+    "processing": "جاري المعالجة...",
+    "workspace": "مساحة العمل",
+    "copied": "تم النسخ بنجاح",
+    "copy": "نسخ",
+    "notAvailable": "غير موجود",
+    "createdSuccessfully": "تم الإنشاء بنجاح.",
+    "updatedSuccessfully": "تم التحديث بنجاح.",
+    "deletedSuccessfully": "تم الحذف بنجاح.",
+    "activatedSuccessfully": "تم التفعيل بنجاح.",
+    "disabledSuccessfully": "تم التعطيل بنجاح.",
+    "confirmDeleteTitle": "حذف {{entity}}",
+    "confirmDeleteMessage": "هل أنت متأكد من رغبتك في حذف {{entity}}؟",
+    "whatsapp": "واتساب",
+    "openInMaps": "فتح في خرائط جوجل",
+    "gpsConnected": "إحداثيات الموقع متصلة",
+    "confirmDisable": "هل أنت متأكد أنك تريد تعطيل {{entity}}؟",
+    "confirmActivate": "هل أنت متأكد أنك تريد تفعيل {{entity}}؟",
+    "details": "عرض التفاصيل",
+    "refreshing": "جاري التحديث",
+    "refresh": "تحديث"
+  },
   "auth": {
     "email": "البريد الإلكتروني",
     "emailPlaceholder": "أدخل بريدك الإلكتروني",
@@ -6,39 +51,32 @@
     "passwordPlaceholder": "أدخل كلمة المرور",
     "rememberMe": "تذكرني",
     "forgotPassword": "نسيت كلمة المرور؟",
-
     "changeLanguage": "تغيير اللغة",
     "secureAccess": "دخول آمن",
     "securityNotice": "هذه المنصة مخصصة لإدارة فعاليات اليوم الوطني في ساتورب، ويقتصر الوصول عليها على المستخدمين المصرح لهم.",
-
     "language": {
       "arabic": "العربية",
       "english": "English"
     },
-
     "nationalDay": {
       "label": "اليوم الوطني السعودي",
       "englishLabel": "SAUDI NATIONAL DAY"
     },
-
     "hero": {
       "eyebrow": "منصة إدارة فعاليات اليوم الوطني",
       "title": "نفخر بهويتنا، ونحتفي بها معًا",
       "description": "منصة ساتورب المخصصة لإدارة وتنظيم فعاليات اليوم الوطني، وتنسيق التجربة من التخطيط وحتى التنفيذ.",
       "slogan": "عزنا بطبعنا"
     },
-
     "footer": {
       "company": "SATORP",
       "authorizedUsers": "للمستخدمين المصرح لهم فقط"
     },
-
     "login": {
       "title": "تسجيل الدخول",
       "subtitle": "سجّل الدخول للوصول إلى منصة إدارة فعاليات اليوم الوطني.",
       "submit": "تسجيل الدخول"
     },
-
     "forgotPasswordPage": {
       "title": "استعادة كلمة المرور",
       "description": "أدخل اسم المستخدم أو البريد الإلكتروني المرتبط بحسابك، وسنرسل لك رابطًا لإعادة تعيين كلمة المرور.",
@@ -47,7 +85,6 @@
       "submit": "إرسال رابط إعادة تعيين كلمة المرور",
       "backToLogin": "العودة إلى تسجيل الدخول"
     },
-
     "resetPasswordPage": {
       "title": "إعادة تعيين كلمة المرور",
       "description": "أدخل رمز التحقق وكلمة المرور الجديدة لتحديث كلمة المرور الخاصة بحسابك.",
@@ -62,10 +99,24 @@
       "backToLogin": "العودة إلى تسجيل الدخول"
     }
   },
-  "validation": {
-    "requiredField": "يرجى إدخال البيانات المطلوبة في هذا الحقل.",
-    "requiredOtp": "يرجى إدخال رمز التحقق المرسل إليك للمتابعة.",
-    "requiredEmail": "يرجى إدخال عنوان البريد الإلكتروني.",
-    "passwordsDoNotMatch": "كلمتا المرور غير متطابقتين، يرجى التأكد من إدخالهما بشكل صحيح."
+  "user": {
+    "title": "المستخدمين",
+    "create": "إنشاء مستخدم",
+    "inputs": {
+      "name": "الاسم",
+      "namePlaceholder": "يرجى إدخال الاسم",
+      "email": "البريد الإلكتروني",
+      "emailPlaceholder": "يرجى إدخال البريد الإلكتروني",
+      "password": "كلمة المرور",
+      "passwordPlaceholder": "يرجى إدخال كلمة المرور",
+      "passwordConfirmation": "تأكيد كلمة المرور",
+      "passwordConfirmationPlaceholder": "يرجى تأكيد كلمة المرور",
+      "role": "الدور",
+      "rolePlaceholder": "يرجى اختيار الدور",
+      "admin": "مسؤول",
+      "employee": "موظف",
+      "createdAt": "تاريخ الإنشاء",
+      "updatedAt": "تاريخ التحديث"
+    }
   }
 }

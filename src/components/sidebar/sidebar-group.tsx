@@ -2,9 +2,9 @@
 
 import { NavigationGroup } from '@/lib/navigation'
 import { useSidebar } from '@/providers/sidebar-provider'
+import { useTranslation } from 'react-i18next'
 
 import SidebarItem from './sidebar-item'
-import {useTranslation} from "react-i18next";
 
 /*
 |--------------------------------------------------------------------------
@@ -24,20 +24,28 @@ type SidebarGroupProps = {
 | Renders a navigation group and its items.
 |
 | Features:
-| - Group title
-| - Collapsible title
+| - Identity-based group title
+| - Collapsed sidebar support
 | - Navigation items
 |
 */
 
-export default function SidebarGroup({group}: SidebarGroupProps) {
+export default function SidebarGroup({ group }: SidebarGroupProps) {
     /*
     |--------------------------------------------------------------------------
     | Hooks
     |--------------------------------------------------------------------------
     */
+
     const { collapsed } = useSidebar()
     const { i18n } = useTranslation()
+
+    /*
+    |--------------------------------------------------------------------------
+    | Group Title
+    |--------------------------------------------------------------------------
+    */
+
     const title = i18n.language === 'ar' ? group.title.ar : group.title.en
 
     /*
@@ -47,18 +55,23 @@ export default function SidebarGroup({group}: SidebarGroupProps) {
     */
 
     return (
-        <div className="space-y-2">
+        <section className="identity-sidebar-group">
             {!collapsed && (
-                <h2 className="mb-2 px-3 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                    {title}
-                </h2>
+                <div className="identity-sidebar-group-title">
+                    <span className="identity-sidebar-group-marker" aria-hidden="true">
+                        <span />
+                        <span />
+                    </span>
+
+                    <h2>{title}</h2>
+                </div>
             )}
 
-            <div className="space-y-1">
+            <div className="identity-sidebar-group-items">
                 {group.items.map((item) => (
-                    <SidebarItem key={item.key} item={item}/>
+                    <SidebarItem key={item.key} item={item} />
                 ))}
             </div>
-        </div>
+        </section>
     )
 }

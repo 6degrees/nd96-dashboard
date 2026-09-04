@@ -1,160 +1,116 @@
+'use client'
+
 import React from 'react'
 import Link from 'next/link'
+import { Dropdown } from 'antd'
+import { MoreHorizontal } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 
-import {useTranslation} from 'react-i18next'
-
-import {PageActionsProps} from '@/types/action-button'
+import { PageActionsProps } from '@/types/action-button'
 
 /*
 |--------------------------------------------------------------------------
 | Page Actions Component
 |--------------------------------------------------------------------------
 |
-| This component is responsible for rendering action buttons inside
-| page headers (e.g. Create, Export, Filter, Refresh, etc.)
+| Responsive page header.
 |
 | Features:
-| - Supports multiple actions in a single row
-| - Supports navigation actions via Next.js Link
-| - Supports click handlers for dynamic actions
-| - Supports icons per button
-| - Supports different button styles
-| - Supports page title rendering
-| - Full dark mode support
-|
-| Goal:
-| - Standardize action buttons across admin pages
-| - Create modern consistent header UI
+| - SATORP identity
+| - Green brand accent
+| - Desktop actions
+| - Mobile three-dot menu
+| - No font-size changes
 |
 */
-const PageActions = ({actions, title}: PageActionsProps) => {
+
+const PageActions = ({ actions, title }: PageActionsProps) => {
+
+    const { t } = useTranslation()
 
     /*
     |--------------------------------------------------------------------------
-    | Translation
+    | Mobile Menu Items
     |--------------------------------------------------------------------------
-    |
     */
-    const {t} = useTranslation()
+
+    const mobileMenuItems = actions.map((action, index) => ({
+        key: String(index),
+
+        label: (
+            <div className="flex items-center gap-3 py-1">
+                {action.icon && (
+                    <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-green/10 text-brand-green">
+                        {action.icon}
+                    </span>
+                )}
+
+                <span className="text-sm font-medium text-text-primary">
+                    {t(action.label)}
+                </span>
+            </div>
+        ),
+
+        onClick: action.onClick,
+    }))
 
     /*
     |--------------------------------------------------------------------------
     | Render
     |--------------------------------------------------------------------------
-    |
     */
+
     return (
-        <div
-            className="
-                flex items-center justify-between
-                mb-8
-                bg-white/80
-                dark:bg-neutral-950/80
-                p-4 px-6
-                rounded-2xl
-                border border-neutral-200/60
-                dark:border-neutral-800/60
-                shadow-[0_2px_12px_-4px_rgba(0,0,0,0.04)]
-                backdrop-blur-md
-                font-ar
-            "
-        >
+        <div className="relative mb-6 flex items-center justify-between gap-4 overflow-hidden rounded-2xl border border-border-default bg-surface-card px-5 py-4 shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
 
-            {/* ---------------------------------------------------------------- */}
-            {/* Title Section */}
-            {/* ---------------------------------------------------------------- */}
+            {/* Brand Accent */}
 
-            <div>
+            <div className="absolute inset-y-0 start-0 w-1.5 bg-brand-green" />
 
-                <h1
-                    className="
-                        text-lg
-                        font-bold
-                        tracking-tight
-                        text-neutral-800
-                        dark:text-neutral-100
-                        m-0
-                    "
-                >
-                    {typeof title === 'string'
-                        ? t(title)
-                        : title
-                    }
-                </h1>
+            {/* Subtle Brand Glow */}
+
+            <div className="pointer-events-none absolute -start-12 -top-12 h-32 w-32 rounded-full bg-brand-green/5 blur-2xl" />
+
+            {/* -------------------------------------------------------------- */}
+            {/* Title */}
+            {/* -------------------------------------------------------------- */}
+
+            <div className="relative flex min-w-0 items-center gap-3">
+
+                <div className="flex h-9 w-1 shrink-0 rounded-full bg-brand-green" />
+
+                <div className="min-w-0">
+
+                    <h1 className="m-0 truncate text-lg font-bold tracking-tight text-text-primary">
+                        {typeof title === 'string' ? t(title) : title}
+                    </h1>
+
+                </div>
 
             </div>
 
-            {/* ---------------------------------------------------------------- */}
-            {/* Actions Section */}
-            {/* ---------------------------------------------------------------- */}
+            {/* -------------------------------------------------------------- */}
+            {/* Desktop Actions */}
+            {/* -------------------------------------------------------------- */}
 
-            <div className="flex items-center gap-2.5">
+            <div className="hidden items-center gap-2 sm:flex">
 
                 {actions.map((action, index) => {
 
-                    /*
-                    |--------------------------------------------------------------------------
-                    | Button Content Renderer
-                    |--------------------------------------------------------------------------
-                    |
-                    | Shared UI for both:
-                    | - link actions
-                    | - click actions
-                    |
-                    */
-
                     const content = (
                         <button
+                            key={index}
                             type="button"
                             onClick={action.onClick}
                             className={`
-                                px-5
-                                h-10
-                                rounded-xl
-                                flex items-center
-                                justify-center
-                                gap-2
-                                text-xs
-                                font-semibold
-                                transition-all
-                                duration-300
-                                active:scale-[0.97]
-                                focus-visible:outline-none
-                                cursor-pointer
-
-                                disabled:cursor-not-allowed
-                                disabled:opacity-50
-                                disabled:active:scale-100
-
+                                inline-flex h-10 items-center justify-center gap-2 rounded-xl px-4 text-sm font-semibold transition-all duration-200 active:scale-[0.97] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/30
                                 ${action.type === 'default'
-                                ? `
-                                    bg-neutral-50
-                                    dark:bg-neutral-900
-                                    text-neutral-700
-                                    dark:text-neutral-200
-                                    border
-                                    border-neutral-200
-                                    dark:border-neutral-800
-                                    hover:bg-neutral-100
-                                    dark:hover:bg-neutral-850
-                                    hover:border-neutral-300
-                                    dark:hover:border-neutral-700
-                                `
-                                : `
-                                    bg-neutral-900
-                                    text-white
-                                    shadow-[0_4px_14px_-4px_rgba(var(--primary-rgb),0.4)]
-                                    hover:opacity-95
-                                    hover:scale-[1.01]
-                                `}
-
+                                ? 'border border-border-default bg-surface-card text-text-primary hover:border-brand-green hover:bg-brand-green/5 hover:text-brand-green'
+                                : 'border border-brand-green bg-brand-green text-white shadow-[0_6px_18px_rgba(0,102,51,0.18)] hover:bg-brand-green-hover hover:shadow-[0_8px_22px_rgba(0,102,51,0.22)]'
+                            }
                                 ${action.className || ''}
                             `}
                         >
-
-                            {/* ------------------------------------------------ */}
-                            {/* Action Icon */}
-                            {/* ------------------------------------------------ */}
 
                             {action.icon && (
                                 <span className="flex shrink-0 items-center justify-center">
@@ -162,57 +118,50 @@ const PageActions = ({actions, title}: PageActionsProps) => {
                                 </span>
                             )}
 
-                            {/* ------------------------------------------------ */}
-                            {/* Button Label */}
-                            {/* ------------------------------------------------ */}
-
-                            <span>
-                                {t(action.label)}
-                            </span>
+                            <span>{t(action.label)}</span>
 
                         </button>
                     )
 
-                    /*
-                    |--------------------------------------------------------------------------
-                    | Conditional Rendering
-                    |--------------------------------------------------------------------------
-                    |
-                    | If href exists → render as Link
-                    | Otherwise → render as button
-                    |
-                    */
-
                     return action.href ? (
-
-                        <Link
-                            key={index}
-                            href={action.href}
-                            className="focus:outline-none"
-                        >
+                        <Link key={index} href={action.href} className="focus:outline-none">
                             {content}
                         </Link>
-
                     ) : (
-
                         <React.Fragment key={index}>
                             {content}
                         </React.Fragment>
-
                     )
                 })}
+
+            </div>
+
+            {/* -------------------------------------------------------------- */}
+            {/* Mobile Actions */}
+            {/* -------------------------------------------------------------- */}
+
+            <div className="relative sm:hidden">
+
+                <Dropdown
+                    menu={{ items: mobileMenuItems }}
+                    trigger={['click']}
+                    placement="bottomRight"
+                >
+
+                    <button
+                        type="button"
+                        aria-label={t('common.actions')}
+                        className="flex h-10 w-10 items-center justify-center rounded-xl border border-border-default bg-surface-card text-text-secondary transition-all duration-200 hover:border-brand-green hover:bg-brand-green/5 hover:text-brand-green active:scale-95"
+                    >
+                        <MoreHorizontal size={21} strokeWidth={2} />
+                    </button>
+
+                </Dropdown>
 
             </div>
 
         </div>
     )
 }
-
-/*
-|--------------------------------------------------------------------------
-| Export
-|--------------------------------------------------------------------------
-|
-*/
 
 export default PageActions

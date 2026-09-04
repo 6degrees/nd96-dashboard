@@ -1,44 +1,17 @@
-import { userService } from '@/services/user.service'
-import { createCrudActions } from '@/redux/curd/actionCreator'
-import { actions as BaseActions } from './actions'
-import createActionCreators from './actionCreators'
+import {userService} from '@/services/user.service'
+import {createCrudActions} from '@/redux/curd/actionCreator'
+import createActions from '@/redux/curd/actions'
 
 /*
 |--------------------------------------------------------------------------
-| Users Action Creators
+| User Actions
 |--------------------------------------------------------------------------
 */
-const {
-    getRolesBegin,
-    getRolesSuccess,
-    getRolesErr,
-} = createActionCreators()
+export const actions = createActions('users')
 
 /*
 |--------------------------------------------------------------------------
-| Users Action Creators
+| User API
 |--------------------------------------------------------------------------
 */
-export const actions = BaseActions
-
-/*
-|--------------------------------------------------------------------------
-| Users Action Creators
-|--------------------------------------------------------------------------
-*/
-export const api = {
-    ...createCrudActions(actions, userService),
-
-    getRoles: () => {
-        return async (dispatch: any) => {
-            dispatch(getRolesBegin())
-            try {
-                const data = await userService.getRoles()
-                dispatch(getRolesSuccess(data))
-                return data
-            } catch (err: any) {
-                dispatch(getRolesErr(err.response?.data))
-            }
-        }
-    },
-}
+export const api = createCrudActions(actions, userService)

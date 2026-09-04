@@ -1,5 +1,4 @@
 import {api as userApi} from '@/redux/user'
-import {api as invitationApi} from '@/redux/invitation'
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +13,7 @@ import {api as invitationApi} from '@/redux/invitation'
 export const api = {
     fetch: userApi.fetch,
     detail: userApi.detail,
-    create: invitationApi.create,
+    create: userApi.create,
     update: userApi.update,
     status: userApi.status,
     delete: userApi.delete,

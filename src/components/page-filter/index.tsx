@@ -1,6 +1,6 @@
 import React from 'react'
 import { Row, Button } from 'antd'
-import { UilPlus, UilMinus } from '@iconscout/react-unicons'
+import { SlidersHorizontal, ChevronDown } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 
 /*
@@ -8,22 +8,16 @@ import { useTranslation } from 'react-i18next'
 | Page Filter Component
 |--------------------------------------------------------------------------
 |
-| This component is responsible for rendering a reusable filter panel
-| inside admin pages.
+| Clean SATORP identity filter panel.
 |
-| Features:
-| - Collapsible filter section
-| - Reusable across all pages
-| - Supports dynamic filter fields via children
-| - Supports search action handler
-| - Supports internationalization (i18n)
-|
-| Usage:
-| - Used in list pages (users, supervisors, roles, etc.)
-|
-| Goal:
-| - Standardize filter UI across the system
-| - Avoid repeating filter layout in every page
+| Design principles:
+| - Minimal
+| - Institutional
+| - Clean spacing
+| - Soft borders
+| - Green brand accent
+| - No heavy shadows
+| - RTL friendly
 |
 */
 
@@ -41,151 +35,217 @@ interface PageFilterProps {
 |--------------------------------------------------------------------------
 */
 
-const PageFilter = (
-    {
-        title = 'filters',
-        isOpen,
-        onToggle,
-        onSearch,
-        children,
-    }: PageFilterProps) => {
+const PageFilter = ({
+                        title = 'filters',
+                        isOpen,
+                        onToggle,
+                        onSearch,
+                        children,
+                    }: PageFilterProps) => {
 
-    /*
-    |--------------------------------------------------------------------------
-    | Translation
-    |--------------------------------------------------------------------------
-    */
     const { t } = useTranslation()
 
     return (
-        <div
+        <section
             className="
-            bg-white/80
-            dark:bg-neutral-950/80
-            rounded-2xl
-            border border-neutral-200/60
-            dark:border-neutral-800/60
-            shadow-[0_2px_12px_-4px_rgba(0,0,0,0.04)]
-            mb-8
-            overflow-hidden
-            backdrop-blur-md
-            font-ar
-        "
+                mb-7
+                overflow-hidden
+                rounded-2xl
+                border
+                border-border-default
+                bg-surface-card
+            "
         >
 
             {/* ---------------------------------------------------------------- */}
             {/* Header */}
             {/* ---------------------------------------------------------------- */}
-            <div
+
+            <button
+                type="button"
+                onClick={onToggle}
                 className="
-                flex items-center justify-between
-                px-6 py-4
-                border-b border-neutral-200/50
-                dark:border-neutral-800/50
-                bg-white/40
-                dark:bg-neutral-900/20
-            "
+                    group
+                    flex
+                    w-full
+                    items-center
+                    justify-between
+                    px-6
+                    py-4.5
+                    text-start
+                    transition-colors
+                    duration-200
+                    hover:bg-surface-muted
+                    cursor-pointer
+                "
             >
 
-                <h2
-                    className="
-                    text-base
-                    font-bold
-                    text-neutral-800
-                    dark:text-neutral-100
-                    m-0
-                "
-                >
-                    {t(title)}
-                </h2>
+                {/* ------------------------------------------------------------ */}
+                {/* Title */}
+                {/* ------------------------------------------------------------ */}
 
-                <div
-                    className="
-                    p-2
-                    cursor-pointer
-                    text-neutral-500
-                    dark:text-neutral-400
-                    hover:text-primary
-                    dark:hover:text-primary
-                    transition-all
-                    duration-300
-                    border border-neutral-200/60
-                    dark:border-neutral-800/60
-                    hover:border-primary/30
-                    dark:hover:border-primary/30
-                    rounded-xl
-                    bg-neutral-50
-                    dark:bg-neutral-900
-                    active:scale-95
-                "
-                    onClick={onToggle}
-                >
-                    {isOpen ? <UilMinus size="18" /> : <UilPlus size="18" />}
+                <div className="flex items-center gap-3">
+
+                    <span
+                        className="
+                            flex
+                            h-9
+                            w-9
+                            shrink-0
+                            items-center
+                            justify-center
+                            rounded-xl
+                            bg-brand-green/10
+                            text-brand-green
+                        "
+                    >
+                        <SlidersHorizontal size={17} strokeWidth={2} />
+                    </span>
+
+                    <div className="flex flex-col">
+
+                        <span
+                            className="
+                                text-base
+                                font-bold
+                                leading-6
+                                text-text-primary
+                            "
+                        >
+                            {t(title)}
+                        </span>
+
+                        <span
+                            className="
+                                mt-0.5
+                                text-xs
+                                font-medium
+                                text-text-secondary
+                            "
+                        >
+                            {t('common.searchInformation')}
+                        </span>
+
+                    </div>
+
                 </div>
 
-            </div>
+                {/* ------------------------------------------------------------ */}
+                {/* Toggle */}
+                {/* ------------------------------------------------------------ */}
+
+                <span
+                    className={`
+                        flex
+                        h-9
+                        w-9
+                        items-center
+                        justify-center
+                        rounded-full
+                        border
+                        border-border-default
+                        text-text-secondary
+                        transition-all
+                        duration-200
+                        group-hover:border-brand-green/30
+                        group-hover:text-brand-green
+                        ${isOpen ? 'rotate-180' : ''}
+                    `}
+                >
+                    <ChevronDown
+                        size={17}
+                        strokeWidth={2}
+                    />
+                </span>
+
+            </button>
 
             {/* ---------------------------------------------------------------- */}
             {/* Body */}
             {/* ---------------------------------------------------------------- */}
+
             <div
                 className={`
-                transition-all
-                duration-300
-                ease-in-out
-                overflow-hidden
-                ${isOpen
-                    ? 'max-h-[1000px] opacity-100'
-                    : 'max-h-0 opacity-0'
+                    grid
+                    transition-all
+                    duration-300
+                    ease-out
+                    ${
+                    isOpen
+                        ? 'grid-rows-[1fr] opacity-100'
+                        : 'grid-rows-[0fr] opacity-0'
                 }
-            `}
+                `}
             >
-                <div
-                    className="
-                    p-6
-                    bg-neutral-50/50
-                    dark:bg-neutral-900/10
-                "
-                >
 
-                    <Row gutter={[24, 20]}>
-                        {children}
-                    </Row>
+                <div className="min-h-0 overflow-hidden">
 
-                    <div className="mt-6 flex justify-end">
-                        <Button
-                            onClick={onSearch}
-                            className="
-                            px-8
-                            h-10
-                            rounded-xl
-                            border-0
-                            bg-primary
-                            text-white
-                            font-semibold
-                            shadow-[0_4px_14px_-4px_rgba(var(--primary-rgb),0.4)]
-                            hover:opacity-95
-                            hover:scale-[1.01]
-                            transition-all
-                            duration-300
-                            cursor-pointer
+                    <div
+                        className="
+                            border-t
+                            border-border-default
+                            px-6
+                            py-6
                         "
+                    >
+
+                        {/* ---------------------------------------------------- */}
+                        {/* Fields */}
+                        {/* ---------------------------------------------------- */}
+
+                        <Row gutter={[20, 20]}>
+                            {children}
+                        </Row>
+
+                        {/* ---------------------------------------------------- */}
+                        {/* Actions */}
+                        {/* ---------------------------------------------------- */}
+
+                        <div
+                            className="
+                                mt-6
+                                flex
+                                items-center
+                                justify-end
+                                border-t
+                                border-border-default
+                                pt-5
+                            "
                         >
-                            {t('common.filters')}
-                        </Button>
+
+                            <Button
+                                type="primary"
+                                onClick={onSearch}
+                                className="
+                                    !h-11
+                                    !rounded-xl
+                                    !border-0
+                                    !bg-brand-green
+                                    !px-7
+                                    !text-sm
+                                    !font-bold
+                                    !text-white
+                                    shadow-none
+                                    transition-all
+                                    duration-200
+                                    hover:!bg-brand-green-hover
+                                    hover:!shadow-sm
+                                    active:!scale-[0.98]
+                                "
+                            >
+                                {t('common.filters')}
+                            </Button>
+
+                        </div>
 
                     </div>
+
                 </div>
+
             </div>
 
-        </div>
+        </section>
     )
 }
-
-/*
-|--------------------------------------------------------------------------
-| Export
-|--------------------------------------------------------------------------
-*/
 
 export default PageFilter

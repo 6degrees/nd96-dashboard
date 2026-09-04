@@ -34,39 +34,14 @@ interface ColumnsProps {
 export const Columns = ({onDelete, t}: ColumnsProps) => [
     {
         title: t('user.inputs.name'),
-        dataIndex: 'user',
         align: 'center',
         render: (date: any) => date?.name,
     },
     {
         title: t('user.inputs.email'),
-        dataIndex: 'user',
         align: 'center',
         render: (date: any) => date?.email,
 
-    },
-    {
-        title: t('user.inputs.role'),
-        dataIndex: 'role',
-        align: 'center',
-        render: (value: { label: string, value: string }) => {
-            let tagColor;
-            switch (value?.value?.toLowerCase()) {
-                case 'admin':
-                    tagColor = 'red';
-                    break;
-                case 'owner':
-                    tagColor = 'green';
-                    break;
-                default:
-                    tagColor = 'gray';
-            }
-            return (
-                <div className="flex justify-center">
-                    <Tag color={tagColor}>{value?.label}</Tag>
-                </div>
-            );
-        },
     },
     {
         title: t('user.inputs.updatedAt'),
@@ -97,7 +72,7 @@ export const Columns = ({onDelete, t}: ColumnsProps) => [
         */
         render: (_: any, record: any) => (
             <div className={`flex justify-center`}>
-                <button onClick={() => onDelete?.(record)} disabled={record.role.value === 'owner'} className={record.role.value === 'owner' ? 'rounded-lg p-2 hover:bg-red-50 cursor-not-allowed' : 'rounded-lg p-2 hover:bg-red-50 cursor-pointer'}>
+                <button onClick={() => onDelete?.(record)} >
                     <UilTrashAlt size={18} />
                 </button>
             </div>

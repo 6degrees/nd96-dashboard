@@ -15,11 +15,13 @@ import { useSidebar } from '@/providers/sidebar-provider'
 | Features:
 | - Collapsible
 | - Responsive
-| - Animated width transition
+| - Saudi National Day visual identity
+| - Geometric identity accents
 |
 */
 
 export default function DesktopSidebar() {
+
     /*
     |--------------------------------------------------------------------------
     | Hooks
@@ -36,11 +38,18 @@ export default function DesktopSidebar() {
 
     return (
         <aside
-            className={clsx(`hidden lg:flex min-h-screen shrink-0 flex-col bg-slate-950 dark:bg-neutral-950/80 text-slate-100 border-r border-slate-800/80 shadow-[8px_0_30px_rgba(15,23,42,0.25)] transition-[width] duration-300`,
-                collapsed ? "w-20" : "w-86"
-            )}
-        >
-            <SidebarContent />
+            className={clsx('identity-sidebar hidden min-h-screen shrink-0 flex-col lg:flex',
+                collapsed ? 'w-20' : 'w-72',
+            )}>
+            <div className="identity-sidebar-pattern" aria-hidden="true" />
+
+            <div className="identity-sidebar-accent identity-sidebar-accent-top" aria-hidden="true" />
+
+            <div className="identity-sidebar-content">
+                <SidebarContent />
+            </div>
+
+            <div className="identity-sidebar-accent identity-sidebar-accent-bottom" aria-hidden="true" />
         </aside>
     )
 }
