@@ -35,18 +35,7 @@ interface PageTableProps {
 |--------------------------------------------------------------------------
 */
 
-const PageTable = ({
-                       loading,
-                       columns,
-                       dataSource,
-                       page,
-                       limit,
-                       total,
-                       onChange,
-                       title = 'المستخدمين',
-                       description = 'إدارة المستخدمين',
-                   }: PageTableProps) => {
-
+const PageTable = ({loading, columns, dataSource, page, limit, total, onChange, title = 'المستخدمين', description = 'إدارة المستخدمين',}: PageTableProps) => {
     /*
     |--------------------------------------------------------------------------
     | Collapse State
@@ -65,7 +54,7 @@ const PageTable = ({
         <Row>
             <Col span={24}>
 
-                <section className="overflow-hidden rounded-2xl border border-border-default bg-surface-card font-ar">
+                <section className="overflow-hidden rounded-2xl border border-border-default bg-surface-card">
 
                     {/* ---------------------------------------------------------------- */}
                     {/* Header */}
@@ -87,11 +76,11 @@ const PageTable = ({
 
                             <div className="flex flex-col">
 
-                                <span className="text-2xl font-bold leading-6 text-text-primary">
+                                <span className="text-base font-bold leading-6 text-text-primary">
                                     {title}
                                 </span>
 
-                                <span className="mt-0.5 text-base font-medium text-text-secondary">
+                                <span className="mt-0.5 text-xs font-medium text-text-secondary">
                                     {description}
                                 </span>
 

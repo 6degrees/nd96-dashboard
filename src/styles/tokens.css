@@ -14,6 +14,7 @@
     --brand-lime: #5ABA1C;
     --brand-lime-hover: #4FA318;
 
+    --color-surface-card: #F8FAF9;
 
     /* ========================================
        Supporting Brand Colors
@@ -183,6 +184,7 @@
     --color-border-strong: #45666A;
     --color-border-focus: #5ABA1C;
 
+    --color-surface-card: #102A2D;
 
     --input-background: #102A2D;
     --input-border: #315154;

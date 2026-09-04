@@ -87,6 +87,7 @@
     --color-surface-soft: var(--color-surface-soft);
     --color-surface-muted: var(--color-surface-muted);
     --color-surface-primary: var(--color-surface-primary);
+    --color-surface-card: var(--color-surface-card);
 
 
     /* Text */
@@ -1420,225 +1421,45 @@ html[lang="ar"] .swal2-popup * {
     object-fit: contain;
 }
 
+
 /*
 |--------------------------------------------------------------------------
-| SaudiWeb - Ant Design Typography
+| Table
 |--------------------------------------------------------------------------
 |
-| Adjust Ant Design components to match the visual scale of SaudiWeb.
+| Displays the Table clearly.
 |
 */
 
-.ant-table {
-    font-size: 22px !important;
+.modern-table .ant-table-thead > tr > th {
+    background: var(--color-surface-muted) !important;
+    color: var(--color-text-primary) !important;
+    border-bottom: 1px solid var(--color-border) !important;
 }
 
-.ant-table-thead > tr > th {
-    font-size: 22px !important;
-    font-weight: 700 !important;
+.modern-table .ant-table-tbody > tr > td {
+    background: var(--color-surface-card) !important;
+    border-bottom: 1px solid var(--color-border-light) !important;
 }
 
-.ant-table-tbody > tr > td {
-    font-size: 22px !important;
-    font-weight: 400 !important;
+.modern-table .ant-table-tbody > tr:hover > td {
+    background: var(--color-surface-card) !important;
 }
 
-.ant-pagination {
-    font-size: 15px !important;
+.modern-table .ant-table-thead > tr > th::before {
+    background-color: var(--color-border) !important;
 }
 
-.ant-pagination-item a {
-    font-size: 15px !important;
+.dark .ant-select-css-var {
+    --ant-select-selector-bg: var(--color-surface-card);
+    --ant-select-clear-bg: var(--color-surface-card);
+    --ant-select-option-active-bg: var(--color-surface-muted);
+    --ant-select-option-selected-bg: var(--color-surface-green);
+    --ant-select-option-selected-color: var(--color-text-primary);
+    --ant-select-hover-border-color: var(--brand-green);
+    --ant-select-active-border-color: var(--brand-green);
+    --ant-select-active-outline-color: rgb(0 137 74 / 20%);
 }
-
-.ant-pagination-prev,
-.ant-pagination-next {
-    font-size: 15px !important;
-}
-
-.ant-select-selection-item,
-.ant-select-selection-placeholder {
-    font-size: 15px !important;
-}
-
-.ant-select-item-option-content {
-    font-size: 15px !important;
-}
-
-
-/* ==========================================================================
-   SATORP TABLE
-   ========================================================================== */
-
-.satorp-table .ant-table {
-    background: transparent;
-    font-family: inherit;
-}
-
-/* --------------------------------------------------------------------------
-   Header
-   -------------------------------------------------------------------------- */
-
-.satorp-table .ant-table-thead > tr > th {
-    height: 56px;
-
-    padding: 0 20px;
-
-    background: var(--surface-muted);
-
-    color: var(--text-primary);
-
-    border-bottom: 1px solid var(--border-default);
-
-    font-size: 15px;
-    font-weight: 700;
-
-    white-space: nowrap;
-}
-
-.satorp-table .ant-table-thead > tr > th::before {
-    display: none !important;
-}
-
-/* --------------------------------------------------------------------------
-   Body
-   -------------------------------------------------------------------------- */
-
-.satorp-table .ant-table-tbody > tr > td {
-    height: 62px;
-
-    padding: 0 20px;
-
-    background: var(--surface-card);
-
-    color: var(--text-primary);
-
-    border-bottom: 1px solid var(--border-default);
-
-    font-size: 15px;
-    font-weight: 500;
-}
-
-/* --------------------------------------------------------------------------
-   Hover
-   -------------------------------------------------------------------------- */
-
-.satorp-table .ant-table-tbody > tr:hover > td {
-    background: var(--surface-muted) !important;
-}
-
-/* --------------------------------------------------------------------------
-   Last Row
-   -------------------------------------------------------------------------- */
-
-.satorp-table .ant-table-tbody > tr:last-child > td {
-    border-bottom: none;
-}
-
-/* --------------------------------------------------------------------------
-   Pagination
-   -------------------------------------------------------------------------- */
-
-.satorp-table .ant-pagination {
-    font-size: 14px;
-}
-
-.satorp-table .ant-pagination-item {
-    border-radius: 8px;
-}
-
-.satorp-table .ant-pagination-item a {
-    font-size: 14px;
-    font-weight: 600;
-}
-
-.satorp-table .ant-pagination-item-active {
-    border-color: var(--brand-green);
-}
-
-.satorp-table .ant-pagination-item-active a {
-    color: var(--brand-green);
-}
-
-/* --------------------------------------------------------------------------
-   Page Size
-   -------------------------------------------------------------------------- */
-
-.satorp-table .ant-select-selector {
-    border-radius: 8px !important;
-}
-
-.satorp-table .ant-select-selection-item {
-    font-size: 14px;
-    font-weight: 500;
-}
-
-/* --------------------------------------------------------------------------
-   Empty State
-   -------------------------------------------------------------------------- */
-
-.satorp-table .ant-empty-description {
-    font-size: 15px;
-    color: var(--text-secondary);
-}
-
-/* --------------------------------------------------------------------------
-   Dark Mode
-   -------------------------------------------------------------------------- */
-
-.dark .satorp-table .ant-table-thead > tr > th {
-    background: var(--surface-muted);
-}
-
-.dark .satorp-table .ant-table-tbody > tr > td {
-    background: var(--surface-card);
-}
-
-.dark .satorp-table .ant-table-tbody > tr:hover > td {
-    background: var(--surface-muted) !important;
-}
-
-/* ==========================================================================
-   Satorp Table
-   ========================================================================== */
-
-.satorp-table .ant-table {
-    background: transparent !important;
-}
-
-.satorp-table .ant-table-container {
-    background: transparent !important;
-}
-
-/* Table Header */
-.satorp-table .ant-table-thead > tr > th {
-    background: transparent !important;
-    color: inherit !important;
-    border-bottom: 1px solid var(--border-default) !important;
-}
-
-/* Table Body */
-.satorp-table .ant-table-tbody > tr > td {
-    background: transparent !important;
-    border-bottom: 1px solid var(--border-default) !important;
-}
-
-/* Remove last row border */
-.satorp-table .ant-table-tbody > tr:last-child > td {
-    border-bottom: none !important;
-}
-
-/* Hover */
-.satorp-table .ant-table-tbody > tr:hover > td {
-    background: var(--surface-muted) !important;
-}
-
-/* Pagination */
-.satorp-table .ant-pagination {
-    background: transparent !important;
-}
-
-
 
 /*
 |--------------------------------------------------------------------------
@@ -1669,3 +1490,38 @@ html[lang="ar"] .swal2-popup * {
     }
 }
 
+
+
+@media (max-width: 640px) {
+    .ant-picker-dropdown .ant-picker-panels {
+        flex-direction: column;
+    }
+
+    .ant-picker-dropdown .ant-picker-panel {
+        width: 100%;
+    }
+
+    .ant-picker-dropdown .ant-picker-content {
+        width: 100%;
+    }
+
+    .ant-picker-dropdown .ant-picker-content th {
+        font-size: 11px;
+        white-space: nowrap;
+        padding-inline: 2px;
+    }
+
+    .ant-picker-dropdown .ant-picker-content td {
+        padding: 2px;
+    }
+}
+
+@media (max-width: 400px) {
+    .ant-picker-dropdown .ant-picker-content th {
+        font-size: 10px;
+    }
+
+    .ant-picker-dropdown .ant-picker-cell {
+        font-size: 12px;
+    }
+}
