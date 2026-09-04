@@ -289,8 +289,7 @@ export default function CrudPage(
             <AppDrawer
                 open={isEditOpen}
                 width={drawerWidth ?? null}
-                onClose={closeEditDrawer}
-            >
+                onClose={closeEditDrawer}>
                 <Form
                     isEdit
                     data={selectedItem}

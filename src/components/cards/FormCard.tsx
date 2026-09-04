@@ -88,7 +88,6 @@ export default function FormCard({ title, description, children, className = '',
                 transition-all 
                 duration-500 
                 ease-out
-                font-ar 
                 ${className}
             `}
         >
