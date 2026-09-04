@@ -12,6 +12,7 @@ import {actions as customerAction} from '@/redux/customer'
 import {actions as staffAction} from '@/redux/staff'
 import {actions as notificationAction} from '@/redux/notification'
 import {actions as DepartmentAction} from '@/redux/department'
+import {actions as TimelineAction} from '@/redux/timeline'
 import {actions as ratingAction} from '@/redux/rating'
 
 /*
@@ -52,6 +53,7 @@ export const store = configureStore({
         staff: createCrudReducer(staffAction) as any,
         notification: createCrudReducer(notificationAction) as any,
         Department: createCrudReducer(DepartmentAction) as any,
+        timeline: createCrudReducer(TimelineAction) as any,
         rating: createCrudReducer(ratingAction) as any,
     },
 });

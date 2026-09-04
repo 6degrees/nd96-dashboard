@@ -1,15 +1,8 @@
 import {
     LayoutDashboard,
-    Users,
     Building2,
-    ShoppingBag,
-    Package,
-    UserRound,
-    Bell,
-    Settings,
-    Send,
-    ShieldCheck,
-    Star,
+    Users,
+    CalendarDays,
     type LucideIcon,
 } from 'lucide-react'
 
@@ -54,40 +47,12 @@ export const navigation: NavigationGroup[] = [
     },
 
     {
-        key: 'branch-management',
+        key: 'management',
         title: {
-            en: 'Branches & Locations',
-            ar: 'الفروع والمواقع',
+            en: 'Management',
+            ar: 'الإدارة',
         },
         items: [
-            {
-                key: 'branches',
-                label: {
-                    en: 'Branches',
-                    ar: 'إدارة الفروع',
-                },
-                href: '/dashboard/branches',
-                icon: Building2,
-            },
-        ],
-    },
-
-    {
-        key: 'catalog',
-        title: {
-            en: 'Catalog',
-            ar: 'إدارة الطلبات والمنتجات',
-        },
-        items: [
-            {
-                key: 'orders',
-                label: {
-                    en: 'Orders',
-                    ar: 'الطلبات',
-                },
-                href: '/dashboard/orders',
-                icon: ShoppingBag,
-            },
             {
                 key: 'department',
                 label: {
@@ -95,90 +60,35 @@ export const navigation: NavigationGroup[] = [
                     ar: 'الإدارات',
                 },
                 href: '/dashboard/departments',
-                icon: ShieldCheck,
+                icon: Building2,
             },
             {
-                key: 'products',
+                key: 'users',
                 label: {
-                    en: 'Products',
-                    ar: 'المنتجات',
-                },
-                href: '/dashboard/products',
-                icon: Package,
-            },
-        ],
-    },
-
-    {
-        key: 'customer-management',
-        title: {
-            en: 'Customer Management',
-            ar: 'إدارة العملاء و التقييمات',
-        },
-        items: [
-            {
-                key: 'customers',
-                label: {
-                    en: 'Customers',
-                    ar: 'العملاء',
-                },
-                href: '/dashboard/customers',
-                icon: UserRound,
-            },
-            {
-                key: 'ratings',
-                label: {
-                    en: 'Ratings',
-                    ar: 'التقييمات',
-                },
-                href: '/dashboard/ratings',
-                icon: Star,
-            },
-        ],
-    },
-
-    {
-        key: 'others',
-        title: {
-            en: 'Others',
-            ar: 'أخرى',
-        },
-        items: [
-            {
-                key: 'managers',
-                label: {
-                    en: 'Employee Managements',
-                    ar: 'طاقم العمل',
+                    en: 'Users',
+                    ar: 'المستخدمون',
                 },
                 href: '/dashboard/users',
                 icon: Users,
             },
+        ],
+    },
+
+    {
+        key: 'timeline',
+        title: {
+            en: 'Timeline',
+            ar: 'الخط الزمني',
+        },
+        items: [
             {
-                key: 'invitations',
+                key: 'timeline',
                 label: {
-                    en: 'Invitations',
-                    ar: 'الدعوات',
+                    en: 'National Timeline',
+                    ar: 'الخط الزمني الوطني',
                 },
-                href: '/dashboard/invitations',
-                icon: Send,
-            },
-            {
-                key: 'notification',
-                label: {
-                    en: 'Notifications',
-                    ar: 'الاشعارات',
-                },
-                href: '/dashboard/notifications',
-                icon: Bell,
-            },
-            {
-                key: 'settings',
-                label: {
-                    en: 'Settings',
-                    ar: 'الإعدادات',
-                },
-                href: '/dashboard/settings',
-                icon: Settings,
+                href: '/dashboard/timelines',
+                icon: CalendarDays,
             },
         ],
     },
