@@ -98,9 +98,9 @@ export default function Page() {
     */
 
     const dataSource = list?.data?.map(
-        (Department: any) => ({
-            key: Department.id,
-            ...Department,
+        (department: any) => ({
+            key: department.id,
+            ...department,
         }),
     )
 

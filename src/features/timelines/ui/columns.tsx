@@ -80,7 +80,6 @@ export const Columns = ({ onView, onEdit, onDelete, onStatusChange, t }: Columns
             <div className="flex justify-center gap-1.5">
 
                 {/* View */}
-
                 <Tooltip title={t('common.details')}>
                     <button
                         type="button"

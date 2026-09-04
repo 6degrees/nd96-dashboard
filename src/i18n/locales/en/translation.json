@@ -152,5 +152,22 @@
       "updatedAt": "Updated At",
       "sortOrder": "Display Order"
     }
+  },
+  "milestone": {
+    "title": "Milestones",
+    "create": "Add Milestone",
+    "update": "Update Milestone",
+    "inputs": {
+      "year": "Year",
+      "title_ar": "Milestone Title in Arabic",
+      "title_en": "Milestone Title in English",
+      "description_ar": "Milestone Description in Arabic",
+      "description_en": "Milestone Description in English",
+      "sort_order": "Display Order",
+      "status": "Status",
+      "activatedAt": "Activation Date",
+      "createdAt": "Created At",
+      "updatedAt": "Updated At"
+    }
   }
 }

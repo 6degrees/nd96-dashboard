@@ -77,7 +77,7 @@ export default function DepartmentForm({onSubmit, data, isEdit = false,}: FormPr
     | using the provided Form instance.
     |
     */
-    const {actionLoading, error} = useSelector((state: any) => state.Department)
+    const {actionLoading, error} = useSelector((state: any) => state.department)
     useFormErrors(error, form)
 
     /*

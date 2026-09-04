@@ -6,7 +6,7 @@ import {config} from '../config'
 
 export const useCollections = createCollectionHook({
     api,
-    selector: (state: any) => state.Department,
+    selector: (state: any) => state.department,
     filters: config.initialFilters,
     queryBuilder: (filters) => buildQuery({
         "filters[name_ar][$contains]": filters.name_ar,
