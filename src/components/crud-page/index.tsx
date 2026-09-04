@@ -127,7 +127,7 @@ export default function CrudPage(
     |
     */
 
-    const [isFilterVisible, setFilterVisible] = useState(true)
+    const [isFilterVisible, setFilterVisible] = useState(false)
 
     const [isCreateOpen, setCreateOpen] = useState(false)
 
@@ -299,7 +299,6 @@ export default function CrudPage(
 
             {filters && (
                 <PageFilter
-                    title={t('common.searchInformation')}
                     isOpen={isFilterVisible}
                     onToggle={() =>
                         setFilterVisible(!isFilterVisible)
