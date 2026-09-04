@@ -6,10 +6,11 @@ import {config} from '../config'
 
 export const useCollections = createCollectionHook({
     api,
-    selector: (state: any) => state.quality,
+    selector: (state: any) => state.Department,
     filters: config.initialFilters,
     queryBuilder: (filters) => buildQuery({
-        "filters[name][$contains]": filters.name,
+        "filters[name_ar][$contains]": filters.name_ar,
+        "filters[name_en][$contains]": filters.name_en,
         "filters[created_at][$gte]": formatDate(filters.createdAt[0]),
         "filters[created_at][$lte]": formatDate(filters.createdAt[1]),
         "filters[updated_at][$gte]": formatDate(filters.createdAt[0]),

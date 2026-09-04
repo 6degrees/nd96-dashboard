@@ -16,10 +16,10 @@ export const actions = createActions('ratings')
 */
 /*
 |--------------------------------------------------------------------------
-| Quality API
+| Department API
 |--------------------------------------------------------------------------
 |
-| Defines CRUD API actions for managing quality standards.
+| Defines CRUD API actions for managing department standards.
 |
 */
 export const api = createCrudActions(actions, ratingService)

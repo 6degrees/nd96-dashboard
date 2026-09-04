@@ -20,7 +20,7 @@ import CrudPage from '@/components/crud-page'
 import {
     Filters,
     Columns,
-} from '@/features/qualities/ui'
+} from '@/features/departments/ui'
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +29,7 @@ import {
 |
 */
 
-import {useCollections} from '@/features/qualities/hooks'
+import {useCollections} from '@/features/departments/hooks'
 
 /*
 |--------------------------------------------------------------------------
@@ -38,7 +38,7 @@ import {useCollections} from '@/features/qualities/hooks'
 |
 */
 
-import RegionForm from '@/features/qualities/forms'
+import RegionForm from '@/features/departments/forms'
 
 /*
 |--------------------------------------------------------------------------
@@ -47,7 +47,7 @@ import RegionForm from '@/features/qualities/forms'
 |
 */
 
-import {api} from '@/features/qualities/api'
+import {api} from '@/features/departments/api'
 
 import {RefreshCw} from 'lucide-react'
 
@@ -98,9 +98,9 @@ export default function Page() {
     */
 
     const dataSource = list?.data?.map(
-        (quality: any) => ({
-            key: quality.id,
-            ...quality,
+        (Department: any) => ({
+            key: Department.id,
+            ...Department,
         }),
     )
 
@@ -113,7 +113,7 @@ export default function Page() {
 
     return (
         <CrudPage
-            title="quality.title"
+            title="department.title"
             columns={Columns}
             Form={RegionForm}
             api={api}
@@ -143,7 +143,7 @@ export default function Page() {
                     disabled: loading,
                 },
                 {
-                    label: 'quality.create',
+                    label: 'department.create',
                     type: 'primary',
                     onClick: onCreate,
                 },

@@ -1,23 +1,23 @@
-import {qualityService} from '@/services/quality.service'
+import {departmentService} from '@/services/department.service'
 import {createCrudActions} from '@/redux/curd/actionCreator'
 import createActions from '@/redux/curd/actions'
 
 /*
 |--------------------------------------------------------------------------
-| Quality Actions
+| Department Actions
 |--------------------------------------------------------------------------
 |
-| Defines Redux actions for managing quality standards.
+| Defines Redux actions for managing department standards.
 |
 */
-export const actions = createActions('qualities')
+export const actions = createActions('departments')
 
 /*
 |--------------------------------------------------------------------------
-| Quality API
+| Department API
 |--------------------------------------------------------------------------
 |
-| Defines CRUD API actions for managing quality standards.
+| Defines CRUD API actions for managing department standards.
 |
 */
-export const api = createCrudActions(actions, qualityService)
+export const api = createCrudActions(actions, departmentService)

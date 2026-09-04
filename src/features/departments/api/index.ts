@@ -1,4 +1,4 @@
-import {api as curdApi} from '@/redux/quality'
+import {api as curdApi} from '@/redux/department'
 
 /*
 |--------------------------------------------------------------------------

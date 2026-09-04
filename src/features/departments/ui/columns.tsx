@@ -27,29 +27,17 @@ interface ColumnsProps {
 */
 export const Columns = ({ onEdit, onDelete, onStatusChange, t}: ColumnsProps) => [
     {
-        title: t('quality.inputs.name'),
-        dataIndex: 'name',
+        title: t('department.inputs.name_ar'),
+        dataIndex: 'name_ar',
         align: 'center',
     },
     {
-        title: t('quality.inputs.name_en'),
+        title: t('department.inputs.name_en'),
         dataIndex: 'name_en',
         align: 'center',
     },
     {
-        title: t('quality.inputs.sort'),
-        dataIndex: 'sort_order',
-        align: 'center',
-        render: (v: boolean) => (
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <Tag color='yellow' style={{ margin: 0 }}>
-                    {v}
-                </Tag>
-            </div>
-        ),
-    },
-    {
-        title: t('quality.inputs.status'),
+        title: t('department.inputs.status'),
         dataIndex: 'is_active',
         align: 'center',
         render: (v: boolean) => (
@@ -61,14 +49,14 @@ export const Columns = ({ onEdit, onDelete, onStatusChange, t}: ColumnsProps) =>
         ),
     },
     {
-        title: t('quality.inputs.updatedAt'),
+        title: t('department.inputs.updatedAt'),
         dataIndex: 'updated_at',
         align: 'center',
 
         render: (date: string) => formatDate(date, true),
     },
     {
-        title: t('quality.inputs.activatedAt'),
+        title: t('department.inputs.activatedAt'),
         dataIndex: 'created_at',
         align: 'center',
 

@@ -6,7 +6,7 @@
     "passwordsDoNotMatch": "Passwords do not match."
   },
   "common": {
-    "siteName": "Collectly",
+    "siteName": "Satorp",
     "search": "Search...",
     "filters": "Filter Options",
     "searchInformation": "Use the filters to easily find the data you need.",
@@ -124,6 +124,20 @@
       "rolePlaceholder": "Please select a role",
       "admin": "Administrator",
       "employee": "Employee",
+      "createdAt": "Created At",
+      "updatedAt": "Updated At"
+    }
+  },
+  "department": {
+    "title": "Departments",
+    "create": "Add Department",
+    "update": "Update Department",
+    "inputs": {
+      "name_ar": "Department Name",
+      "name_en": "Department Name in English",
+      "description": "Department Description",
+      "status": "Status",
+      "activatedAt": "Activation Date",
       "createdAt": "Created At",
       "updatedAt": "Updated At"
     }

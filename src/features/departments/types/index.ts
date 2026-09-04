@@ -4,17 +4,19 @@
 |--------------------------------------------------------------------------
 */
 
-export interface Quality {
+export interface Department {
     id?: string;
-    name: string;
+    name_ar: string;
+    name_en: string;
     created_at?: string;
     updated_at?: string;
 }
 
-export interface QualityFilters {
+export interface DepartmentFilters {
     search?: string;
     id?: string;
-    name: string;
+    name_ar: string;
+    name_en: string;
     created_at?: string;
     updated_at?: string;
 }

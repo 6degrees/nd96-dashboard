@@ -40,15 +40,15 @@ import {FormProps} from '@/types/form-props'
 
 /*
 |--------------------------------------------------------------------------
-| Quality Form
+| Department Form
 |--------------------------------------------------------------------------
 |
 | Shared form used for:
-| - create quality
-| - update quality
+| - create department
+| - update department
 |
 */
-export default function QualityForm({onSubmit, data, isEdit = false,}: FormProps) {
+export default function DepartmentForm({onSubmit, data, isEdit = false,}: FormProps) {
     /*
     |--------------------------------------------------------------------------
     | Translation
@@ -77,7 +77,7 @@ export default function QualityForm({onSubmit, data, isEdit = false,}: FormProps
     | using the provided Form instance.
     |
     */
-    const {actionLoading, error} = useSelector((state: any) => state.quality)
+    const {actionLoading, error} = useSelector((state: any) => state.Department)
     useFormErrors(error, form)
 
     /*
@@ -108,22 +108,16 @@ export default function QualityForm({onSubmit, data, isEdit = false,}: FormProps
     return (
         <Form form={form} layout="vertical" onFinish={onSubmit} className="space-y-8">
             {/* Basic Information */}
-            <FormCard title={'quality.create'}>
+            <FormCard title={'department.create'}>
                 <Row gutter={[24, 24]}>
                     <Col xs={24} md={24}>
-                        <TextFormItem name="name" label={t('quality.inputs.name')} placeholder={t('quality.inputs.name')} rules={[requiredRule(t('validation.requiredField'))]}/>
+                        <TextFormItem name="name_ar" label={t('department.inputs.name_ar')} placeholder={t('department.inputs.name_ar')} rules={[requiredRule(t('validation.requiredField'))]}/>
                     </Col>
                 </Row>
 
                 <Row gutter={[24, 24]}>
                     <Col xs={24} md={24}>
-                        <TextFormItem name="name_en" label={t('quality.inputs.name_en')} placeholder={t('quality.inputs.name_en')}/>
-                    </Col>
-                </Row>
-
-                <Row gutter={[24, 24]}>
-                    <Col xs={24} md={24}>
-                        <TextFormItem name="sort_order" label={t('quality.inputs.sort')} placeholder={t('quality.inputs.sort')}/>
+                        <TextFormItem name="name_en" label={t('department.inputs.name_en')} placeholder={t('department.inputs.name_en')} rules={[requiredRule(t('validation.requiredField'))]}/>
                     </Col>
                 </Row>
             </FormCard>
@@ -131,7 +125,7 @@ export default function QualityForm({onSubmit, data, isEdit = false,}: FormProps
             {/* Actions */}
             <div className="flex">
                 <div className="ms-auto">
-                    <SubmitButtonFormItem label={isEdit ? 'quality.update' : 'quality.create'} loading={actionLoading} background="linear-gradient(to right, #020618, #0f172a, #1e293b)" />
+                    <SubmitButtonFormItem label={isEdit ? 'common.update' : 'user.create'} loading={actionLoading} background="linear-gradient(135deg, #00843D 0%, #006B35 100%)"/>
                 </div>
             </div>
         </Form>

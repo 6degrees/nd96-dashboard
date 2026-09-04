@@ -89,12 +89,12 @@ export const navigation: NavigationGroup[] = [
                 icon: ShoppingBag,
             },
             {
-                key: 'quality-standards',
+                key: 'department',
                 label: {
-                    en: 'Quality Standards',
-                    ar: 'معايير الجودة',
+                    en: 'Departments',
+                    ar: 'الإدارات',
                 },
-                href: '/dashboard/qualities',
+                href: '/dashboard/departments',
                 icon: ShieldCheck,
             },
             {

@@ -1,5 +1,5 @@
 export const config = {
-    endpoint: 'qualities',
+    endpoint: 'departments',
     initialFilters: {
         name: '',
         name_en: '',

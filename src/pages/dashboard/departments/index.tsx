@@ -1,0 +1,1 @@
+export { CrudView as default } from '@/features/departments'

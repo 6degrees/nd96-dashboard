@@ -10,7 +10,7 @@ import type { ActionButton, ActionsProps } from '@/types/action-button'
 */
 export const Actions = ({ onCreate }: ActionsProps): ActionButton[] => [
     {
-        label: 'quality.create',
+        label: 'department.create',
         type: 'primary',
         onClick: onCreate,
     },

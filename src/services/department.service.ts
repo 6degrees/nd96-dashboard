@@ -1,11 +1,11 @@
-import { Quality, QualityFilters } from '@/features/qualities'
+import { Department, DepartmentFilters } from '@/features/departments'
 import { createCrudService } from '@/services/createCrudService'
 
-export const qualityService = {
+export const departmentService = {
     /*
     |--------------------------------------------------------------------------
     | CRUD
     |--------------------------------------------------------------------------
     */
-    ...createCrudService<Quality, QualityFilters>('/api/v1/tenants/{{tenant}}/qualities/'),
+    ...createCrudService<Department, DepartmentFilters>('/api/v1/departments/'),
 }
