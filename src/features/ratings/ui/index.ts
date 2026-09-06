@@ -1,1 +1,0 @@
-export { default as LatestRatings } from './latest-ratings'

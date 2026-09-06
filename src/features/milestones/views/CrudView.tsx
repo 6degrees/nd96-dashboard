@@ -114,6 +114,7 @@ export default function Page({ id }: PageProps) {
             className={'p-8 px-0 min-h-screen'}
             columns={Columns}
             Form={MilestoneForm}
+            formProps={{timelineId: id,}}
             api={api}
             filters={
                 <Filters
@@ -150,7 +151,7 @@ export default function Page({ id }: PageProps) {
             setPage={setPage}
             setLimit={setLimit}
             onSearch={handleSearch}
-            drawerWidth="30%"
+            drawerWidth="60%"
         />
     )
 }

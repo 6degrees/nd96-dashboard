@@ -1,5 +1,5 @@
 import { Tag, Tooltip } from 'antd'
-import { Pencil, Eye, Ban, CheckCircle2, Trash2 } from 'lucide-react'
+import {Pencil, Eye, Ban, CheckCircle2, Trash2, ListTree} from 'lucide-react'
 import { formatDate } from '@/utils/formatDate'
 import { TFunction } from 'i18next'
 
@@ -78,20 +78,7 @@ export const Columns = ({ onView, onEdit, onDelete, onStatusChange, t }: Columns
         align: 'center',
         render: (_: any, record: any) => (
             <div className="flex justify-center gap-1.5">
-
-                {/* View */}
-                <Tooltip title={t('common.details')}>
-                    <button
-                        type="button"
-                        onClick={() => onView?.(record)}
-                        className="flex h-9 w-9 items-center justify-center rounded-lg text-text-secondary transition-all duration-200 hover:bg-brand-blue/10 hover:text-brand-blue active:scale-95"
-                    >
-                        <Eye size={17} strokeWidth={2} />
-                    </button>
-                </Tooltip>
-
                 {/* Edit */}
-
                 <Tooltip title={t('common.edit')}>
                     <button
                         type="button"
@@ -99,6 +86,16 @@ export const Columns = ({ onView, onEdit, onDelete, onStatusChange, t }: Columns
                         className="flex h-9 w-9 items-center justify-center rounded-lg text-text-secondary transition-all duration-200 hover:bg-brand-blue/10 hover:text-brand-blue active:scale-95"
                     >
                         <Pencil size={17} strokeWidth={2} />
+                    </button>
+                </Tooltip>
+
+                {/* View */}
+                <Tooltip title={t('common.details')}>
+                    <button
+                        type="button"
+                        onClick={() => onView?.(record)}
+                        className="flex h-9 w-9 items-center justify-center rounded-lg text-text-secondary transition-all duration-200 hover:bg-brand-blue/10 hover:text-brand-blue active:scale-95">
+                        <ListTree size={17} strokeWidth={2}/>
                     </button>
                 </Tooltip>
 

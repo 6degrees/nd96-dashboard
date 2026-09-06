@@ -7,9 +7,11 @@
 |
 */
 
-import React from 'react'
+import React, { useState } from 'react'
+
 import CrudPage from '@/components/crud-page'
-import { useRouter } from 'next/navigation'
+import { AppDrawer } from '@/components/app-drawer'
+
 /*
 |--------------------------------------------------------------------------
 | Feature UI
@@ -29,7 +31,7 @@ import {
 |
 */
 
-import {useCollections} from '@/features/timelines/hooks'
+import { useCollections } from '@/features/timelines/hooks'
 
 /*
 |--------------------------------------------------------------------------
@@ -47,13 +49,22 @@ import RegionForm from '@/features/timelines/forms'
 |
 */
 
-import {api} from '@/features/timelines/api'
-
-import {RefreshCw} from 'lucide-react'
+import { api } from '@/features/timelines/api'
 
 /*
 |--------------------------------------------------------------------------
-| View Page
+| Icons
+|--------------------------------------------------------------------------
+|
+*/
+
+import { RefreshCw } from 'lucide-react'
+import {CrudView} from "@/features/milestones";
+
+
+/*
+|--------------------------------------------------------------------------
+| Timeline Page
 |--------------------------------------------------------------------------
 |
 */
@@ -62,12 +73,33 @@ export default function Page() {
 
     /*
     |--------------------------------------------------------------------------
-    | Collections Hook
+    | Collections
     |--------------------------------------------------------------------------
     |
     */
-    const router = useRouter()
-    const {list, loading, page, setPage, limit, setLimit, filters, setFilters, handleSearch,} = useCollections()
+
+    const {
+        list,
+        loading,
+        page,
+        setPage,
+        limit,
+        setLimit,
+        filters,
+        setFilters,
+        handleSearch,
+    } = useCollections()
+
+    /*
+    |--------------------------------------------------------------------------
+    | View Drawer
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    const [isViewOpen, setViewOpen] = useState(false)
+
+    const [selectedTimeline, setSelectedTimeline] = useState<any>(null)
 
     /*
     |--------------------------------------------------------------------------
@@ -82,17 +114,44 @@ export default function Page() {
 
     /*
     |--------------------------------------------------------------------------
+    | Open Timeline
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    const handleView = (timeline: any) => {
+        setSelectedTimeline(timeline)
+
+        setViewOpen(true)
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Close Timeline
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    const handleCloseView = () => {
+        setViewOpen(false)
+
+        setSelectedTimeline(null)
+    }
+
+    /*
+    |--------------------------------------------------------------------------
     | Data Source
     |--------------------------------------------------------------------------
     |
     */
 
-    const dataSource = list?.data?.map(
-        (timeline: any) => ({
-            key: timeline.id,
-            ...timeline,
-        }),
-    )
+    const dataSource =
+        list?.data?.map(
+            (timeline: any) => ({
+                key: timeline.id,
+                ...timeline,
+            }),
+        ) ?? []
 
     /*
     |--------------------------------------------------------------------------
@@ -102,54 +161,95 @@ export default function Page() {
     */
 
     return (
-        <CrudPage
-            title="timeline.title"
-            columns={Columns}
-            Form={RegionForm}
-            api={api}
-            filters={
-                <Filters
-                    filters={filters}
-                    setFilters={setFilters}
-                />
-            }
-            actions={({onCreate}) => [
-                {
-                    label: loading
-                        ? 'common.refreshing'
-                        : 'common.refresh',
-                    type: 'default',
-                    icon: (
-                        <RefreshCw
-                            size={15}
-                            className={
-                                loading
-                                    ? 'animate-spin'
-                                    : ''
-                            }
-                        />
-                    ),
-                    onClick: handleRefresh,
-                    disabled: loading,
-                },
-                {
-                    label: 'timeline.create',
-                    type: 'primary',
-                    onClick: onCreate,
-                },
-            ]}
-            onView={(record) => {
-                router.push(`/dashboard/timelines/${record.id}`)
-            }}
-            dataSource={dataSource}
-            loading={loading}
-            page={page}
-            limit={limit}
-            total={list?.recordsFiltered || 0}
-            setPage={setPage}
-            setLimit={setLimit}
-            onSearch={handleSearch}
-            drawerWidth="30%"
-        />
+        <>
+            <CrudPage
+                title="timeline.title"
+
+                columns={Columns}
+
+                Form={RegionForm}
+
+                api={api}
+
+                filters={
+                    <Filters
+                        filters={filters}
+                        setFilters={setFilters}
+                    />
+                }
+
+                actions={({ onCreate }) => [
+                    {
+                        label: loading
+                            ? 'common.refreshing'
+                            : 'common.refresh',
+
+                        type: 'default',
+
+                        icon: (
+                            <RefreshCw
+                                size={15}
+                                className={
+                                    loading
+                                        ? 'animate-spin'
+                                        : ''
+                                }
+                            />
+                        ),
+
+                        onClick: handleRefresh,
+
+                        disabled: loading,
+                    },
+
+                    {
+                        label: 'timeline.create',
+
+                        type: 'primary',
+
+                        onClick: onCreate,
+                    },
+                ]}
+
+                /*
+                |--------------------------------------------------------------------------
+                | View
+                |--------------------------------------------------------------------------
+                |
+                | Opens Timeline Milestones inside a Drawer.
+                |
+                */
+
+                onView={handleView}
+
+                dataSource={dataSource}
+
+                loading={loading}
+
+                page={page}
+
+                limit={limit}
+
+                total={list?.recordsFiltered || 0}
+
+                setPage={setPage}
+
+                setLimit={setLimit}
+
+                onSearch={handleSearch}
+
+                drawerWidth="30%"
+            />
+
+            {/* ---------------------------------------------------------------- */}
+            {/* Timeline View Drawer */}
+            {/* ---------------------------------------------------------------- */}
+            <AppDrawer
+                open={isViewOpen}
+                width="70%"
+                onClose={handleCloseView}>
+                {selectedTimeline && (<CrudView id={selectedTimeline.id}/>)}
+            </AppDrawer>
+        </>
     )
 }

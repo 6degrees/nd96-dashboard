@@ -46,7 +46,7 @@ export const Columns = ({ onView, onEdit, onDelete, onStatusChange, t }: Columns
         align: 'center',
     },
     {
-        title: t('milestone.inputs.sort'),
+        title: t('milestone.inputs.sortOrder'),
         dataIndex: 'sort_order',
         align: 'center',
         render: (value: number) => (
@@ -84,27 +84,14 @@ export const Columns = ({ onView, onEdit, onDelete, onStatusChange, t }: Columns
         align: 'center',
         render: (_: any, record: any) => (
             <div className="flex justify-center gap-1.5">
-
-                <Tooltip title={t('common.details')}>
-                    <button
-                        type="button"
-                        onClick={() => onView?.(record)}
-                        className="flex h-9 w-9 items-center justify-center rounded-lg text-text-secondary transition-all duration-200 hover:bg-brand-green/10 hover:text-brand-green active:scale-95"
-                    >
-                        <Eye size={17} strokeWidth={2} />
-                    </button>
-                </Tooltip>
-
                 <Tooltip title={t('common.edit')}>
                     <button
                         type="button"
                         onClick={() => onEdit?.(record)}
-                        className="flex h-9 w-9 items-center justify-center rounded-lg text-text-secondary transition-all duration-200 hover:bg-brand-blue/10 hover:text-brand-blue active:scale-95"
-                    >
+                        className="flex h-9 w-9 items-center justify-center rounded-lg text-text-secondary transition-all duration-200 hover:bg-brand-blue/10 hover:text-brand-blue active:scale-95">
                         <Pencil size={17} strokeWidth={2} />
                     </button>
                 </Tooltip>
-
                 <Tooltip title={record.is_active ? t('common.disable') : t('common.activate')}>
                     <button
                         type="button"
@@ -113,8 +100,7 @@ export const Columns = ({ onView, onEdit, onDelete, onStatusChange, t }: Columns
                             record.is_active
                                 ? 'text-text-secondary hover:bg-amber-50 hover:text-amber-600 dark:hover:bg-amber-500/10 dark:hover:text-amber-400'
                                 : 'text-text-secondary hover:bg-brand-green/10 hover:text-brand-green'
-                        }`}
-                    >
+                        }`}>
                         {record.is_active ? (
                             <Ban size={17} strokeWidth={2} />
                         ) : (
@@ -122,7 +108,6 @@ export const Columns = ({ onView, onEdit, onDelete, onStatusChange, t }: Columns
                         )}
                     </button>
                 </Tooltip>
-
                 <Tooltip title={t('common.delete')}>
                     <button
                         type="button"
@@ -132,7 +117,6 @@ export const Columns = ({ onView, onEdit, onDelete, onStatusChange, t }: Columns
                         <Trash2 size={17} strokeWidth={2} />
                     </button>
                 </Tooltip>
-
             </div>
         ),
     },
