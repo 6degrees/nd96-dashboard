@@ -169,5 +169,20 @@
       "createdAt": "Created At",
       "updatedAt": "Updated At"
     }
+  },
+  "message": {
+    "title": "Messages",
+    "create": "Create Message",
+    "update": "Update Message",
+    "inputs": {
+      "clientRef": "Client Reference",
+      "message": "Message",
+      "name": "Name",
+      "department": "Department",
+      "status": "Status",
+      "createdAt": "Created At",
+      "updatedAt": "Updated At",
+      "activatedAt": "Activated At"
+    }
   }
 }

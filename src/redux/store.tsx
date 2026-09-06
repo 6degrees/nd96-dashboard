@@ -7,6 +7,7 @@ import {actions as notificationAction} from '@/redux/notification'
 import {actions as DepartmentAction} from '@/redux/department'
 import {actions as TimelineAction} from '@/redux/timeline'
 import {actions as MilestoneAction} from '@/redux/milestone'
+import {actions as MessageAction} from '@/redux/message'
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,7 @@ export const store = configureStore({
         department: createCrudReducer(DepartmentAction) as any,
         timeline: createCrudReducer(TimelineAction) as any,
         milestone: createCrudReducer(MilestoneAction) as any,
+        message: createCrudReducer(MessageAction) as any,
     },
 });
 

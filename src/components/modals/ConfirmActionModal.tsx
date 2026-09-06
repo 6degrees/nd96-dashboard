@@ -5,6 +5,7 @@
 |
 */
 import Swal from 'sweetalert2'
+import i18n from 'i18next'
 
 /*
 |--------------------------------------------------------------------------
@@ -86,7 +87,7 @@ interface Props {
 | - destructive actions
 |
 */
-export const ConfirmModal = async ({ title, text, icon = 'warning', confirmButtonText = 'Confirm', cancelButtonText = 'Cancel', confirmButtonColor = 'bg-red-500 hover:bg-red-600', onConfirm, }: Props) => {
+export const ConfirmModal = async ({ title, text, icon = 'warning', confirmButtonText = 'Confirm', cancelButtonText = 'common.cancel', confirmButtonColor = 'bg-red-500 hover:bg-red-600', onConfirm, }: Props) => {
     /*
     |--------------------------------------------------------------------------
     | Open Modal
@@ -105,7 +106,7 @@ export const ConfirmModal = async ({ title, text, icon = 'warning', confirmButto
 
         confirmButtonText,
 
-        cancelButtonText,
+        cancelButtonText: i18n.t(cancelButtonText),
 
         reverseButtons: true,
 

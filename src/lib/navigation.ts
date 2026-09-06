@@ -3,6 +3,7 @@ import {
     Building2,
     Users,
     CalendarDays,
+    MessageSquareText,
     type LucideIcon,
 } from 'lucide-react'
 
@@ -99,6 +100,25 @@ export const navigation: NavigationGroup[] = [
                 },
                 href: '/dashboard/timelines',
                 icon: CalendarDays,
+            },
+        ],
+    },
+
+    {
+        key: 'messages',
+        title: {
+            en: 'Messages',
+            ar: 'الرسائل',
+        },
+        items: [
+            {
+                key: 'messages',
+                label: {
+                    en: 'Messages',
+                    ar: 'الرسائل',
+                },
+                href: '/dashboard/messages',
+                icon: MessageSquareText,
             },
         ],
     },
