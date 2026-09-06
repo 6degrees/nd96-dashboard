@@ -1,5 +1,5 @@
 import { Tag, Tooltip } from 'antd'
-import { Pencil, Ban, CheckCircle2, Trash2, Eye } from 'lucide-react'
+import { Pencil, Ban, CheckCircle2, Trash2 } from 'lucide-react'
 import { formatDate } from '@/utils/formatDate'
 import { TFunction } from 'i18next'
 
@@ -26,7 +26,7 @@ interface ColumnsProps {
 |
 */
 
-export const Columns = ({ onView, onEdit, onDelete, onStatusChange, t }: ColumnsProps) => [
+export const Columns = ({ onEdit, onDelete, onStatusChange, t }: ColumnsProps) => [
     {
         title: t('milestone.inputs.year'),
         dataIndex: 'year',
