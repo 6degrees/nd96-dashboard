@@ -186,5 +186,22 @@
       "updatedAt": "تاريخ التحديث",
       "activatedAt": "تاريخ التفعيل"
     }
+  },
+  "dashboard": {
+    "title": "لوحة التحكم",
+    "subtitle": "نظرة عامة على إحصائيات النظام",
+    "stats": {
+      "users": "المستخدمون",
+      "departments": "الإدارات",
+      "activeMessages": "الرسائل النشطة",
+      "hiddenMessages": "الرسائل المخفية"
+    },
+    "users_label": "إجمالي المستخدمين",
+    "departments_label": "إجمالي الإدارات",
+    "active_messages_label": "إجمالي الرسائل النشطة",
+    "hidden_messages_label": "إجمالي الرسائل المخفية",
+    "salla_connected": "متصل بسلة",
+    "sync_salla": "مزامنة سلة",
+    "syncing": "جارٍ المزامنة..."
   }
 }

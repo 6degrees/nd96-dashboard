@@ -1,1 +1,1 @@
-export { useTenantDashboard } from './useDashboard'
+export { useDashboard } from './useDashboard'

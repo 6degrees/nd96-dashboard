@@ -184,5 +184,22 @@
       "updatedAt": "Updated At",
       "activatedAt": "Activated At"
     }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "subtitle": "Overview of system statistics",
+    "stats": {
+      "users": "Users",
+      "departments": "Departments",
+      "activeMessages": "Active Messages",
+      "hiddenMessages": "Hidden Messages"
+    },
+    "users_label": "Total Users",
+    "departments_label": "Total Departments",
+    "active_messages_label": "Total Active Messages",
+    "hidden_messages_label": "Total Hidden Messages",
+    "salla_connected": "Connected to Salla",
+    "sync_salla": "Sync Salla",
+    "syncing": "Syncing..."
   }
 }
