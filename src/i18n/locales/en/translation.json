@@ -194,6 +194,34 @@
       "activeMessages": "Active Messages",
       "hiddenMessages": "Hidden Messages"
     },
+    "top_departments": {
+      "title": "Top Participating Departments",
+      "subtitle": "Departments with the highest number of messages",
+      "messages": "Messages",
+      "noData": "No data available"
+    },
+    "weekly_messages": {
+      "title": "Messages This Week",
+      "subtitle": "Number of messages added during the last 7 days",
+      "messageCount": "messages",
+      "series": "Messages"
+    },
+    "department_participation": {
+      "title": "Department Participation",
+      "subtitle": "Message participation by department",
+      "total_messages": "Total Messages",
+      "messages": "Messages",
+      "participation": "Participation",
+      "no_data": "No participation data available"
+    },
+    "messages": {
+      "visibility": {
+        "title": "Message Visibility",
+        "subtitle": "Percentage of visible and hidden messages"
+      },
+      "visible": "Visible",
+      "hidden": "Hidden"
+    },
     "users_label": "Total Users",
     "departments_label": "Total Departments",
     "active_messages_label": "Total Active Messages",

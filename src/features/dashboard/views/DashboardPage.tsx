@@ -2,8 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { RefreshCw } from 'lucide-react'
 
-import { useDashboard } from '@/features/dashboard'
-import { StatsCards } from '@/features/dashboard/ui'
+import {
+    DepartmentParticipationChart,
+    TopDepartmentsChart,
+    useDashboard,
+    WeeklyMessagesChart
+} from '@/features/dashboard'
+import { StatsCards, MessageVisibilityChart,  } from '@/features/dashboard/ui'
+
 
 /*
 |--------------------------------------------------------------------------
@@ -161,19 +167,23 @@ export default function DashboardPage() {
             |--------------------------------------------------------------------------
             |
             | StatsCards receives the statistics returned by the API.
-            |
-            | Available data:
-            |
-            | - stats.users
-            | - stats.departments
-            | - stats.messages.status.active
-            | - stats.messages.status.inactive
-            |
             | Weekly and department message statistics remain available
             | under stats.messages for future dashboard charts.
             |
             */}
             <StatsCards stats={dashboard} loading={loading}/>
+
+            <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-2">
+                <WeeklyMessagesChart weekly={dashboard?.stats?.messages?.weekly} loading={loading}/>
+
+                <TopDepartmentsChart departments={dashboard?.stats?.messages?.departments ?? []} loading={loading}/>
+            </div>
+
+            <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-2">
+                <DepartmentParticipationChart departments={dashboard?.stats?.messages?.departments ?? []} loading={loading}/>
+
+                <MessageVisibilityChart status={dashboard?.stats?.messages?.status} loading={loading}/>
+            </div>
 
         </div>
     )

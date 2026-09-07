@@ -9,9 +9,6 @@
 
 export * from './stats-cards'
 export * from './analytics-chart'
-export * from './integration-info'
-export * from './pickup-queue-table'
-export * from './top-sales-branches-chart'
-export * from './order-status-overview'
-export * from './branch-ratings-chart'
-export * from './rating-sentiment-chart'
+export * from './top-departments-chart'
+export * from './department-participation-chart'
+export * from './message-visibility-chart'

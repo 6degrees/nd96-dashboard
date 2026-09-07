@@ -189,12 +189,42 @@
   },
   "dashboard": {
     "title": "لوحة التحكم",
-    "subtitle": "نظرة عامة على إحصائيات النظام",
+    "subtitle": "نظرة شاملة على إحصائيات النظام وأهم المؤشرات والبيانات التشغيلية",
     "stats": {
       "users": "المستخدمون",
       "departments": "الإدارات",
       "activeMessages": "الرسائل النشطة",
       "hiddenMessages": "الرسائل المخفية"
+    },
+    "top_departments": {
+      "title": "أكثر الإدارات مشاركة",
+      "subtitle": "الإدارات الأكثر مساهمة في الرسائل",
+      "messages": "الرسائل",
+      "noData": "لا توجد بيانات متاحة"
+    },
+    "weekly_messages": {
+      "title": "الرسائل خلال الأسبوع",
+      "subtitle": "عدد الرسائل المضافة خلال آخر 7 أيام",
+      "messageCount": "رسالة",
+      "series": "الرسائل"
+    },
+    "department_participation": {
+      "title": "توزيع الرسائل حسب الإدارات",
+      "subtitle": "نسبة مساهمة كل إدارة من إجمالي الرسائل",
+      "total_messages": "إجمالي الرسائل",
+      "messages": "رسالة",
+      "participation": "نسبة المشاركة",
+      "department": "الإدارة",
+      "no_data": "لا توجد رسائل مسجلة",
+      "description": "يوضح الرسم نسبة مشاركة كل إدارة في إجمالي الرسائل"
+    },
+    "messages": {
+      "visibility": {
+        "title": "حالة الرسائل",
+        "subtitle": "نسبة الرسائل المعروضة والمخفية"
+      },
+      "visible": "معروضة",
+      "hidden": "مخفية"
     },
     "users_label": "إجمالي المستخدمين",
     "departments_label": "إجمالي الإدارات",
