@@ -229,5 +229,9 @@
     "salla_connected": "Connected to Salla",
     "sync_salla": "Sync Salla",
     "syncing": "Syncing..."
+  },
+  "profile": {
+    "logout": "Logout",
+    "anonymous": "Anonymous User"
   }
 }

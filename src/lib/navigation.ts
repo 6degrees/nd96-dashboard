@@ -1,11 +1,18 @@
 import {
     LayoutDashboard,
     Building2,
-    Users,
-    CalendarDays,
-    MessageSquareText,
+    UsersRound,
+    Landmark,
+    MessagesSquare,
+    MonitorCog,
     type LucideIcon,
 } from 'lucide-react'
+
+/*
+|--------------------------------------------------------------------------
+| Types
+|--------------------------------------------------------------------------
+*/
 
 export type NavigationItem = {
     key: string
@@ -27,7 +34,19 @@ export type NavigationGroup = {
     items: NavigationItem[]
 }
 
+/*
+|--------------------------------------------------------------------------
+| Navigation
+|--------------------------------------------------------------------------
+*/
+
 export const navigation: NavigationGroup[] = [
+    /*
+    |--------------------------------------------------------------------------
+    | Main
+    |--------------------------------------------------------------------------
+    */
+
     {
         key: 'main',
         title: {
@@ -47,6 +66,12 @@ export const navigation: NavigationGroup[] = [
         ],
     },
 
+    /*
+    |--------------------------------------------------------------------------
+    | Users
+    |--------------------------------------------------------------------------
+    */
+
     {
         key: 'users',
         title: {
@@ -61,10 +86,16 @@ export const navigation: NavigationGroup[] = [
                     ar: 'المستخدمون',
                 },
                 href: '/dashboard/users',
-                icon: Users,
+                icon: UsersRound,
             },
         ],
     },
+
+    /*
+    |--------------------------------------------------------------------------
+    | Departments
+    |--------------------------------------------------------------------------
+    */
 
     {
         key: 'departments',
@@ -85,6 +116,37 @@ export const navigation: NavigationGroup[] = [
         ],
     },
 
+    /*
+    |--------------------------------------------------------------------------
+    | Screens
+    |--------------------------------------------------------------------------
+    */
+
+    {
+        key: 'screens',
+        title: {
+            en: 'Screens',
+            ar: 'الشاشات',
+        },
+        items: [
+            {
+                key: 'screens',
+                label: {
+                    en: 'Screen Management',
+                    ar: 'إدارة الشاشات',
+                },
+                href: '/dashboard/screens',
+                icon: MonitorCog,
+            },
+        ],
+    },
+
+    /*
+    |--------------------------------------------------------------------------
+    | Timeline
+    |--------------------------------------------------------------------------
+    */
+
     {
         key: 'timeline',
         title: {
@@ -99,10 +161,16 @@ export const navigation: NavigationGroup[] = [
                     ar: 'الخط الزمني الوطني',
                 },
                 href: '/dashboard/timelines',
-                icon: CalendarDays,
+                icon: Landmark,
             },
         ],
     },
+
+    /*
+    |--------------------------------------------------------------------------
+    | Messages
+    |--------------------------------------------------------------------------
+    */
 
     {
         key: 'messages',
@@ -118,8 +186,9 @@ export const navigation: NavigationGroup[] = [
                     ar: 'الرسائل',
                 },
                 href: '/dashboard/messages',
-                icon: MessageSquareText,
+                icon: MessagesSquare,
             },
         ],
     },
 ]
+

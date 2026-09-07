@@ -24,7 +24,7 @@ export default function SidebarLogo() {
                 src="/brand/satorp-logo-light.png"
                 alt="SATORP"
                 width={220}
-                height={80}
+                height={200}
                 priority
                 className="identity-sidebar-logo-image"
             />

@@ -1,12 +1,12 @@
 'use client'
 
-import {
-    createContext,
-    useContext,
-    useMemo,
-    useState,
-    type ReactNode,
-} from 'react'
+import {createContext, useContext, useMemo, useState, type ReactNode} from 'react'
+
+/*
+|--------------------------------------------------------------------------
+| Types
+|--------------------------------------------------------------------------
+*/
 
 type SidebarContextType = {
     collapsed: boolean
@@ -16,15 +16,35 @@ type SidebarContextType = {
     closeMobile: () => void
 }
 
-const SidebarContext = createContext<SidebarContextType | undefined>(undefined)
-
 type SidebarProviderProps = {
     children: ReactNode
 }
 
+/*
+|--------------------------------------------------------------------------
+| Context
+|--------------------------------------------------------------------------
+*/
+
+const SidebarContext = createContext<SidebarContextType | undefined>(undefined)
+
+/*
+|--------------------------------------------------------------------------
+| Provider
+|--------------------------------------------------------------------------
+|
+| Manages the sidebar state for desktop and mobile layouts.
+|
+| Features:
+| - Toggle sidebar collapsed state.
+| - Open sidebar on mobile.
+| - Close sidebar on mobile.
+|
+*/
+
 export function SidebarProvider({
-                                    children,
-                                }: SidebarProviderProps) {
+    children,
+}: SidebarProviderProps) {
     const [collapsed, setCollapsed] = useState(false)
     const [mobileOpen, setMobileOpen] = useState(false)
 
@@ -49,6 +69,15 @@ export function SidebarProvider({
     )
 }
 
+/*
+|--------------------------------------------------------------------------
+| Hook
+|--------------------------------------------------------------------------
+|
+| Provides access to the sidebar context.
+|
+*/
+
 export function useSidebar() {
     const context = useContext(SidebarContext)
 
@@ -58,3 +87,4 @@ export function useSidebar() {
 
     return context
 }
+

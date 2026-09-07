@@ -233,5 +233,9 @@
     "salla_connected": "متصل بسلة",
     "sync_salla": "مزامنة سلة",
     "syncing": "جارٍ المزامنة..."
+  },
+  "profile": {
+    "logout": "تسجيل الخروج",
+    "anonymous": "مستخدم مجهول"
   }
 }

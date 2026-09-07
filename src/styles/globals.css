@@ -1402,7 +1402,7 @@ html[lang="ar"] .swal2-popup * {
 .identity-sidebar-logo-image {
     display: block;
     width: 190px;
-    height: auto;
+    height: 68px;
     object-fit: contain;
 }
 
@@ -1417,7 +1417,7 @@ html[lang="ar"] .swal2-popup * {
 .identity-sidebar-logo-image {
     display: block;
     width: 130px;
-    height: auto;
+    height: 68px;
     object-fit: contain;
 }
 
