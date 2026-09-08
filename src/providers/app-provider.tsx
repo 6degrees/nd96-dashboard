@@ -18,6 +18,7 @@ import {ThemeProvider} from './theme-provider'
 import {useAppTheme} from '@/hooks/use-app-theme'
 import {AuthInitializer} from '@/components/auth/AuthInitializer'
 import {setNotificationInstance} from '@/lib/toast/toast'
+import RealtimeProvider from "@/providers/realtime-provider";
 
 /*
 |--------------------------------------------------------------------------
@@ -248,12 +249,13 @@ function AppProviderContent({children}: AppProviderProps) {
                 <ToastInitializer/>
 
                 <AuthInitializer>
-                    <main
-                        dir={isArabic ? 'rtl' : 'ltr'}
-                        className={isArabic ? alexandria.className : inter.className}
-                    >
-                        {children}
-                    </main>
+                    <RealtimeProvider>
+                        <main
+                            dir={isArabic ? 'rtl' : 'ltr'}
+                            className={isArabic ? alexandria.className : inter.className}>
+                            {children}
+                        </main>
+                    </RealtimeProvider>
                 </AuthInitializer>
             </AntdApp>
         </ConfigProvider>

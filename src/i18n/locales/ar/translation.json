@@ -237,5 +237,10 @@
   "profile": {
     "logout": "تسجيل الخروج",
     "anonymous": "مستخدم مجهول"
+  },
+  "realtime": {
+    "messagePublished": "تم نشر رسالة جديدة",
+    "messagePublishedDescription": "تم نشر رسالة جديدة من {{name}}",
+    "newMessageReceived": "تم استلام رسالة جديدة"
   }
 }

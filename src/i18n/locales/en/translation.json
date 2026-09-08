@@ -233,5 +233,10 @@
   "profile": {
     "logout": "Logout",
     "anonymous": "Anonymous User"
+  },
+  "realtime": {
+    "messagePublished": "New message published",
+    "messagePublishedDescription": "A new message was published by {{name}}",
+    "newMessageReceived": "You received a new message"
   }
 }
