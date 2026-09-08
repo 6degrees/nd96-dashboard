@@ -180,6 +180,7 @@
       "name": "Name",
       "department": "Department",
       "status": "Status",
+      "signature": "Signature",
       "createdAt": "Created At",
       "updatedAt": "Updated At",
       "activatedAt": "Activated At"

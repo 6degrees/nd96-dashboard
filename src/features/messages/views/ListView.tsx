@@ -53,7 +53,7 @@ import {
     RefreshCw,
     User,
     Building2,
-    MessageSquareText,
+    MessageSquareText, PenLine,
 } from 'lucide-react'
 import {useTranslation} from "react-i18next";
 import {RootState} from "@/redux/store";
@@ -283,7 +283,6 @@ export default function Page() {
                         {/* ---------------------------------------------------- */}
 
                         <div className="flex-1 overflow-y-auto px-6 py-6">
-
                             {/* Sender */}
                             <div className="mb-5 rounded-2xl border border-border bg-bg-secondary/50 p-4">
                                 <div className="mb-3 flex items-center gap-2 text-xs font-medium text-text-secondary">
@@ -322,6 +321,28 @@ export default function Page() {
                                         {selectedMessage.message || '-'}
                                     </p>
                                 </div>
+                            </div>
+
+                            {/* Signature */}
+                            <div className="mt-5 rounded-2xl border border-border bg-bg-secondary/50 p-4">
+                                <div className="mb-3 flex items-center gap-2 text-xs font-medium text-text-secondary">
+                                    <PenLine size={15} />
+                                    <span>{t('message.inputs.signature')}</span>
+                                </div>
+
+                                {selectedMessage.signature ? (
+                                    <div className="text-sm font-medium text-text-primary">
+                                        <img
+                                            src={selectedMessage.signature}
+                                            alt={t('message.inputs.signature')}
+                                            className="max-h-24 max-w-full object-contain"
+                                        />
+                                    </div>
+                                ) : (
+                                    <p className="text-sm font-medium text-text-primary">
+                                        -
+                                    </p>
+                                )}
                             </div>
                         </div>
                     </div>
