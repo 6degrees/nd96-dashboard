@@ -1,23 +1,41 @@
 import {messageService} from '@/services/message.service'
 import {createCrudActions} from '@/redux/curd/actionCreator'
-import createActions from '@/redux/curd/actions'
+import {actions as BaseActions} from './actions'
+import createActionCreators from './actionCreators'
 
 /*
 |--------------------------------------------------------------------------
-| Message Actions
+| Messages Action Creators
 |--------------------------------------------------------------------------
-|
-| Defines Redux actions for managing message standards.
-|
 */
-export const actions = createActions('messages')
+const {
+    realtimeMessageCreated,
+} = createActionCreators()
 
 /*
 |--------------------------------------------------------------------------
-| Message API
+| Messages Actions
+|--------------------------------------------------------------------------
+*/
+export const actions = BaseActions
+
+/*
+|--------------------------------------------------------------------------
+| Messages Realtime Actions
 |--------------------------------------------------------------------------
 |
-| Defines CRUD API actions for managing message standards.
+| Redux actions used by realtime events.
 |
 */
-export const api = createCrudActions(actions, messageService)
+export const realtimeActions = {
+    realtimeMessageCreated,
+}
+
+/*
+|--------------------------------------------------------------------------
+| Messages API Actions
+|--------------------------------------------------------------------------
+*/
+export const api = {
+    ...createCrudActions(actions, messageService),
+}

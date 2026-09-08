@@ -6,9 +6,9 @@
 |--------------------------------------------------------------------------
 |
 */
-
-import React, {useState} from 'react'
-import {useDispatch} from 'react-redux'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { useTranslation } from "react-i18next"
 
 /*
 |--------------------------------------------------------------------------
@@ -16,20 +16,17 @@ import {useDispatch} from 'react-redux'
 |--------------------------------------------------------------------------
 |
 */
-
 import PageActions from '@/components/page-action'
 import PageFilter from '@/components/page-filter'
 import PageTable from '@/components/page-table'
-import {AppDrawer} from '@/components/app-drawer'
+import PageGrid from '@/components/page-grid'
+import { AppDrawer } from '@/components/app-drawer'
 
 import {
     ConfirmDeleteModal,
     ConfirmStatusModal,
 } from '@/components/modals'
-
-import {useTranslation} from 'react-i18next'
-import {toast} from '@/lib/toast/toast'
-import {ActionsProps} from "@/types/action-button";
+import {toast} from "@/lib/toast/toast";
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +34,6 @@ import {ActionsProps} from "@/types/action-button";
 |--------------------------------------------------------------------------
 |
 */
-
 interface CrudPageProps {
     title: string
 
@@ -49,15 +45,11 @@ interface CrudPageProps {
 
     api: any
 
-    formProps?: Record<string, any>
-
     filters?: React.ReactNode
 
-    headerContent?: React.ReactNode
-
-    footerContent?: React.ReactNode
-
-    actions?: (props: ActionsProps) => any[]
+    actions?: (props: {
+        onCreate: () => void
+    }) => any[]
 
     onView?: (record: any) => void
 
@@ -66,19 +58,28 @@ interface CrudPageProps {
     loading: boolean
 
     page: number
-
     limit: number
-
     total: number
 
     setPage?: (page: number) => void
-
     setLimit?: (limit: number) => void
 
     onSearch: () => void
-
     drawerWidth?: string | null
 
+    viewMode?: 'table' | 'grid'
+    CardComponent?: React.ComponentType<{
+        item: any
+        onView?: (record: any) => void
+        onEdit: (record: any) => void
+        onDelete: (record: any) => void
+        onStatusChange: (record: any) => void
+    }>
+
+    enableInfiniteScroll?: boolean
+    hasMore?: boolean
+    loadingMore?: boolean
+    onLoadMore?: () => void
 }
 
 /*
@@ -87,18 +88,14 @@ interface CrudPageProps {
 |--------------------------------------------------------------------------
 |
 */
-
 export default function CrudPage(
     {
         title,
-        className = 'p-8 min-h-screen',
+        className = 'p-1 sm:p-3 lg:p-8 min-h-screen',
         columns,
         Form,
-        formProps,
         api,
         filters,
-        headerContent,
-        footerContent,
         actions,
         onView,
         dataSource,
@@ -110,18 +107,22 @@ export default function CrudPage(
         setLimit,
         onSearch,
         drawerWidth,
+        viewMode = 'table',
+        CardComponent,
+        enableInfiniteScroll,
+        hasMore,
+        loadingMore,
+        onLoadMore,
     }: CrudPageProps) {
 
     /*
     |--------------------------------------------------------------------------
-    | Redux
+    | Redux & Contexts
     |--------------------------------------------------------------------------
     |
     */
-
     const dispatch = useDispatch()
-
-    const {t} = useTranslation()
+    const { t } = useTranslation()
 
     /*
     |--------------------------------------------------------------------------
@@ -129,8 +130,7 @@ export default function CrudPage(
     |--------------------------------------------------------------------------
     |
     */
-
-    const [isFilterVisible, setFilterVisible] = useState(false)
+    const [isFilterVisible, setFilterVisible] = useState(true)
 
     const [isCreateOpen, setCreateOpen] = useState(false)
 
@@ -144,14 +144,9 @@ export default function CrudPage(
     |--------------------------------------------------------------------------
     |
     */
+    const refreshData = () => { dispatch(api.fetch() as any) }
 
-    const refreshData = () => {
-        dispatch(api.fetch() as any)
-    }
-
-    const closeCreateDrawer = () => {
-        setCreateOpen(false)
-    }
+    const closeCreateDrawer = () => { setCreateOpen(false) }
 
     const closeEditDrawer = () => {
         setEditOpen(false)
@@ -164,19 +159,14 @@ export default function CrudPage(
     |--------------------------------------------------------------------------
     |
     */
-
     const handleCreate = (values: any) => {
         dispatch(
             api.create(
                 values,
                 () => {
                     refreshData()
-
                     closeCreateDrawer()
-
-                    void toast.success({
-                        message: t('common.createdSuccessfully'),
-                    })
+                    toast.success({message: t('common.createdSuccessfully'),})
                 },
             ) as any,
         )
@@ -189,12 +179,8 @@ export default function CrudPage(
                 values,
                 () => {
                     refreshData()
-
                     closeEditDrawer()
-
-                    void toast.success({
-                        message: t('common.updatedSuccessfully'),
-                    })
+                    toast.success({message: t('common.updatedSuccessfully'),})
                 },
             ) as any,
         )
@@ -208,10 +194,7 @@ export default function CrudPage(
                         record.id,
                         () => {
                             refreshData()
-
-                            void toast.success({
-                                message: t('common.deletedSuccessfully'),
-                            })
+                            toast.success({message: t('common.deletedSuccessfully'),})
                         },
                     ) as any,
                 )
@@ -229,13 +212,10 @@ export default function CrudPage(
                 dispatch(
                     api.status(
                         record.id,
-                        record.is_active
-                            ? 'disable'
-                            : 'active',
+                        record.is_active ? 'disable' : 'active',
                         () => {
                             refreshData()
-
-                            void toast.success({
+                            toast.success({
                                 message: record.is_active
                                     ? t('common.disabledSuccessfully')
                                     : t('common.activatedSuccessfully'),
@@ -249,9 +229,24 @@ export default function CrudPage(
 
     const handleEdit = (record: any) => {
         setSelectedItem(record)
-
         setEditOpen(true)
     }
+
+    React.useEffect(() => {
+        const mediaQuery = window.matchMedia('(min-width: 1024px)')
+
+        setFilterVisible(mediaQuery.matches)
+
+        const handleChange = (event: MediaQueryListEvent) => {
+            setFilterVisible(event.matches)
+        }
+
+        mediaQuery.addEventListener('change', handleChange)
+
+        return () => {
+            mediaQuery.removeEventListener('change', handleChange)
+        }
+    }, [])
 
     /*
     |--------------------------------------------------------------------------
@@ -259,88 +254,105 @@ export default function CrudPage(
     |--------------------------------------------------------------------------
     |
     */
-
     return (
         <div className={`${className} bg-transparent`}>
-
+            {/* Header */}
             <PageActions
                 title={title}
                 actions={
                     actions?.({
-                        onCreate: () => setCreateOpen(true),
-                        onRefresh: refreshData,
+                        onCreate: () =>
+                            setCreateOpen(true),
                     }) || []
                 }
             />
 
-            {headerContent && (
-                <div className="mb-6">
-                    {headerContent}
-                </div>
-            )}
-
+            {/* Create Drawer */}
             <AppDrawer
                 open={isCreateOpen}
                 width={drawerWidth ?? null}
-                onClose={closeCreateDrawer}
-            >
+                onClose={closeCreateDrawer}>
+
                 <Form
                     onSubmit={handleCreate}
-                    {...formProps}
                 />
             </AppDrawer>
 
+            {/* Edit Drawer */}
             <AppDrawer
                 open={isEditOpen}
                 width={drawerWidth ?? null}
                 onClose={closeEditDrawer}>
                 <Form
                     isEdit
+
                     data={selectedItem}
+
                     onSubmit={handleUpdate}
-                    {...formProps}
                 />
             </AppDrawer>
 
+            {/* Filters */}
             {filters && (
                 <PageFilter
                     isOpen={isFilterVisible}
                     onToggle={() =>
                         setFilterVisible(!isFilterVisible)
                     }
-                    onSearch={onSearch}
-                >
+                    onSearch={onSearch}>
                     {filters}
                 </PageFilter>
             )}
 
-            <PageTable
-                loading={loading}
-                columns={columns({
-                    t,
-                    onView,
-                    onEdit: handleEdit,
-                    onDelete: handleDelete,
-                    onStatusChange: handleStatusChange,
-                })}
-                dataSource={dataSource}
-                page={page}
-                limit={limit}
-                total={total}
-                onChange={(
-                    p: number,
-                    l: number,
-                ) => {
-                    setPage?.(p)
+            {/* View Mode Switch: Grid or Table */}
+            {viewMode === 'grid' && CardComponent ? (
+                <PageGrid
+                    loading={loading}
+                    dataSource={dataSource}
+                    page={page}
+                    limit={limit}
+                    total={total}
+                    onChange={(p, l) => {
+                        setPage?.(p)
+                        setLimit?.(l)
+                    }}
+                    CardComponent={CardComponent}
+                    cardProps={{
+                        onView,
+                        onEdit: handleEdit,
+                        onDelete: handleDelete,
+                        onStatusChange: handleStatusChange,
+                    }}
+                    enableInfiniteScroll={enableInfiniteScroll}
+                    hasMore={hasMore}
+                    loadingMore={loadingMore}
+                    onLoadMore={onLoadMore}
+                />
+            ) : (
+                /* Table */
+                <PageTable
+                    loading={loading}
+                    columns={columns({
+                        t,
+                        onView,
+                        onEdit: handleEdit,
+                        onDelete: handleDelete,
+                        onStatusChange: handleStatusChange,
+                    })}
+                    dataSource={dataSource}
+                    page={page}
+                    limit={limit}
+                    total={total}
+                    onChange={(
+                        p: number,
+                        l: number,
+                    ) => {
 
-                    setLimit?.(l)
-                }}
-            />
+                        setPage?.(p)
 
-            {footerContent && (
-                <div className="mt-6">
-                    {footerContent}
-                </div>
+                        setLimit?.(l)
+                    }}
+                />
             )}
 
         </div>

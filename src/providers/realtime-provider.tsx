@@ -1,9 +1,9 @@
 'use client'
-
 import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-
 import { subscribeToMessageChannel } from '@/services/realtime/channels/message'
+import {useDispatch} from "react-redux";
+import {realtimeActions} from "@/redux/message";
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +48,17 @@ export default function RealtimeProvider({children,}: RealtimeProviderProps) {
 
     /*
     |--------------------------------------------------------------------------
+    | Redux Dispatch
+    |--------------------------------------------------------------------------
+    |
+    | Dispatches realtime events to the global Redux store.
+    |
+    */
+
+    const dispatch = useDispatch()
+
+    /*
+    |--------------------------------------------------------------------------
     | Message Realtime Subscription
     |--------------------------------------------------------------------------
     |
@@ -71,7 +82,13 @@ export default function RealtimeProvider({children,}: RealtimeProviderProps) {
             */
 
             published: (event: any) => {
-                console.log('Reverb: Message published.', event)
+                const order = event?.order
+
+                if (!order) {
+                    return
+                }
+
+                dispatch(realtimeActions.realtimeMessageCreated(order))
             },
 
             /*
