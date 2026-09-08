@@ -75,7 +75,7 @@ export const Columns = ({onDelete, onStatusChange, t,}: ColumnsProps) => [
         dataIndex: 'department',
         align: 'center',
         render: (department: any) => (
-            <span>{department?.name || '-'}</span>
+            <span>{department?.label || '-'}</span>
         ),
     },
 

@@ -12,7 +12,8 @@ export const useCollections = createCollectionHook({
     queryBuilder: (filters) => buildQuery({
         "filters[client_ref][$contains]": filters.client_ref,
         "filters[name][$contains]": filters.name,
-        "filters[department_id][$eq]": filters.department_id,
+        "filters[$or][0][department][name_ar][$contains]": filters.department_id,
+        "filters[$or][1][department][name_en][$contains]": filters.department_id,
         "filters[activated_at][$gte]": formatDate(filters.activatedAt?.[0]),
         "filters[activated_at][$lte]": formatDate(filters.activatedAt?.[1]),
         "filters[created_at][$gte]": formatDate(filters.createdAt?.[0]),
