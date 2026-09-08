@@ -187,34 +187,14 @@ export default function Page() {
                         disabled: loading,
                     },
                 ]}
-
-                /*
-                |--------------------------------------------------------------------------
-                | View
-                |--------------------------------------------------------------------------
-                |
-                | Opens the selected message inside a Drawer.
-                |
-                */
-
-                onView={handleView}
-
                 dataSource={dataSource}
-
                 loading={loading}
-
                 page={page}
-
                 limit={limit}
-
-                total={list?.recordsFiltered || 0}
-
+                total={list?.meta?.total || 0}
                 setPage={setPage}
-
                 setLimit={setLimit}
-
                 onSearch={handleSearch}
-
                 drawerWidth="30%"
             />
 
