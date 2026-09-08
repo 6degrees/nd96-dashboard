@@ -49,13 +49,17 @@ import { api } from '@/features/messages/api'
 |
 */
 
-import { RefreshCw } from 'lucide-react'
-import {CrudView} from "@/features/milestones";
-
+import {
+    RefreshCw,
+    User,
+    Building2,
+    MessageSquareText,
+} from 'lucide-react'
+import {useTranslation} from "react-i18next";
 
 /*
 |--------------------------------------------------------------------------
-| Timeline Page
+| Messages Page
 |--------------------------------------------------------------------------
 |
 */
@@ -68,18 +72,8 @@ export default function Page() {
     |--------------------------------------------------------------------------
     |
     */
-
-    const {
-        list,
-        loading,
-        page,
-        setPage,
-        limit,
-        setLimit,
-        filters,
-        setFilters,
-        handleSearch,
-    } = useCollections()
+    const {t} = useTranslation()
+    const {list, loading, page, setPage, limit, setLimit, filters, setFilters, handleSearch} = useCollections()
 
     /*
     |--------------------------------------------------------------------------
@@ -90,7 +84,7 @@ export default function Page() {
 
     const [isViewOpen, setViewOpen] = useState(false)
 
-    const [selectedTimeline, setSelectedTimeline] = useState<any>(null)
+    const [selectedMessage, setSelectedMessage] = useState<any>(null)
 
     /*
     |--------------------------------------------------------------------------
@@ -105,20 +99,20 @@ export default function Page() {
 
     /*
     |--------------------------------------------------------------------------
-    | Open Timeline
+    | Open Message
     |--------------------------------------------------------------------------
     |
     */
 
     const handleView = (message: any) => {
-        setSelectedTimeline(message)
+        setSelectedMessage(message)
 
         setViewOpen(true)
     }
 
     /*
     |--------------------------------------------------------------------------
-    | Close Timeline
+    | Close Message
     |--------------------------------------------------------------------------
     |
     */
@@ -126,7 +120,7 @@ export default function Page() {
     const handleCloseView = () => {
         setViewOpen(false)
 
-        setSelectedTimeline(null)
+        setSelectedMessage(null)
     }
 
     /*
@@ -169,7 +163,7 @@ export default function Page() {
                     />
                 }
 
-                actions={({ onCreate }) => [
+                actions={() => [
                     {
                         label: loading
                             ? 'common.refreshing'
@@ -191,7 +185,7 @@ export default function Page() {
                         onClick: handleRefresh,
 
                         disabled: loading,
-                    }
+                    },
                 ]}
 
                 /*
@@ -199,7 +193,7 @@ export default function Page() {
                 | View
                 |--------------------------------------------------------------------------
                 |
-                | Opens Timeline Milestones inside a Drawer.
+                | Opens the selected message inside a Drawer.
                 |
                 */
 
@@ -225,13 +219,90 @@ export default function Page() {
             />
 
             {/* ---------------------------------------------------------------- */}
-            {/* Timeline View Drawer */}
+            {/* Message View Drawer */}
             {/* ---------------------------------------------------------------- */}
+
             <AppDrawer
                 open={isViewOpen}
-                width="70%"
-                onClose={handleCloseView}>
-                {selectedTimeline && (<CrudView id={selectedTimeline.id}/>)}
+                width="30%"
+                onClose={handleCloseView}
+            >
+                {selectedMessage && (
+                    <div className="flex h-full flex-col">
+
+                        {/* ---------------------------------------------------- */}
+                        {/* Header */}
+                        {/* ---------------------------------------------------- */}
+
+                        <div className="border-b border-border px-6 py-5">
+                            <div className="flex items-center gap-3">
+                                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-green/10 text-brand-green">
+                                    <MessageSquareText
+                                        size={21}
+                                        strokeWidth={2}
+                                    />
+                                </div>
+
+                                <div>
+                                    <h2 className="text-base font-semibold text-text-primary">
+                                        {selectedMessage.name || '-'}
+                                    </h2>
+
+                                    <p className="mt-0.5 text-xs text-text-secondary">
+                                        {selectedMessage.department?.label || '-'}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* ---------------------------------------------------- */}
+                        {/* Content */}
+                        {/* ---------------------------------------------------- */}
+
+                        <div className="flex-1 overflow-y-auto px-6 py-6">
+
+                            {/* Sender */}
+                            <div className="mb-5 rounded-2xl border border-border bg-bg-secondary/50 p-4">
+                                <div className="mb-3 flex items-center gap-2 text-xs font-medium text-text-secondary">
+                                    <User size={15} />
+                                    <span>{t('message.inputs.name')}</span>
+                                </div>
+
+                                <p className="text-sm font-medium text-text-primary">
+                                    {selectedMessage.name || '-'}
+                                </p>
+                            </div>
+
+                            {/* Department */}
+                            <div className="mb-5 rounded-2xl border border-border bg-bg-secondary/50 p-4">
+                                <div className="mb-3 flex items-center gap-2 text-xs font-medium text-text-secondary">
+                                    <Building2 size={15} />
+                                    <span>{t('message.inputs.department')}</span>
+                                </div>
+
+                                <p className="text-sm font-medium text-text-primary">
+                                    {selectedMessage.department?.label || '-'}
+                                </p>
+                            </div>
+
+                            {/* Message */}
+                            <div>
+                                <div className="mb-3 flex items-center gap-2 text-xs font-medium text-text-secondary">
+                                    <MessageSquareText size={15} />
+                                    <span>{t('message.inputs.message')}</span>
+                                </div>
+
+                                <div className="relative overflow-hidden rounded-2xl border border-border bg-bg-secondary p-5">
+                                    <div className="absolute start-0 top-0 h-full w-1 rounded-full bg-brand-green" />
+
+                                    <p className="whitespace-pre-wrap break-words text-sm leading-8 text-text-primary">
+                                        {selectedMessage.message || '-'}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
             </AppDrawer>
         </>
     )

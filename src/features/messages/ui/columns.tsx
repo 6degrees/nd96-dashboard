@@ -1,6 +1,6 @@
 import { Tag, Tooltip } from 'antd'
 import {
-    Pencil,
+    Eye,
     Ban,
     CheckCircle2,
     Trash2,
@@ -16,7 +16,7 @@ import { TFunction } from 'i18next'
 */
 
 interface ColumnsProps {
-    onEdit?: (record: any) => void
+    onView?: (record: any) => void
     onDelete?: (record: any) => void
     onStatusChange?: (record: any) => void
     t: TFunction
@@ -26,12 +26,14 @@ interface ColumnsProps {
 |--------------------------------------------------------------------------
 | Table Columns
 |--------------------------------------------------------------------------
-|
-| Defines the messages table columns.
-|
 */
 
-export const Columns = ({onDelete, onStatusChange, t,}: ColumnsProps) => [
+export const Columns = ({
+    onView,
+    onDelete,
+    onStatusChange,
+    t,
+}: ColumnsProps) => [
     /*
     |--------------------------------------------------------------------------
     | Name
@@ -92,7 +94,9 @@ export const Columns = ({onDelete, onStatusChange, t,}: ColumnsProps) => [
         render: (activatedAt: string | null) => (
             <div className="flex justify-center">
                 <Tag color={activatedAt ? 'green' : 'red'} className="m-0">
-                    {activatedAt ? t('common.active') : t('common.inactive')}
+                    {activatedAt
+                        ? t('common.active')
+                        : t('common.inactive')}
                 </Tag>
             </div>
         ),
@@ -121,7 +125,8 @@ export const Columns = ({onDelete, onStatusChange, t,}: ColumnsProps) => [
         title: t('message.inputs.activatedAt'),
         dataIndex: 'activated_at',
         align: 'center',
-        render: (date: string | null) => date ? formatDate(date, true) : '-',
+        render: (date: string | null) =>
+            date ? formatDate(date, true) : '-',
     },
 
     /*
@@ -137,9 +142,34 @@ export const Columns = ({onDelete, onStatusChange, t,}: ColumnsProps) => [
         render: (_: any, record: any) => (
             <div className="flex justify-center gap-1.5">
 
+                {/* View */}
+                <Tooltip title={t('common.view')}>
+                    <button
+                        type="button"
+                        onClick={() => onView?.(record)}
+                        className="flex h-9 w-9 items-center justify-center rounded-lg text-text-secondary transition-all duration-200 hover:bg-brand-green/10 hover:text-brand-green active:scale-95"
+                    >
+                        <Eye size={17} strokeWidth={2} />
+                    </button>
+                </Tooltip>
+
                 {/* Activate / Deactivate */}
-                <Tooltip title={record.activated_at ? t('common.disable') : t('common.activate')}>
-                    <button type="button" onClick={() => onStatusChange?.(record)} className={`flex h-9 w-9 items-center justify-center rounded-lg transition-all duration-200 active:scale-95 ${record.activated_at ? 'text-text-secondary hover:bg-amber-50 hover:text-amber-600 dark:hover:bg-amber-500/10 dark:hover:text-amber-400' : 'text-text-secondary hover:bg-brand-green/10 hover:text-brand-green'}`}>
+                <Tooltip
+                    title={
+                        record.activated_at
+                            ? t('common.disable')
+                            : t('common.activate')
+                    }
+                >
+                    <button
+                        type="button"
+                        onClick={() => onStatusChange?.(record)}
+                        className={`flex h-9 w-9 items-center justify-center rounded-lg transition-all duration-200 active:scale-95 ${
+    record.activated_at
+        ? 'text-text-secondary hover:bg-amber-50 hover:text-amber-600 dark:hover:bg-amber-500/10 dark:hover:text-amber-400'
+        : 'text-text-secondary hover:bg-brand-green/10 hover:text-brand-green'
+}`}
+                    >
                         {record.activated_at ? (
                             <Ban size={17} strokeWidth={2} />
                         ) : (
@@ -149,9 +179,12 @@ export const Columns = ({onDelete, onStatusChange, t,}: ColumnsProps) => [
                 </Tooltip>
 
                 {/* Delete */}
-
                 <Tooltip title={t('common.delete')}>
-                    <button type="button" onClick={() => onDelete?.(record)} className="flex h-9 w-9 items-center justify-center rounded-lg text-text-secondary transition-all duration-200 hover:bg-red-50 hover:text-red-600 active:scale-95 dark:hover:bg-red-500/10 dark:hover:text-red-400">
+                    <button
+                        type="button"
+                        onClick={() => onDelete?.(record)}
+                        className="flex h-9 w-9 items-center justify-center rounded-lg text-text-secondary transition-all duration-200 hover:bg-red-50 hover:text-red-600 active:scale-95 dark:hover:bg-red-500/10 dark:hover:text-red-400"
+                    >
                         <Trash2 size={17} strokeWidth={2} />
                     </button>
                 </Tooltip>
@@ -160,3 +193,4 @@ export const Columns = ({onDelete, onStatusChange, t,}: ColumnsProps) => [
         ),
     },
 ]
+
