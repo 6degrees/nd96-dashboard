@@ -7,7 +7,7 @@
 |
 */
 
-import React, { useState } from 'react'
+import React, {useEffect, useState} from 'react'
 
 import CrudPage from '@/components/crud-page'
 import { AppDrawer } from '@/components/app-drawer'
@@ -56,6 +56,8 @@ import {
     MessageSquareText,
 } from 'lucide-react'
 import {useTranslation} from "react-i18next";
+import {RootState} from "@/redux/store";
+import {useSelector} from "react-redux";
 
 /*
 |--------------------------------------------------------------------------
@@ -72,8 +74,11 @@ export default function Page() {
     |--------------------------------------------------------------------------
     |
     */
+
     const {t} = useTranslation()
     const {list, loading, page, setPage, limit, setLimit, filters, setFilters, handleSearch} = useCollections()
+    const [messages, setMessages] = useState<any[]>([])
+    const realtimeMessage = useSelector((state: RootState) => state.message.realtimeMessage)
 
     /*
     |--------------------------------------------------------------------------
@@ -83,8 +88,39 @@ export default function Page() {
     */
 
     const [isViewOpen, setViewOpen] = useState(false)
-
     const [selectedMessage, setSelectedMessage] = useState<any>(null)
+
+    /*
+    |--------------------------------------------------------------------------
+    | Messages Data & Realtime Updates
+    |--------------------------------------------------------------------------
+    |
+    | Synchronizes the local messages state with API data and automatically
+    | prepends newly created messages received through the realtime channel.
+    | Prevents duplicate messages from being added to the list.
+    |
+    */
+
+    useEffect(() => {
+        if (!list?.data) return
+
+        setMessages(list.data)
+    }, [list])
+
+    useEffect(() => {
+        if (!realtimeMessage) {
+            return
+        }
+
+        setMessages((prev) => {
+            if (prev.some((item) => item.id === realtimeMessage.id)) {
+                return prev
+            }
+
+            return [realtimeMessage, ...prev]
+        })
+
+    }, [realtimeMessage])
 
     /*
     |--------------------------------------------------------------------------
@@ -130,13 +166,10 @@ export default function Page() {
     |
     */
 
-    const dataSource =
-        list?.data?.map(
-            (message: any) => ({
-                key: message.id,
-                ...message,
-            }),
-        ) ?? []
+    const dataSource = messages.map((message) => ({
+        key: message.id,
+        ...message,
+    }))
 
     /*
     |--------------------------------------------------------------------------
@@ -187,6 +220,16 @@ export default function Page() {
                         disabled: loading,
                     },
                 ]}
+
+                /*
+                |--------------------------------------------------------------------------
+                | View
+                |--------------------------------------------------------------------------
+                |
+                | Opens the selected message inside a Drawer.
+                |
+                */
+                onView={handleView}
                 dataSource={dataSource}
                 loading={loading}
                 page={page}

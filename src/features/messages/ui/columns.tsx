@@ -7,20 +7,7 @@ import {
 } from 'lucide-react'
 
 import { formatDate } from '@/utils/formatDate'
-import { TFunction } from 'i18next'
-
-/*
-|--------------------------------------------------------------------------
-| Types
-|--------------------------------------------------------------------------
-*/
-
-interface ColumnsProps {
-    onView?: (record: any) => void
-    onDelete?: (record: any) => void
-    onStatusChange?: (record: any) => void
-    t: TFunction
-}
+import { useTranslation } from 'react-i18next'
 
 /*
 |--------------------------------------------------------------------------
@@ -28,169 +15,210 @@ interface ColumnsProps {
 |--------------------------------------------------------------------------
 */
 
-export const Columns = ({
-    onView,
-    onDelete,
-    onStatusChange,
-    t,
-}: ColumnsProps) => [
-    /*
-    |--------------------------------------------------------------------------
-    | Name
-    |--------------------------------------------------------------------------
-    */
+export const Columns = ({onView, onDelete, onStatusChange,}: {
+    onView?: (record: any) => void
+    onDelete?: (record: any) => void
+    onStatusChange?: (record: any) => void
+}) => {
 
-    {
-        title: t('message.inputs.name'),
-        dataIndex: 'name',
-        align: 'center',
-        render: (name: string) => (
-            <span>{name || '-'}</span>
-        ),
-    },
+    const { t, i18n } = useTranslation()
 
-    /*
-    |--------------------------------------------------------------------------
-    | Message
-    |--------------------------------------------------------------------------
-    */
+    const isArabic = i18n.language === 'ar'
 
-    {
-        title: t('message.inputs.message'),
-        dataIndex: 'message',
-        align: 'center',
-        render: (message: string) => (
-            <div className="mx-auto max-w-md truncate">
-                {message || '-'}
-            </div>
-        ),
-    },
+    return [
+        /*
+        |--------------------------------------------------------------------------
+        | Name
+        |--------------------------------------------------------------------------
+        */
 
-    /*
-    |--------------------------------------------------------------------------
-    | Department
-    |--------------------------------------------------------------------------
-    */
+        {
+            title: t('message.inputs.name'),
+            dataIndex: 'name',
+            align: 'center',
 
-    {
-        title: t('message.inputs.department'),
-        dataIndex: 'department',
-        align: 'center',
-        render: (department: any) => (
-            <span>{department?.label || '-'}</span>
-        ),
-    },
+            render: (name: string) => (
+                <span>{name || '-'}</span>
+            ),
+        },
 
-    /*
-    |--------------------------------------------------------------------------
-    | Status
-    |--------------------------------------------------------------------------
-    */
+        /*
+        |--------------------------------------------------------------------------
+        | Message
+        |--------------------------------------------------------------------------
+        */
 
-    {
-        title: t('message.inputs.status'),
-        dataIndex: 'activated_at',
-        align: 'center',
-        render: (activatedAt: string | null) => (
-            <div className="flex justify-center">
-                <Tag color={activatedAt ? 'green' : 'red'} className="m-0">
-                    {activatedAt
-                        ? t('common.active')
-                        : t('common.inactive')}
-                </Tag>
-            </div>
-        ),
-    },
+        {
+            title: t('message.inputs.message'),
+            dataIndex: 'message',
+            align: 'center',
 
-    /*
-    |--------------------------------------------------------------------------
-    | Updated At
-    |--------------------------------------------------------------------------
-    */
+            render: (message: string) => (
+                <div className="mx-auto max-w-md truncate">
+                    {message || '-'}
+                </div>
+            ),
+        },
 
-    {
-        title: t('message.inputs.updatedAt'),
-        dataIndex: 'updated_at',
-        align: 'center',
-        render: (date: string) => formatDate(date, true),
-    },
+        /*
+        |--------------------------------------------------------------------------
+        | Department
+        |--------------------------------------------------------------------------
+        */
 
-    /*
-    |--------------------------------------------------------------------------
-    | Activated At
-    |--------------------------------------------------------------------------
-    */
+        {
+            title: t('message.inputs.department'),
+            dataIndex: 'department',
+            align: 'center',
 
-    {
-        title: t('message.inputs.activatedAt'),
-        dataIndex: 'activated_at',
-        align: 'center',
-        render: (date: string | null) =>
-            date ? formatDate(date, true) : '-',
-    },
+            render: (department: any) => {
+                const departmentName = isArabic
+                    ? department?.name_ar
+                    : department?.name_en
 
-    /*
-    |--------------------------------------------------------------------------
-    | Actions
-    |--------------------------------------------------------------------------
-    */
+                return (
+                    <span>
+                        {departmentName || '-'}
+                    </span>
+                )
+            },
+        },
 
-    {
-        title: t('common.actions'),
-        align: 'center',
+        /*
+        |--------------------------------------------------------------------------
+        | Status
+        |--------------------------------------------------------------------------
+        */
 
-        render: (_: any, record: any) => (
-            <div className="flex justify-center gap-1.5">
+        {
+            title: t('message.inputs.status'),
+            dataIndex: 'activated_at',
+            align: 'center',
 
-                {/* View */}
-                <Tooltip title={t('common.view')}>
-                    <button
-                        type="button"
-                        onClick={() => onView?.(record)}
-                        className="flex h-9 w-9 items-center justify-center rounded-lg text-text-secondary transition-all duration-200 hover:bg-brand-green/10 hover:text-brand-green active:scale-95"
+            render: (activatedAt: string | null) => (
+                <div className="flex justify-center">
+                    <Tag
+                        color={activatedAt ? 'green' : 'red'}
+                        className="m-0"
                     >
-                        <Eye size={17} strokeWidth={2} />
-                    </button>
-                </Tooltip>
+                        {activatedAt
+                            ? t('common.active')
+                            : t('common.inactive')}
+                    </Tag>
+                </div>
+            ),
+        },
 
-                {/* Activate / Deactivate */}
-                <Tooltip
-                    title={
-                        record.activated_at
-                            ? t('common.disable')
-                            : t('common.activate')
-                    }
-                >
-                    <button
-                        type="button"
-                        onClick={() => onStatusChange?.(record)}
-                        className={`flex h-9 w-9 items-center justify-center rounded-lg transition-all duration-200 active:scale-95 ${
-    record.activated_at
-        ? 'text-text-secondary hover:bg-amber-50 hover:text-amber-600 dark:hover:bg-amber-500/10 dark:hover:text-amber-400'
-        : 'text-text-secondary hover:bg-brand-green/10 hover:text-brand-green'
-}`}
+        /*
+        |--------------------------------------------------------------------------
+        | Updated At
+        |--------------------------------------------------------------------------
+        */
+
+        {
+            title: t('message.inputs.updatedAt'),
+            dataIndex: 'updated_at',
+            align: 'center',
+
+            render: (date: string) =>
+                formatDate(date, true),
+        },
+
+        /*
+        |--------------------------------------------------------------------------
+        | Activated At
+        |--------------------------------------------------------------------------
+        */
+
+        {
+            title: t('message.inputs.activatedAt'),
+            dataIndex: 'activated_at',
+            align: 'center',
+
+            render: (date: string | null) =>
+                date
+                    ? formatDate(date, true)
+                    : '-',
+        },
+
+        /*
+        |--------------------------------------------------------------------------
+        | Actions
+        |--------------------------------------------------------------------------
+        */
+
+        {
+            title: t('common.actions'),
+            align: 'center',
+
+            render: (_: any, record: any) => (
+                <div className="flex justify-center gap-1.5">
+
+                    {/* View */}
+                    <Tooltip title={t('common.view')}>
+                        <button
+                            type="button"
+                            onClick={() => onView?.(record)}
+                            className="flex h-9 w-9 items-center justify-center rounded-lg text-text-secondary transition-all duration-200 hover:bg-brand-green/10 hover:text-brand-green active:scale-95"
+                        >
+                            <Eye
+                                size={17}
+                                strokeWidth={2}
+                            />
+                        </button>
+                    </Tooltip>
+
+                    {/* Activate / Deactivate */}
+                    <Tooltip
+                        title={
+                            record.activated_at
+                                ? t('common.disable')
+                                : t('common.activate')
+                        }
                     >
-                        {record.activated_at ? (
-                            <Ban size={17} strokeWidth={2} />
-                        ) : (
-                            <CheckCircle2 size={18} strokeWidth={2} />
-                        )}
-                    </button>
-                </Tooltip>
+                        <button
+                            type="button"
+                            onClick={() =>
+                                onStatusChange?.(record)
+                            }
+                            className={`flex h-9 w-9 items-center justify-center rounded-lg transition-all duration-200 active:scale-95 ${
+                                record.activated_at
+                                    ? 'text-text-secondary hover:bg-amber-50 hover:text-amber-600 dark:hover:bg-amber-500/10 dark:hover:text-amber-400'
+                                    : 'text-text-secondary hover:bg-brand-green/10 hover:text-brand-green'
+                            }`}
+                        >
+                            {record.activated_at ? (
+                                <Ban
+                                    size={17}
+                                    strokeWidth={2}
+                                />
+                            ) : (
+                                <CheckCircle2
+                                    size={18}
+                                    strokeWidth={2}
+                                />
+                            )}
+                        </button>
+                    </Tooltip>
 
-                {/* Delete */}
-                <Tooltip title={t('common.delete')}>
-                    <button
-                        type="button"
-                        onClick={() => onDelete?.(record)}
-                        className="flex h-9 w-9 items-center justify-center rounded-lg text-text-secondary transition-all duration-200 hover:bg-red-50 hover:text-red-600 active:scale-95 dark:hover:bg-red-500/10 dark:hover:text-red-400"
-                    >
-                        <Trash2 size={17} strokeWidth={2} />
-                    </button>
-                </Tooltip>
+                    {/* Delete */}
+                    <Tooltip title={t('common.delete')}>
+                        <button
+                            type="button"
+                            onClick={() =>
+                                onDelete?.(record)
+                            }
+                            className="flex h-9 w-9 items-center justify-center rounded-lg text-text-secondary transition-all duration-200 hover:bg-red-50 hover:text-red-600 active:scale-95 dark:hover:bg-red-500/10 dark:hover:text-red-400"
+                        >
+                            <Trash2
+                                size={17}
+                                strokeWidth={2}
+                            />
+                        </button>
+                    </Tooltip>
 
-            </div>
-        ),
-    },
-]
-
+                </div>
+            ),
+        },
+    ]
+}

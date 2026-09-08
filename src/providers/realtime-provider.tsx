@@ -82,13 +82,13 @@ export default function RealtimeProvider({children,}: RealtimeProviderProps) {
             */
 
             published: (event: any) => {
-                const order = event?.order
+                const message = event?.message
 
-                if (!order) {
+                if (!message) {
                     return
                 }
 
-                dispatch(realtimeActions.realtimeMessageCreated(order))
+                dispatch(realtimeActions.realtimeMessageCreated(message))
             },
 
             /*

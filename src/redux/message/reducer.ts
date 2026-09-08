@@ -27,7 +27,7 @@ const MessageReducer = (
             data: undefined,
             err: undefined,
         }),
-        realtimeOrder: null,
+        realtimeMessage: null,
     },
     action: any,
 ) => {
@@ -45,7 +45,7 @@ const MessageReducer = (
         case actions.REALTIME_MESSAGE_CREATED:
             return {
                 ...state,
-                realtimeOrder: action.data,
+                realtimeMessage: action.data,
             }
 
         /*
