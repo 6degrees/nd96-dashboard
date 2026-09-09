@@ -133,7 +133,7 @@ export default function CrudPage(
     |--------------------------------------------------------------------------
     |
     */
-    const [isFilterVisible, setFilterVisible] = useState(true)
+    const [isFilterVisible, setFilterVisible] = useState(false)
 
     const [isCreateOpen, setCreateOpen] = useState(false)
 
@@ -234,22 +234,6 @@ export default function CrudPage(
         setSelectedItem(record)
         setEditOpen(true)
     }
-
-    React.useEffect(() => {
-        const mediaQuery = window.matchMedia('(min-width: 1024px)')
-
-        setFilterVisible(mediaQuery.matches)
-
-        const handleChange = (event: MediaQueryListEvent) => {
-            setFilterVisible(event.matches)
-        }
-
-        mediaQuery.addEventListener('change', handleChange)
-
-        return () => {
-            mediaQuery.removeEventListener('change', handleChange)
-        }
-    }, [])
 
     /*
     |--------------------------------------------------------------------------

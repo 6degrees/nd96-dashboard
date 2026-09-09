@@ -59,14 +59,13 @@ interface PageProps {
 */
 
 export default function Page({ id }: PageProps) {
-    const [timelineId, setTimelineId] = React.useState<string>('')
+    const [timelineId, setTimelineId] = React.useState<string>(id)
 
     /*
     |--------------------------------------------------------------------------
     | Resolve Route Params
     |--------------------------------------------------------------------------
     */
-
     React.useEffect(() => {
         setTimelineId(id)
     }, [id])
