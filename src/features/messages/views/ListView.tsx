@@ -333,7 +333,7 @@ export default function Page() {
                                 {selectedMessage.signature ? (
                                     <div className="text-sm font-medium text-text-primary">
                                         <img
-                                            src={selectedMessage.signature}
+                                            src={selectedMessage.signature.url}
                                             alt={t('message.inputs.signature')}
                                             className="max-h-24 max-w-full object-contain"
                                         />
