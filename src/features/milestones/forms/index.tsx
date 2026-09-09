@@ -84,7 +84,7 @@ interface TimelineMilestoneFormProps extends FormProps {
 |
 */
 
-export default function TimelineMilestoneForm({onSubmit, data, isEdit = false, timelineId,}: TimelineMilestoneFormProps) {
+export default function TimelineMilestoneForm({onSubmit, data, isEdit = false, timelineId}: TimelineMilestoneFormProps) {
     /*
     |--------------------------------------------------------------------------
     | Translation
@@ -166,12 +166,7 @@ export default function TimelineMilestoneForm({onSubmit, data, isEdit = false, t
     */
 
     const handleSubmit = (values: any) => {
-
-        onSubmit({
-            ...values,
-
-            timeline_id: timelineId,
-        })
+        onSubmit({...values, timeline_id: timelineId,})
     }
 
     /*

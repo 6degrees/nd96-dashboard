@@ -45,6 +45,8 @@ interface CrudPageProps {
 
     api: any
 
+    formProps?: Record<string, any>
+
     filters?: React.ReactNode
 
     actions?: (props: {
@@ -94,6 +96,7 @@ export default function CrudPage(
         className = 'p-1 sm:p-3 lg:p-8 min-h-screen',
         columns,
         Form,
+        formProps,
         api,
         filters,
         actions,
@@ -275,6 +278,7 @@ export default function CrudPage(
 
                 <Form
                     onSubmit={handleCreate}
+                    {...formProps}
                 />
             </AppDrawer>
 
@@ -289,6 +293,7 @@ export default function CrudPage(
                     data={selectedItem}
 
                     onSubmit={handleUpdate}
+                    {...formProps}
                 />
             </AppDrawer>
 

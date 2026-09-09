@@ -40,7 +40,7 @@ import { useCollections } from '@/features/timelines/hooks'
 |
 */
 
-import RegionForm from '@/features/timelines/forms'
+import TimelineForm from '@/features/timelines/forms'
 
 /*
 |--------------------------------------------------------------------------
@@ -78,17 +78,7 @@ export default function Page() {
     |
     */
 
-    const {
-        list,
-        loading,
-        page,
-        setPage,
-        limit,
-        setLimit,
-        filters,
-        setFilters,
-        handleSearch,
-    } = useCollections()
+    const {list, loading, page, setPage, limit, setLimit, filters, setFilters, handleSearch,} = useCollections()
 
     /*
     |--------------------------------------------------------------------------
@@ -167,7 +157,7 @@ export default function Page() {
 
                 columns={Columns}
 
-                Form={RegionForm}
+                Form={TimelineForm}
 
                 api={api}
 
