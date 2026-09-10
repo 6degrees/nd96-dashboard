@@ -243,5 +243,33 @@
     "messagePublished": "تم نشر رسالة جديدة",
     "messagePublishedDescription": "تم نشر رسالة جديدة من {{name}}",
     "newMessageReceived": "تم استلام رسالة جديدة"
+  },
+  "notification": {
+    "title": "إدارة الإشعارات",
+    "unread": "غير مقروءة",
+    "read": "مقروءة",
+    "new": "تنبيهات جديدة",
+    "view_all": "عرض كل الاشعارات",
+    "empty": "لا توجد اشعارات",
+    "inputs": {
+      "id": "المعرف",
+      "type": "نوع الإشعار",
+      "message": "الرسالة",
+      "key": "مفتاح الترجمة",
+      "url": "الرابط",
+      "readAt": "حالة القراءة",
+      "createdAt": "تاريخ الإنشاء",
+      "updatedAt": "تاريخ التحديث"
+    },
+    "stats": {
+      "total": "إجمالي الإشعارات",
+      "totalDescription": "إجمالي الإشعارات",
+      "sent": "تم الإرسال",
+      "sentDescription": "إشعارات تم إرسالها بنجاح",
+      "pending": "قيد الانتظار",
+      "pendingDescription": "إشعارات بانتظار الإرسال",
+      "failed": "فشل الإرسال",
+      "failedDescription": "إشعارات لم يتم إرسالها"
+    }
   }
 }

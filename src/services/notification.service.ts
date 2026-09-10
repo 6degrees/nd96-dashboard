@@ -8,7 +8,7 @@ export const notificationService = {
     | CRUD
     |--------------------------------------------------------------------------
     */
-    ...createCrudService<Notification, NotificationFilters>('/api/v1/tenants/{{tenant}}/notifications/'),
+    ...createCrudService<Notification, NotificationFilters>('/api/v1/notifications/'),
 
     /*
     |--------------------------------------------------------------------------
@@ -16,7 +16,7 @@ export const notificationService = {
     |--------------------------------------------------------------------------
     */
     async markAsRead() {
-        const res = await httpClient.post<Notification>(`/api/v1/tenants/{{tenant}}/notifications/mark-all-as-read`, {})
+        const res = await httpClient.post<Notification>(`/api/v1/notifications/mark-all-as-read`, {})
         return res.data
     },
 }

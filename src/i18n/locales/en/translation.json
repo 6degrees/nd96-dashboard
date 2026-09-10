@@ -239,5 +239,33 @@
     "messagePublished": "New message published",
     "messagePublishedDescription": "A new message was published by {{name}}",
     "newMessageReceived": "You received a new message"
+  },
+  "notification": {
+    "title": "Notification Management",
+    "unread": "Unread",
+    "read": "Read",
+    "new": "New Alerts",
+    "view_all": "View All Notifications",
+    "empty": "No notifications",
+    "inputs": {
+      "id": "ID",
+      "type": "Notification Type",
+      "message": "Message",
+      "key": "Translation Key",
+      "url": "URL",
+      "readAt": "Read Status",
+      "createdAt": "Created At",
+      "updatedAt": "Updated At"
+    },
+    "stats": {
+      "total": "Total Notifications",
+      "totalDescription": "Total notifications",
+      "sent": "Sent",
+      "sentDescription": "Notifications sent successfully",
+      "pending": "Pending",
+      "pendingDescription": "Notifications waiting to be sent",
+      "failed": "Failed",
+      "failedDescription": "Notifications that failed to send"
+    }
   }
 }
