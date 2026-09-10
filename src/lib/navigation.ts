@@ -5,6 +5,7 @@ import {
     Landmark,
     MessagesSquare,
     MonitorCog,
+    Bell,
     type LucideIcon,
 } from 'lucide-react'
 
@@ -68,15 +69,15 @@ export const navigation: NavigationGroup[] = [
 
     /*
     |--------------------------------------------------------------------------
-    | Users
+    | Management
     |--------------------------------------------------------------------------
     */
 
     {
-        key: 'users',
+        key: 'management',
         title: {
-            en: 'Users',
-            ar: 'المستخدمون',
+            en: 'Management',
+            ar: 'الإدارة',
         },
         items: [
             {
@@ -88,22 +89,6 @@ export const navigation: NavigationGroup[] = [
                 href: '/dashboard/users',
                 icon: UsersRound,
             },
-        ],
-    },
-
-    /*
-    |--------------------------------------------------------------------------
-    | Departments
-    |--------------------------------------------------------------------------
-    */
-
-    {
-        key: 'departments',
-        title: {
-            en: 'Departments',
-            ar: 'الإدارات',
-        },
-        items: [
             {
                 key: 'departments',
                 label: {
@@ -113,22 +98,6 @@ export const navigation: NavigationGroup[] = [
                 href: '/dashboard/departments',
                 icon: Building2,
             },
-        ],
-    },
-
-    /*
-    |--------------------------------------------------------------------------
-    | Screens
-    |--------------------------------------------------------------------------
-    */
-
-    {
-        key: 'screens',
-        title: {
-            en: 'Screens',
-            ar: 'الشاشات',
-        },
-        items: [
             {
                 key: 'screens',
                 label: {
@@ -137,6 +106,41 @@ export const navigation: NavigationGroup[] = [
                 },
                 href: '/dashboard/screens',
                 icon: MonitorCog,
+            },
+        ],
+    },
+
+    /*
+    |--------------------------------------------------------------------------
+    | Communication
+    |--------------------------------------------------------------------------
+    */
+
+    {
+        key: 'communication',
+        title: {
+            en: 'Communication',
+            ar: 'التواصل',
+        },
+        items: [
+            {
+                key: 'messages',
+                label: {
+                    en: 'Messages',
+                    ar: 'الرسائل',
+                },
+                href: '/dashboard/messages',
+                icon: MessagesSquare,
+            },
+            {
+                key: 'notifications',
+                label: {
+                    en: 'Notifications',
+                    ar: 'الإشعارات',
+                },
+                href: '/dashboard/notifications',
+                icon: Bell,
+                badge: '0',
             },
         ],
     },
@@ -165,30 +169,4 @@ export const navigation: NavigationGroup[] = [
             },
         ],
     },
-
-    /*
-    |--------------------------------------------------------------------------
-    | Messages
-    |--------------------------------------------------------------------------
-    */
-
-    {
-        key: 'messages',
-        title: {
-            en: 'Messages',
-            ar: 'الرسائل',
-        },
-        items: [
-            {
-                key: 'messages',
-                label: {
-                    en: 'Messages',
-                    ar: 'الرسائل',
-                },
-                href: '/dashboard/messages',
-                icon: MessagesSquare,
-            },
-        ],
-    },
 ]
-
