@@ -49,8 +49,7 @@ export default function ResetPassword() {
             title={t("auth.resetPasswordPage.title")}
             subtitle={t("auth.login.subtitle")}
             heroTitle={t("auth.login.heroTitle")}
-            heroSubtitle={t("auth.login.heroSubtitle")}
-            stats={statsData}>
+            heroSubtitle={t("auth.login.heroSubtitle")}>
 
             {/*
             |--------------------------------------------------------------------------

@@ -46,8 +46,7 @@ export default function ForgotPassword() {
             title={t("auth.forgotPasswordPage.title")}
             subtitle={t("auth.forgotPasswordPage.description")}
             heroTitle={t("auth.login.heroTitle")}
-            heroSubtitle={t("auth.login.heroSubtitle")}
-            stats={statsData}>
+            heroSubtitle={t("auth.login.heroSubtitle")}>
 
             {/*
             |--------------------------------------------------------------------------

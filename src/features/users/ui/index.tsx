@@ -1,5 +1,5 @@
 export { Filters } from './filters'
 export { Columns } from './columns'
 export { Actions } from './actions'
-export { UserDropdown, RoleDropdown } from './dropdowns'
-export { UserDropdownFormItem, RoleDropdownFormItem } from './formItems'
+export { UserDropdown } from './dropdowns'
+export { UserDropdownFormItem } from './formItems'
