@@ -1532,3 +1532,18 @@ html[lang="ar"] .swal2-popup * {
         font-size: 12px;
     }
 }
+
+
+.modern-table .ant-table,
+.modern-table .ant-table-thead > tr > th,
+.modern-table .ant-table-tbody > tr > td {
+    @apply text-xs;
+}
+
+@media (min-width: 1024px) {
+    .modern-table .ant-table,
+    .modern-table .ant-table-thead > tr > th,
+    .modern-table .ant-table-tbody > tr > td {
+        @apply text-base;
+    }
+}
