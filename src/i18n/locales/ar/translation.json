@@ -86,7 +86,8 @@
       "usernameOrEmail": "البريد الإلكتروني",
       "usernameOrEmailPlaceholder": "",
       "submit": "إرسال رابط إعادة تعيين كلمة المرور",
-      "backToLogin": "العودة إلى تسجيل الدخول"
+      "backToLogin": "العودة إلى تسجيل الدخول",
+      "instructionsSent": "تم إرسال تعليمات إعادة تعيين كلمة المرور إلى بريدك الإلكتروني."
     },
     "resetPasswordPage": {
       "title": "إعادة تعيين كلمة المرور",

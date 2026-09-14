@@ -87,6 +87,7 @@ const ResetPasswordForm = () => {
     |
     */
     useEffect(() => {
+        console.log(email)
         if (email) {
             form.setFieldsValue({
                 email,
@@ -109,22 +110,11 @@ const ResetPasswordForm = () => {
             onFinish={handleResetPassword}
             layout="vertical"
             initialValues={{
-                email: email || '',
                 otp: otp || '',
                 code: '0000',
                 password: '',
                 password_confirmation: '',
             }}>
-
-            {/*
-            |--------------------------------------------------------------------------
-            | Hidden Code
-            |--------------------------------------------------------------------------
-            |
-            | Internal code value required by the reset password request.
-            |
-            */}
-            <HiddenFormItem name="code" />
 
             {/*
             |--------------------------------------------------------------------------

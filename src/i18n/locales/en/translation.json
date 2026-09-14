@@ -86,7 +86,8 @@
       "usernameOrEmail": "Email Address",
       "usernameOrEmailPlaceholder": "",
       "submit": "Send Password Reset Link",
-      "backToLogin": "Back to Sign In"
+      "backToLogin": "Back to Sign In",
+      "instructionsSent": "Password reset instructions have been sent to your email."
     },
     "resetPasswordPage": {
       "title": "Reset Password",

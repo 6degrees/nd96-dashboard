@@ -58,35 +58,61 @@ const EmailFormItem = (
             hidden={hidden}
             rules={[
                 ...rules,
+
                 emailRule(
                     t('validation.requiredEmail'),
                 ),
             ].map((rule) => {
                 const baseRule = { ...rule } as any
-
-                return {
-                    ...baseRule,
+                return {...baseRule,
                     message: baseRule.message
                         ? t(baseRule.message)
                         : baseRule.message,
                 }
             })}
-            className="identity-form-item mb-0"
-        >
-            <div className="identity-input-wrapper">
-                <span className="identity-input-corner identity-input-corner-tl" />
-                <span className="identity-input-corner identity-input-corner-tr" />
-                <span className="identity-input-corner identity-input-corner-bl" />
-                <span className="identity-input-corner identity-input-corner-br" />
+            className="
+                [&>div>div>label]:text-sm
+                [&>div>div>label]:font-medium
 
-                <Input
-                    type="email"
-                    placeholder={placeholder ? t(placeholder) : undefined}
-                    readOnly={readOnly}
-                    hidden={hidden}
-                    className="identity-input"
-                />
-            </div>
+                [&>div>div>label]:text-dark
+                dark:[&>div>div>label]:text-white/60
+            "
+        >
+
+            <Input
+                type="email"
+                placeholder={placeholder ? t(placeholder) : undefined}
+                readOnly={readOnly}
+                hidden={hidden}
+                className="
+                    h-10
+                    rounded-2xl
+
+                    border
+                    border-slate-200
+                    bg-white
+
+                    px-5
+
+                    text-base
+                    font-medium
+                    text-slate-700
+                    placeholder:text-slate-400
+
+                    transition-colors
+                    duration-200
+
+                    hover:border-slate-300
+                    focus:border-primary/500
+                    focus:shadow-none
+                    focus:ring-0
+
+                    dark:bg-slate-900
+                    dark:border-slate-700
+                    dark:text-white
+                "
+            />
+
         </Form.Item>
     )
 }
