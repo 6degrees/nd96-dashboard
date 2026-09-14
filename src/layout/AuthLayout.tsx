@@ -333,7 +333,7 @@ export default function AuthLayout({ title, subtitle, heroTitle, heroSubtitle, c
 
                                     <span className="h-1.5 w-1.5 bg-brand-lime" />
 
-                                    <span className="text-[9px] font-bold uppercase tracking-[0.16em] text-text-muted">
+                                    <span className="text-md font-bold uppercase tracking-[0.16em] text-text-muted dark:text-white">
                                             {t('auth.footer.company')}
                                         </span>
 
@@ -341,13 +341,13 @@ export default function AuthLayout({ title, subtitle, heroTitle, heroSubtitle, c
 
                                 <div className="flex items-center gap-2">
 
-                                    <span className="font-en text-lg font-black leading-none text-brand-primary">
+                                    <span className="font-en text-lg font-black leading-none text-brand-primary dark:text-white">
                                         96
                                     </span>
 
                                     <span className="h-4 w-1 bg-brand-lime" />
 
-                                    <span className="font-brand text-[10px] font-bold text-text-secondary sm:text-xs">
+                                    <span className="font-brand text-md font-bold text-text-secondary dark:text-white">
                                             {t('auth.hero.slogan')}
                                     </span>
 
