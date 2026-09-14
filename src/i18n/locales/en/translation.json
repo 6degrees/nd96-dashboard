@@ -83,8 +83,8 @@
     "forgotPasswordPage": {
       "title": "Reset Your Password",
       "description": "Enter the username or email address associated with your account, and we’ll send you a link to reset your password.",
-      "usernameOrEmail": "Username or Email Address",
-      "usernameOrEmailPlaceholder": "Enter the username or email address associated with your account",
+      "usernameOrEmail": "Email Address",
+      "usernameOrEmailPlaceholder": "",
       "submit": "Send Password Reset Link",
       "backToLogin": "Back to Sign In"
     },
