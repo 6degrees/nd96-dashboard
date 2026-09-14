@@ -58,6 +58,7 @@ import {
 import {useTranslation} from "react-i18next";
 import {RootState} from "@/redux/store";
 import {useSelector} from "react-redux";
+import {renderEmoji} from "@/utils/helpers";
 
 /*
 |--------------------------------------------------------------------------
@@ -317,9 +318,9 @@ export default function Page() {
                                 <div className="relative overflow-hidden rounded-2xl border border-border bg-bg-secondary p-5">
                                     <div className="absolute start-0 top-0 h-full w-1 rounded-full bg-brand-green" />
 
-                                    <p className="whitespace-pre-wrap break-words text-sm leading-8 text-text-primary">
-                                        {selectedMessage.message || '-'}
-                                    </p>
+                                    <p className="whitespace-pre-wrap break-words text-sm leading-8 text-text-primary emoji-text"
+                                        dangerouslySetInnerHTML={renderEmoji(selectedMessage.message || '-')}
+                                    />
                                 </div>
                             </div>
 

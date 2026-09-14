@@ -1545,3 +1545,10 @@ html[lang="ar"] .swal2-popup * {
     margin: 0 1px;
     vertical-align: -0.2em;
 }
+
+.emoji-text img.emoji {
+    display: inline-block !important;
+    width: 1.2em;
+    height: 1.2em;
+    vertical-align: -0.2em;
+}

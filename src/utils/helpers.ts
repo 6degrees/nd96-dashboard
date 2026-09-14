@@ -244,16 +244,17 @@ export const formatDate = (dateInput?: string | Date | number, includeTime: bool
 
 /*
 |--------------------------------------------------------------------------
-| Format Date
+| render Emoji
 |--------------------------------------------------------------------------
 |
-| Formats date input string/timestamp into localized standard representation.
+| ender Emoji into Emoji standard representation.
 |
 */
 export function renderEmoji(text: string) {
     return {
-        __html: twemoji.parse(text),
-        folder: 'svg',
-        ext: '.svg',
+        __html: twemoji.parse(text, {
+            folder: 'svg',
+            ext: '.svg',
+        }),
     };
 }
