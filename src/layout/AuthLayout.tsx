@@ -82,7 +82,7 @@ export default function AuthLayout({ title, subtitle, heroTitle, heroSubtitle, c
                 */}
                 <button type="button" onClick={toggleLanguage} aria-label={t('auth.changeLanguage')} className={`absolute inset-x-0 top-0 z-50 flex h-[40px] items-center bg-brand-primary px-8 text-sm font-bold text-white transition hover:bg-brand-primary/95 lg:inset-x-auto lg:top-6 lg:h-auto lg:w-auto lg:border lg:border-border-default lg:bg-surface-card lg:px-3 lg:py-2 lg:text-xs lg:text-text-primary lg:shadow-sm lg:hover:border-brand-green lg:hover:bg-surface-card lg:hover:text-brand-green ${isRtl ? 'justify-start lg:left-5 lg:justify-center' : 'justify-start lg:right-5 lg:justify-center'}`}>
                     <Globe size={15} strokeWidth={1.8} className="hidden lg:block" />
-                    <span>{isRtl ? t('auth.language.english') : t('auth.language.arabic')}</span>
+                    <span className={isRtl ? 'ms-5 font-en text-md' : 'ms-5 font-ar text-lg'}>{isRtl ? t('auth.language.english') : t('auth.language.arabic')}</span>
                 </button>
 
                 {/*

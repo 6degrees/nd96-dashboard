@@ -128,7 +128,7 @@ const SignInForm = () => {
             */}
             <div className="flex items-center">
                 <label htmlFor="remember" className="identity-checkbox-label">
-                    <input type="checkbox" id="remember" name="remember" className="identity-checkbox" />
+                    <input type="checkbox" id="remember" name="remember" className="identity-checkbox" defaultChecked/>
                     <span className="identity-checkbox-box">
                         <span className="identity-checkbox-mark" />
                     </span>
