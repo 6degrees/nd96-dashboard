@@ -1,5 +1,6 @@
 
 import {toast} from "@/lib/toast/toast";
+import twemoji from 'twemoji';
 
 /*
 |--------------------------------------------------------------------------
@@ -239,4 +240,20 @@ export const formatDate = (dateInput?: string | Date | number, includeTime: bool
     }
 
     return new Intl.DateTimeFormat(locale, options).format(date)
+}
+
+/*
+|--------------------------------------------------------------------------
+| Format Date
+|--------------------------------------------------------------------------
+|
+| Formats date input string/timestamp into localized standard representation.
+|
+*/
+export function renderEmoji(text: string) {
+    return {
+        __html: twemoji.parse(text),
+        folder: 'svg',
+        ext: '.svg',
+    };
 }

@@ -8,6 +8,7 @@ import {
 
 import { formatDate } from '@/utils/formatDate'
 import { useTranslation } from 'react-i18next'
+import {renderEmoji} from "@/utils/helpers";
 
 /*
 |--------------------------------------------------------------------------
@@ -54,9 +55,11 @@ export const Columns = ({onView, onDelete, onStatusChange,}: {
             align: 'center',
 
             render: (message: string) => (
-                <div className="mx-auto max-w-md truncate">
-                    {message || '-'}
-                </div>
+                <div
+                    className="mx-auto max-w-md truncate whitespace-nowrap emoji-text"
+                    dir="auto"
+                    dangerouslySetInnerHTML={renderEmoji(message || '-')}
+                />
             ),
         },
 
