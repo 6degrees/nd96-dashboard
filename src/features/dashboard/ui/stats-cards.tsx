@@ -1,5 +1,8 @@
+'use client'
+
 import React from 'react'
 import { useTranslation } from 'react-i18next'
+
 import {
     Users,
     MessageSquare,
@@ -23,12 +26,24 @@ interface StatsCardsProps {
 | UI Component: Dashboard Stats Cards
 |--------------------------------------------------------------------------
 |
-| Displays the main dashboard statistics using the application
-| brand design tokens for both light and dark modes.
+| Responsive behavior:
 |
+| Mobile:
+| - 2 cards per row.
+|
+| Tablet:
+| - 2 cards per row.
+|
+| Desktop:
+| - 4 cards per row.
+|
+|--------------------------------------------------------------------------
 */
 
-export function StatsCards({stats, loading,}: StatsCardsProps) {
+export function StatsCards({
+                               stats,
+                               loading,
+                           }: StatsCardsProps) {
     /*
     |--------------------------------------------------------------------------
     | Hooks
@@ -62,7 +77,17 @@ export function StatsCards({stats, loading,}: StatsCardsProps) {
     */
 
     return (
-        <div className="mb-8 grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
+        <div
+            className="
+                mb-8
+                grid
+                grid-cols-2
+                gap-3
+                sm:grid-cols-2
+                sm:gap-6
+                xl:grid-cols-4
+            "
+        >
 
             {/* ================================================================
                 Users
@@ -148,17 +173,15 @@ function StatCard({
     |--------------------------------------------------------------------------
     | Tone Configuration
     |--------------------------------------------------------------------------
-    |
-    | Uses the application's CSS design tokens instead of Tailwind's
-    | default color palette.
-    |
     */
 
     const tones = {
         purple: {
             color: 'var(--brand-purple)',
-            background: 'color-mix(in srgb, var(--brand-purple) 8%, transparent)',
-            border: 'color-mix(in srgb, var(--brand-purple) 22%, var(--color-border-light))',
+            background:
+                'color-mix(in srgb, var(--brand-purple) 8%, transparent)',
+            border:
+                'color-mix(in srgb, var(--brand-purple) 22%, var(--color-border-light))',
         },
 
         green: {
@@ -194,15 +217,17 @@ function StatCard({
                 group
                 relative
                 overflow-hidden
-                rounded-[var(--radius-xl)]
+                rounded-2xl
                 border
                 bg-[var(--color-surface-card)]
-                p-5
+                p-4
                 shadow-[var(--shadow-sm)]
                 transition-all
                 duration-200
                 hover:-translate-y-0.5
                 hover:shadow-[var(--shadow-md)]
+                sm:rounded-3xl
+                sm:p-6
             "
             style={{
                 borderColor: currentTone.border,
@@ -213,23 +238,31 @@ function StatCard({
                 Top Section
             ================================================================= */}
 
-            <div className="flex items-start justify-between gap-4">
+            <div
+                className="
+                    flex
+                    items-center
+                    justify-between
+                    gap-2
+                "
+            >
 
                 {/* Icon */}
 
                 <div
                     className="
                         flex
-                        h-11
-                        w-11
+                        size-10
                         shrink-0
                         items-center
                         justify-center
-                        rounded-[var(--radius-lg)]
+                        rounded-xl
                         border
                         transition-transform
                         duration-200
                         group-hover:scale-105
+                        sm:size-12
+                        sm:rounded-2xl
                     "
                     style={{
                         color: currentTone.color,
@@ -237,27 +270,32 @@ function StatCard({
                         borderColor: currentTone.border,
                     }}
                 >
-                    <Icon className="h-5 w-5" strokeWidth={1.8} />
+                    <Icon
+                        className="
+                            size-5
+                            sm:size-6
+                        "
+                        strokeWidth={1.8}
+                    />
                 </div>
 
                 {/* Title */}
 
                 <div className="min-w-0 flex-1 text-end">
-
                     <p
                         className="
+                            min-w-0
                             truncate
-                            text-sm
-                            font-semibold
-                            leading-6
+                            text-[11px]
+                            font-bold
+                            leading-5
+                            text-slate-400
+                            sm:text-xs
+                            dark:text-neutral-500
                         "
-                        style={{
-                            color: 'var(--color-text-secondary)',
-                        }}
                     >
                         {title}
                     </p>
-
                 </div>
 
             </div>
@@ -266,27 +304,28 @@ function StatCard({
                 Value
             ================================================================= */}
 
-            <div className="mt-7">
-
+            <div className="mt-5 sm:mt-7">
                 <div
                     className="
-                        text-3xl
-                        font-bold
-                        tracking-tight
+                        text-2xl
+                        font-extrabold
                         leading-none
+                        tracking-tight
+                        text-slate-900
+                        sm:text-4xl
+                        dark:text-neutral-100
                     "
-                    style={{
-                        color: 'var(--color-text-primary)',
-                    }}
                 >
                     {loading ? (
                         <span
                             className="
                                 inline-block
-                                h-8
-                                w-12
+                                h-7
+                                w-10
                                 animate-pulse
                                 rounded-md
+                                sm:h-8
+                                sm:w-12
                             "
                             style={{
                                 backgroundColor:
@@ -297,27 +336,25 @@ function StatCard({
                         value
                     )}
                 </div>
-
             </div>
 
             {/* ================================================================
                 Description
             ================================================================= */}
 
-            <div className="mt-3">
-
+            <div className="mt-2 sm:mt-3">
                 <p
                     className="
-                        text-xs
+                        text-[10px]
                         font-medium
+                        leading-5
+                        text-slate-500
+                        sm:text-xs
+                        dark:text-neutral-400
                     "
-                    style={{
-                        color: 'var(--color-text-muted)',
-                    }}
                 >
                     {label}
                 </p>
-
             </div>
 
             {/* ================================================================

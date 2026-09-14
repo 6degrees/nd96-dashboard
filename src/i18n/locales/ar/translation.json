@@ -204,10 +204,20 @@
       "noData": "لا توجد بيانات متاحة"
     },
     "weekly_messages": {
-      "title": "الرسائل خلال الأسبوع",
-      "subtitle": "عدد الرسائل المضافة خلال آخر 7 أيام",
+      "title": "الرسائل الأسبوعية",
+      "subtitle": "عدد الرسائل خلال آخر 7 أيام",
       "messageCount": "رسالة",
-      "series": "الرسائل"
+      "series": "الرسائل",
+      "empty": "لا توجد بيانات متاحة",
+      "days": {
+        "sunday": "الأحد",
+        "monday": "الإثنين",
+        "tuesday": "الثلاثاء",
+        "wednesday": "الأربعاء",
+        "thursday": "الخميس",
+        "friday": "الجمعة",
+        "saturday": "السبت"
+      }
     },
     "department_participation": {
       "title": "توزيع الرسائل حسب الإدارات",

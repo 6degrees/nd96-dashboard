@@ -83,7 +83,7 @@ export default function DashboardPage() {
     */
 
     return (
-        <div className="min-h-screen p-6 transition-colors duration-200 lg:p-8">
+        <div className="min-h-screen p-2 lg:p-6 transition-colors duration-200">
 
             {/*
             |--------------------------------------------------------------------------

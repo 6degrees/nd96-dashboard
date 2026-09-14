@@ -73,26 +73,26 @@ export default function LanguageSwitcher() {
         <button
             type="button"
             onClick={handleChangeLanguage}
-            className="
-                inline-flex
-                h-10
-                items-center
-                gap-2
-                rounded-full
-                border
-                border-border
-                bg-background
-                px-4
-                text-sm
-                font-semibold
-                transition-all
-                duration-200
-                hover:bg-accent
-                hover:shadow-sm
-                active:scale-95
-            "
-        >
-            <Globe className="size-4 text-violet-600" />
+            className={`
+            inline-flex
+            h-10
+            items-center
+            gap-2
+            rounded-full
+            border
+            border-border
+            bg-background
+            px-4
+            font-semibold
+            transition-all
+            duration-200
+            hover:bg-accent
+            hover:shadow-sm
+            active:scale-95
+            ${i18n.language === 'en' ? 'font-brand text-lg' : 'font-en text-sm'}
+           `}
+            >
+            <Globe className="size-4 text-primary" />
 
             <span>
                 {(localStorage.getItem('language') || i18n.language) === 'en' ? 'العربية' : 'English'}

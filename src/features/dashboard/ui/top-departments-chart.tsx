@@ -11,7 +11,9 @@ import {
     CartesianGrid,
     Tooltip,
     Cell,
+    LabelList,
 } from 'recharts'
+import i18n from "@/i18n";
 
 /*
 |--------------------------------------------------------------------------
@@ -33,25 +35,46 @@ interface TopDepartmentsChartProps {
 
 /*
 |--------------------------------------------------------------------------
+| Custom Label
+|--------------------------------------------------------------------------
+*/
+
+function CustomBarLabel(props: any) {
+    const { x, y, width, height, value } = props
+    const isArabic = i18n.language === 'ar'
+
+    if (!value || !width || width < 45) return null
+
+    return (
+        <text
+            x={x + 10}
+            y={y + height / 2}
+            dominantBaseline="middle"
+            textAnchor={isArabic ? 'end' : 'start'}
+            fill="#000"
+            fontSize={12}
+            fontWeight={500}
+        >
+            {value}
+        </text>
+    )
+}
+
+/*
+|--------------------------------------------------------------------------
 | Component
 |--------------------------------------------------------------------------
 */
 
 export function TopDepartmentsChart({departments = [], loading = false,}: TopDepartmentsChartProps) {
     const { t, i18n } = useTranslation()
-
     const isArabic = i18n.language === 'ar'
 
     /*
     |--------------------------------------------------------------------------
     | Top 5 Departments
     |--------------------------------------------------------------------------
-    |
-    | Sort departments by message count and display only
-    | the five departments with the highest participation.
-    |
     */
-
     const data = [...departments]
         .sort((a, b) => b.total - a.total)
         .slice(0, 5)
@@ -70,12 +93,12 @@ export function TopDepartmentsChart({departments = [], loading = false,}: TopDep
     */
 
     const rankingColors = [
-        '#C49B54', // Gold
-        '#0050AF', // Blue
-        '#6565E0', // Purple
-        '#00894A', // Green
-        '#E58A2B', // Orange
-    ]
+        '#0F766E', // Deep Teal
+        '#2563EB', // Modern Blue
+        '#7C3AED', // Violet
+        '#DB2777', // Pink
+        '#EA580C', // Orange
+    ];
 
     /*
     |--------------------------------------------------------------------------
@@ -85,19 +108,11 @@ export function TopDepartmentsChart({departments = [], loading = false,}: TopDep
 
     if (loading) {
         return (
-            <div className="
-                rounded-2xl
-                border border-border-light
-                bg-surface-card
-                p-6
-                shadow-sm
-            ">
+            <div className="rounded-2xl border border-border-light bg-surface-card p-4 shadow-sm sm:p-6">
                 <div className="animate-pulse space-y-5">
-
                     <div className="h-5 w-48 rounded-lg bg-surface-muted" />
 
                     <div className="h-[280px] rounded-xl bg-surface-muted" />
-
                 </div>
             </div>
         )
@@ -111,16 +126,8 @@ export function TopDepartmentsChart({departments = [], loading = false,}: TopDep
 
     if (!data.length) {
         return (
-            <div className="
-                rounded-2xl
-                border border-border-light
-                bg-surface-card
-                p-6
-                shadow-sm
-            ">
-
+            <div className="rounded-2xl border border-border-light bg-surface-card p-4 shadow-sm sm:p-6">
                 <div className="mb-6">
-
                     <h2 className="text-base font-bold text-text-primary">
                         {t('dashboard.top_departments.title')}
                     </h2>
@@ -128,22 +135,11 @@ export function TopDepartmentsChart({departments = [], loading = false,}: TopDep
                     <p className="mt-1 text-sm text-text-muted">
                         {t('dashboard.top_departments.subtitle')}
                     </p>
-
                 </div>
 
-                <div className="
-                    flex
-                    h-[280px]
-                    items-center
-                    justify-center
-                    rounded-xl
-                    bg-surface-soft
-                    text-sm
-                    text-text-muted
-                ">
+                <div className="flex h-[280px] items-center justify-center rounded-xl bg-surface-soft text-sm text-text-muted">
                     {t('common.noData')}
                 </div>
-
             </div>
         )
     }
@@ -155,20 +151,10 @@ export function TopDepartmentsChart({departments = [], loading = false,}: TopDep
     */
 
     return (
-        <div className="
-            rounded-2xl
-            border border-border-light
-            bg-surface-card
-            p-6
-            shadow-sm
-        ">
-
-            {/* -------------------------------------------------------------- */}
+        <div className="min-w-0 rounded-2xl border border-border-light bg-surface-card p-4 shadow-sm sm:p-6">
             {/* Header */}
-            {/* -------------------------------------------------------------- */}
 
-            <div className="mb-6">
-
+            <div className="mb-5 sm:mb-6">
                 <h2 className="text-base font-bold text-text-primary">
                     {t('dashboard.top_departments.title')}
                 </h2>
@@ -176,28 +162,23 @@ export function TopDepartmentsChart({departments = [], loading = false,}: TopDep
                 <p className="mt-1 text-sm text-text-muted">
                     {t('dashboard.top_departments.subtitle')}
                 </p>
-
             </div>
 
-            {/* -------------------------------------------------------------- */}
             {/* Chart */}
-            {/* -------------------------------------------------------------- */}
 
-            <div className="h-[280px] w-full">
-
+            <div className="h-[250px] w-full min-w-0 sm:h-[280px]">
                 <ResponsiveContainer width="100%" height="100%">
-
                     <BarChart
                         data={data}
                         layout="vertical"
                         margin={{
                             top: 5,
                             right: 10,
-                            left: 10,
+                            left: 0,
                             bottom: 5,
                         }}
+                        barCategoryGap="25%"
                     >
-
                         <CartesianGrid
                             horizontal={false}
                             stroke="var(--color-border-light)"
@@ -217,14 +198,10 @@ export function TopDepartmentsChart({departments = [], loading = false,}: TopDep
                         <YAxis
                             type="category"
                             dataKey="name"
-                            width={110}
+                            width={0}
                             axisLine={false}
                             tickLine={false}
-                            tick={{
-                                fill: 'var(--color-text-secondary)',
-                                fontSize: 12,
-                                fontWeight: 500,
-                            }}
+                            tick={false}
                         />
 
                         <Tooltip
@@ -254,7 +231,13 @@ export function TopDepartmentsChart({departments = [], loading = false,}: TopDep
                             dataKey="total"
                             radius={[0, 8, 8, 0]}
                             barSize={28}
+                            isAnimationActive={false}
                         >
+
+                            <LabelList
+                                dataKey="name"
+                                content={<CustomBarLabel  />}
+                            />
 
                             {data.map((entry) => (
                                 <Cell
@@ -262,87 +245,40 @@ export function TopDepartmentsChart({departments = [], loading = false,}: TopDep
                                     fill={rankingColors[entry.rank - 1]}
                                 />
                             ))}
-
                         </Bar>
-
                     </BarChart>
-
                 </ResponsiveContainer>
-
             </div>
 
-            {/* -------------------------------------------------------------- */}
             {/* Ranking */}
-            {/* -------------------------------------------------------------- */}
 
             <div className="mt-5 space-y-2">
-
                 {data.map((department, index) => (
-
                     <div
                         key={department.department_id}
-                        className="
-                            flex
-                            items-center
-                            justify-between
-                            rounded-xl
-                            border
-                            border-border-light
-                            bg-surface-soft
-                            px-3
-                            py-2.5
-                        "
+                        className="flex items-center justify-between rounded-xl border border-border-light bg-surface-soft px-3 py-2.5"
                     >
-
                         <div className="flex min-w-0 items-center gap-3">
-
                             <div
-                                className="
-                                    flex
-                                    h-7
-                                    w-7
-                                    shrink-0
-                                    items-center
-                                    justify-center
-                                    rounded-lg
-                                    text-xs
-                                    font-bold
-                                    text-white
-                                "
+                                className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-xs font-bold text-white"
                                 style={{
-                                    backgroundColor:
-                                        rankingColors[index],
+                                    backgroundColor: rankingColors[index],
                                 }}
                             >
                                 {index + 1}
                             </div>
 
-                            <span className="
-                                truncate
-                                text-sm
-                                font-semibold
-                                text-text-primary
-                            ">
+                            <span className="truncate text-sm font-semibold text-text-primary">
                                 {department.name}
                             </span>
-
                         </div>
 
-                        <span className="
-                            shrink-0
-                            text-sm
-                            font-bold
-                            text-text-primary
-                        ">
+                        <span className="shrink-0 text-sm font-bold text-text-primary">
                             {department.total}
                         </span>
-
                     </div>
-
                 ))}
-
             </div>
-
         </div>
     )
 }

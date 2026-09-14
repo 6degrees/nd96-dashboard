@@ -202,10 +202,20 @@
       "noData": "No data available"
     },
     "weekly_messages": {
-      "title": "Messages This Week",
-      "subtitle": "Number of messages added during the last 7 days",
+      "title": "Weekly Messages",
+      "subtitle": "Number of messages during the last 7 days",
       "messageCount": "messages",
-      "series": "Messages"
+      "series": "Messages",
+      "empty": "No data available",
+      "days": {
+        "sunday": "Sunday",
+        "monday": "Monday",
+        "tuesday": "Tuesday",
+        "wednesday": "Wednesday",
+        "thursday": "Thursday",
+        "friday": "Friday",
+        "saturday": "Saturday"
+      }
     },
     "department_participation": {
       "title": "Department Participation",

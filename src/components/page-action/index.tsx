@@ -39,12 +39,6 @@ const PageActions = ({ actions, title }: PageActionsProps) => {
 
         label: (
             <div className="flex items-center gap-3 py-1">
-                {action.icon && (
-                    <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-green/10 text-brand-green">
-                        {action.icon}
-                    </span>
-                )}
-
                 <span className="text-sm font-medium text-text-primary">
                     {t(action.label)}
                 </span>
@@ -81,7 +75,7 @@ const PageActions = ({ actions, title }: PageActionsProps) => {
 
                 <div className="min-w-0">
 
-                    <h1 className="m-0 truncate text-lg font-bold tracking-tight text-text-primary">
+                    <h1 className="m-0 truncate text-md lg:text-lg font-bold tracking-tight text-text-primary">
                         {typeof title === 'string' ? t(title) : title}
                     </h1>
 
@@ -145,8 +139,7 @@ const PageActions = ({ actions, title }: PageActionsProps) => {
                 <Dropdown
                     menu={{ items: mobileMenuItems }}
                     trigger={['click']}
-                    placement="bottomRight"
-                >
+                    placement="bottomRight">
 
                     <button
                         type="button"

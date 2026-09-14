@@ -77,11 +77,11 @@ const PageTable = ({ loading, columns, dataSource, page, limit, total, onChange 
 
                             <div className="flex flex-col">
 
-                                <span className="text-base font-bold leading-6 text-text-primary">
+                                <span className="text-sm lg:text-base font-bold leading-6 text-text-primary">
                                     {t('common.table')}
                                 </span>
 
-                                <span className="mt-0.5 text-xs font-medium text-text-secondary">
+                                <span className="mt-0.5 hidden lg:block text-xs font-medium text-text-secondary">
                                     {t('common.tableDescription')}
                                 </span>
 

@@ -59,11 +59,11 @@ const PageFilter = ({isOpen, onToggle, onSearch, children }: PageFilterProps) =>
 
                     <div className="flex flex-col">
 
-                        <span className="text-base font-bold leading-6 text-text-primary">
+                        <span className="text-sm lg:text-base font-bold leading-6 text-text-primary">
                             {t('common.filters')}
                         </span>
 
-                        <span className="mt-0.5 text-xs font-medium text-text-secondary">
+                        <span className="mt-0.5 hidden lg:block text-xs font-medium text-text-secondary">
                             {t('common.searchInformation')}
                         </span>
 

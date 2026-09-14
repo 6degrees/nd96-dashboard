@@ -38,14 +38,45 @@ interface WeeklyMessagesChartProps {
 |
 */
 
-export function WeeklyMessagesChart({weekly = [], loading = false,}: WeeklyMessagesChartProps) {
+export function WeeklyMessagesChart({
+                                        weekly = [],
+                                        loading = false,
+                                    }: WeeklyMessagesChartProps) {
     /*
     |--------------------------------------------------------------------------
     | Translation
     |--------------------------------------------------------------------------
     */
 
-    const { t } = useTranslation()
+    const { t, i18n } = useTranslation()
+
+    const isArabic = i18n.language === 'ar'
+
+    /*
+    |--------------------------------------------------------------------------
+    | Helpers
+    |--------------------------------------------------------------------------
+    */
+
+    const getDayName = (day: string) => {
+        return t(
+            `dashboard.weekly_messages.days.${day.toLowerCase()}`,
+            day
+        )
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Chart Data
+    |--------------------------------------------------------------------------
+    */
+
+    const chartData = React.useMemo(() => {
+        return weekly.map((item) => ({
+            ...item,
+            day: getDayName(item.day),
+        }))
+    }, [weekly, i18n.language])
 
     /*
     |--------------------------------------------------------------------------
@@ -54,7 +85,7 @@ export function WeeklyMessagesChart({weekly = [], loading = false,}: WeeklyMessa
     */
 
     const totalMessages = weekly.reduce(
-        (total, item) => total + item.total,
+        (total, item) => total + Number(item.total),
         0
     )
 
@@ -108,12 +139,47 @@ export function WeeklyMessagesChart({weekly = [], loading = false,}: WeeklyMessa
 
     /*
     |--------------------------------------------------------------------------
+    | Empty State
+    |--------------------------------------------------------------------------
+    */
+
+    if (!weekly.length) {
+        return (
+            <div
+                className="
+                    flex
+                    h-[420px]
+                    items-center
+                    justify-center
+                    rounded-xl
+                    border
+                    border-[var(--color-border-light)]
+                    bg-[var(--color-surface)]
+                    p-6
+                    shadow-[var(--shadow-sm)]
+                "
+            >
+                <p className="text-sm text-[var(--color-text-muted)]">
+                    {t(
+                        'dashboard.weekly_messages.empty',
+                        isArabic
+                            ? 'لا توجد بيانات متاحة'
+                            : 'No data available'
+                    )}
+                </p>
+            </div>
+        )
+    }
+
+    /*
+    |--------------------------------------------------------------------------
     | Render
     |--------------------------------------------------------------------------
     */
 
     return (
         <div
+            dir={isArabic ? 'rtl' : 'ltr'}
             className="
                 rounded-xl
                 border
@@ -170,7 +236,9 @@ export function WeeklyMessagesChart({weekly = [], loading = false,}: WeeklyMessa
                         text-[var(--color-success)]
                     "
                 >
-                    {totalMessages}{' '}
+                    {totalMessages.toLocaleString(
+                        isArabic ? 'ar-SA' : 'en-US'
+                    )}{' '}
                     {t('dashboard.weekly_messages.messageCount')}
                 </div>
 
@@ -190,7 +258,7 @@ export function WeeklyMessagesChart({weekly = [], loading = false,}: WeeklyMessa
                 >
 
                     <BarChart
-                        data={weekly}
+                        data={chartData}
                         margin={{
                             top: 10,
                             right: 8,
@@ -212,7 +280,6 @@ export function WeeklyMessagesChart({weekly = [], loading = false,}: WeeklyMessa
                             tick={{
                                 fill: 'var(--color-text-muted)',
                                 fontSize: 12,
-                                fontFamily: 'var(--font-ar)',
                             }}
                             dy={10}
                         />
@@ -224,7 +291,6 @@ export function WeeklyMessagesChart({weekly = [], loading = false,}: WeeklyMessa
                             tick={{
                                 fill: 'var(--color-text-muted)',
                                 fontSize: 12,
-                                fontFamily: 'var(--font-ar)',
                             }}
                         />
 
@@ -242,8 +308,8 @@ export function WeeklyMessagesChart({weekly = [], loading = false,}: WeeklyMessa
                                     'var(--shadow-md)',
                                 color:
                                     'var(--color-text-primary)',
-                                fontFamily:
-                                    'var(--font-ar)',
+
+                                direction: isArabic ? 'rtl' : 'ltr',
                             }}
                             labelStyle={{
                                 color:
@@ -252,7 +318,9 @@ export function WeeklyMessagesChart({weekly = [], loading = false,}: WeeklyMessa
                                 marginBottom: 4,
                             }}
                             formatter={(value) => [
-                                `${value} ${t(
+                                `${Number(value).toLocaleString(
+                                    isArabic ? 'ar-SA' : 'en-US'
+                                )} ${t(
                                     'dashboard.weekly_messages.messageCount'
                                 )}`,
                                 t(
