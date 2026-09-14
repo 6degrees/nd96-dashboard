@@ -935,7 +935,6 @@ html[lang="ar"] .swal2-popup * {
 .identity-sidebar {
     position: sticky;
     top: 0;
-    display: flex;
     height: 100vh;
     min-height: 100vh;
     overflow: hidden;
