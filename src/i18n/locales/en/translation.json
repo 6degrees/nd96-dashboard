@@ -224,7 +224,8 @@
       "total_messages": "Total Messages",
       "messages": "Messages",
       "participation": "Participation",
-      "no_data": "No participation data available"
+      "no_data": "No participation data available",
+      "unknown": "unknown"
     },
     "messages": {
       "visibility": {
