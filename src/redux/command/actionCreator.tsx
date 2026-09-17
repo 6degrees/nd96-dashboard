@@ -33,7 +33,7 @@ const sendCommandAction = (
     screen: string,
     command: string,
     success?: (data: any) => void,
-    error?: () => void
+    error?: (error: any) => void
 ) => {
     return async (dispatch: any) => {
         dispatch(sendCommandBegin())
@@ -49,7 +49,7 @@ const sendCommandAction = (
             if (success) success(data)
         } catch (err: any) {
             dispatch(sendCommandErr(err.response?.data))
-            if (error) error()
+            if (error) error(err)
         }
     }
 }
