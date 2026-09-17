@@ -2,6 +2,7 @@ import {configureStore} from "@reduxjs/toolkit";
 import authReducer from "@/redux/auth/reducers";
 import dashboardReducer from "@/redux/dashboard/reducers";
 import {createCrudReducer} from "@/redux/curd/createCrudReducer";
+import commandReducer from "@/redux/command/reducers";
 import {actions as userAction} from '@/redux/user'
 import {actions as notificationAction} from '@/redux/notification'
 import {actions as DepartmentAction} from '@/redux/department'
@@ -43,6 +44,7 @@ export const store = configureStore({
         timeline: createCrudReducer(TimelineAction) as any,
         milestone: createCrudReducer(MilestoneAction) as any,
         message: messageReducer,
+        command: commandReducer,
     },
 });
 

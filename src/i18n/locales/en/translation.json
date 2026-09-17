@@ -45,7 +45,9 @@
     "table": "Data",
     "tableDescription": "View, manage, and organize the available data and records",
     "create": "Create",
-    "update": "Update"
+    "update": "Update",
+    "noData": "No data available"
+
   },
   "auth": {
     "email": "Email Address",
@@ -278,6 +280,57 @@
       "pendingDescription": "Notifications waiting to be sent",
       "failed": "Failed",
       "failedDescription": "Notifications that failed to send"
+    }
+  },
+  "command": {
+    "badge": "Screen Management",
+    "title": "Screen Control Center",
+    "description": "Manage and control all connected display screens from one place.",
+
+    "connected": "Connected",
+
+    "screens": {
+      "messageWall": {
+        "title": "Message Wall",
+        "description": "Control the main message wall display."
+      },
+      "messageMoment": {
+        "title": "Message Moment",
+        "description": "Control the message moment display."
+      },
+      "kingsEnergyJourney": {
+        "title": "King's Energy Journey",
+        "description": "Control the energy journey display."
+      }
+    },
+
+    "actions": {
+      "holding": {
+        "title": "Holding",
+        "description": "Pause current display"
+      },
+      "resume": {
+        "title": "Resume",
+        "description": "Continue current display"
+      },
+      "clear": {
+        "title": "Clear",
+        "description": "Clear current screen"
+      },
+      "resetEvent": {
+        "title": "Reset Event",
+        "description": "Restart screen event"
+      }
+    },
+
+    "success": {
+      "title": "Command sent successfully",
+      "description": "The command was sent to the selected screen."
+    },
+
+    "error": {
+      "title": "Command failed",
+      "description": "Unable to send the command to the selected screen."
     }
   }
 }

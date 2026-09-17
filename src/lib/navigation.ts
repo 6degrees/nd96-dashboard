@@ -98,15 +98,15 @@ export const navigation: NavigationGroup[] = [
                 href: '/dashboard/departments',
                 icon: Building2,
             },
-            // {
-            //     key: 'screens',
-            //     label: {
-            //         en: 'Screen Management',
-            //         ar: 'إدارة الشاشات',
-            //     },
-            //     href: '/dashboard/screens',
-            //     icon: MonitorCog,
-            // },
+            {
+                key: 'screen-commands',
+                label: {
+                    en: 'Screen Controls',
+                    ar: 'التحكم بالشاشات',
+                },
+                href: '/dashboard/commands',
+                icon: MonitorCog,
+            },
         ],
     },
 
