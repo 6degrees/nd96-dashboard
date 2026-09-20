@@ -15,6 +15,6 @@ export const useCollections = createCollectionHook({
         "filters[created_at][$lte]": formatDate(filters.createdAt[1]),
         "filters[updated_at][$gte]": formatDate(filters.createdAt[0]),
         "filters[updated_at][$lte]": formatDate(filters.createdAt[1]),
-        "sort": "sort_order:asc,created_at:asc",
+        "sort": "sort_order:asc",
     }),
 })
