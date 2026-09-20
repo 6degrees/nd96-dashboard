@@ -151,6 +151,7 @@ export default function Page({ id }: PageProps) {
             setLimit={setLimit}
             onSearch={handleSearch}
             drawerWidth="60%"
+            refreshData={handleRefresh}
         />
     )
 }

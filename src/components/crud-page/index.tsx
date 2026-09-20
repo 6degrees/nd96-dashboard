@@ -82,6 +82,7 @@ interface CrudPageProps {
     hasMore?: boolean
     loadingMore?: boolean
     onLoadMore?: () => void
+    refreshData?: () => void
 }
 
 /*
@@ -116,6 +117,7 @@ export default function CrudPage(
         hasMore,
         loadingMore,
         onLoadMore,
+        refreshData
     }: CrudPageProps) {
 
     /*
@@ -147,7 +149,9 @@ export default function CrudPage(
     |--------------------------------------------------------------------------
     |
     */
-    const refreshData = () => { dispatch(api.fetch() as any) }
+    const refresh = refreshData ?? (() => {
+        dispatch(api.fetch() as any)
+    })
 
     const closeCreateDrawer = () => { setCreateOpen(false) }
 
@@ -167,7 +171,7 @@ export default function CrudPage(
             api.create(
                 values,
                 () => {
-                    refreshData()
+                    refresh()
                     closeCreateDrawer()
                     toast.success({message: t('common.createdSuccessfully'),})
                 },
@@ -181,7 +185,7 @@ export default function CrudPage(
                 selectedItem.id,
                 values,
                 () => {
-                    refreshData()
+                    refresh()
                     closeEditDrawer()
                     toast.success({message: t('common.updatedSuccessfully'),})
                 },
@@ -196,7 +200,7 @@ export default function CrudPage(
                     api.delete(
                         record.id,
                         () => {
-                            refreshData()
+                            refresh()
                             toast.success({message: t('common.deletedSuccessfully'),})
                         },
                     ) as any,
@@ -217,7 +221,7 @@ export default function CrudPage(
                         record.id,
                         record.is_active ? 'disable' : 'active',
                         () => {
-                            refreshData()
+                            refresh()
                             toast.success({
                                 message: record.is_active
                                     ? t('common.disabledSuccessfully')
