@@ -56,7 +56,7 @@ export const Columns = ({onView, onDelete, onStatusChange,}: {
 
             render: (message: string) => (
                 <div
-                    className="mx-auto max-w-md truncate whitespace-nowrap emoji-text"
+                    className="mx-auto max-w-md emoji-text !truncate !whitespace-nowrap"
                     dir="auto"
                     dangerouslySetInnerHTML={renderEmoji(message || '-')}
                 />

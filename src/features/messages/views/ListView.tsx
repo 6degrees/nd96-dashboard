@@ -240,6 +240,7 @@ export default function Page() {
                 setLimit={setLimit}
                 onSearch={handleSearch}
                 drawerWidth="30%"
+                refreshData={handleRefresh}
             />
 
             {/* ---------------------------------------------------------------- */}
