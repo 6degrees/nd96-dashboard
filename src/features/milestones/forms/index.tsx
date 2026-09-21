@@ -28,6 +28,7 @@ import {
     FloatNumberFormItem,
     SubmitButtonFormItem,
     TextFormItem,
+    SelectFormItem,
 } from '@/components/inputs'
 
 import ImageFormItem from '@/components/inputs/ImageFormItem'
@@ -246,6 +247,34 @@ export default function TimelineMilestoneForm({onSubmit, data, isEdit = false, t
                             max={9999}
                             step={1}
                             precision={0}
+                            rules={[
+                                requiredRule(
+                                    t('validation.requiredField')
+                                ),
+                            ]}
+                        />
+
+                    </Col>
+
+                    {/* -------------------------------------------------------- */}
+                    {/* Date Type */}
+                    {/* -------------------------------------------------------- */}
+                    <Col xs={24} md={12}>
+
+                        <SelectFormItem
+                            name="date_type"
+                            label="milestone.inputs.dateType"
+                            placeholder="milestone.inputs.dateType"
+                            options={[
+                                {
+                                    value: 'gregorian',
+                                    label: t('enums.date_type.gregorian.label'),
+                                },
+                                {
+                                    value: 'hijri',
+                                    label: t('enums.date_type.hijri.label'),
+                                },
+                            ]}
                             rules={[
                                 requiredRule(
                                     t('validation.requiredField')

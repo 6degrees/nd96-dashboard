@@ -162,15 +162,17 @@
     "update": "Update Milestone",
     "inputs": {
       "year": "Year",
-      "title_ar": "Milestone Title in Arabic",
-      "title_en": "Milestone Title in English",
-      "description_ar": "Milestone Description in Arabic",
-      "description_en": "Milestone Description in English",
-      "sort_order": "Display Order",
+      "dateType": "Date Type",
+      "title_ar": "Arabic Title",
+      "title_en": "English Title",
+      "description_ar": "Arabic Description",
+      "description_en": "English Description",
       "status": "Status",
       "activatedAt": "Activation Date",
-      "createdAt": "Created At",
-      "updatedAt": "Updated At"
+      "createdAt": "Creation Date",
+      "updatedAt": "Update Date",
+      "sortOrder": "Display Order",
+      "image": "Milestone Image"
     }
   },
   "message": {
@@ -331,6 +333,16 @@
     "error": {
       "title": "Command failed",
       "description": "Unable to send the command to the selected screen."
+    }
+  },
+  "enums": {
+    "date_type": {
+      "gregorian": {
+        "label": "Gregorian"
+      },
+      "hijri": {
+        "label": "Hijri"
+      }
     }
   }
 }

@@ -295,13 +295,12 @@ a:hover {
 
 
 /* ============================================
-   Ant Inputs
-   ============================================ */
+  Ant Inputs
+============================================ */
 
 .ant-input,
 .ant-input-affix-wrapper,
 .ant-input-password,
-.ant-select-selector,
 .ant-picker {
     min-height: 42px;
 
@@ -317,6 +316,33 @@ a:hover {
 
     transition: border-color 160ms ease,
     box-shadow 160ms ease;
+}
+
+.ant-select {
+    height: 56px;
+}
+
+.ant-select-selector {
+    height: 56px !important;
+    min-height: 56px !important;
+
+    background: var(--input-background) !important;
+
+    border-color: var(--input-border) !important;
+
+    border-radius: var(--radius-md) !important;
+
+    color: var(--input-text) !important;
+
+    box-shadow: none !important;
+
+    transition: border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.ant-select-selection-item,
+.ant-select-selection-placeholder {
+    line-height: 54px !important;
 }
 
 .ant-input:hover,
